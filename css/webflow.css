@@ -694,7 +694,7 @@ textarea.w-select {
     display: none !important;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1458px) {
     .w-container {
         max-width: 728px;
     }
@@ -1317,7 +1317,7 @@ textarea.w-select {
     position: static;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1458px) {
 
     .w-nav[data-collapse="medium"] .w-dropdown,
     .w-nav[data-collapse="medium"] .w-dropdown-toggle {
@@ -2000,7 +2000,7 @@ textarea.w-select {
     display: block;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1458px) {
     .w-nav[data-collapse="medium"] .w-nav-menu {
         display: none;
     }

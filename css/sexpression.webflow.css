@@ -19,7 +19,7 @@
 }
 
 .container {
-    max-width: 1170px;
+    max-width: 1500px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -1206,7 +1206,7 @@
     font-weight: 300;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1452px) {
     .icon {
         color: #1f2532;
     }
