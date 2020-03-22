@@ -71,6 +71,7 @@ img {
     max-width: 100%;
     vertical-align: middle;
     display: inline-block;
+    border-radius: 10px;
 }
 
 html.w-mod-touch * {
@@ -694,222 +695,6 @@ textarea.w-select {
     display: none !important;
 }
 
-@media screen and (max-width: 1458px) {
-    .w-container {
-        max-width: 728px;
-    }
-
-    .w-hidden-main {
-        display: inherit !important;
-    }
-
-    .w-hidden-medium {
-        display: none !important;
-    }
-
-    .w-col-medium-1 {
-        width: 8.33333333%;
-    }
-
-    .w-col-medium-2 {
-        width: 16.66666667%;
-    }
-
-    .w-col-medium-3 {
-        width: 25%;
-    }
-
-    .w-col-medium-4 {
-        width: 33.33333333%;
-    }
-
-    .w-col-medium-5 {
-        width: 41.66666667%;
-    }
-
-    .w-col-medium-6 {
-        width: 50%;
-    }
-
-    .w-col-medium-7 {
-        width: 58.33333333%;
-    }
-
-    .w-col-medium-8 {
-        width: 66.66666667%;
-    }
-
-    .w-col-medium-9 {
-        width: 75%;
-    }
-
-    .w-col-medium-10 {
-        width: 83.33333333%;
-    }
-
-    .w-col-medium-11 {
-        width: 91.66666667%;
-    }
-
-    .w-col-medium-12 {
-        width: 100%;
-    }
-
-    .w-col-stack {
-        width: 100%;
-        left: auto;
-        right: auto;
-    }
-}
-
-@media screen and (max-width: 767px) {
-    .w-hidden-main {
-        display: inherit !important;
-    }
-
-    .w-hidden-medium {
-        display: inherit !important;
-    }
-
-    .w-hidden-small {
-        display: none !important;
-    }
-
-    .w-row,
-    .w-container .w-row {
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .w-col {
-        width: 100%;
-        left: auto;
-        right: auto;
-    }
-
-    .w-col-small-1 {
-        width: 8.33333333%;
-    }
-
-    .w-col-small-2 {
-        width: 16.66666667%;
-    }
-
-    .w-col-small-3 {
-        width: 25%;
-    }
-
-    .w-col-small-4 {
-        width: 33.33333333%;
-    }
-
-    .w-col-small-5 {
-        width: 41.66666667%;
-    }
-
-    .w-col-small-6 {
-        width: 50%;
-    }
-
-    .w-col-small-7 {
-        width: 58.33333333%;
-    }
-
-    .w-col-small-8 {
-        width: 66.66666667%;
-    }
-
-    .w-col-small-9 {
-        width: 75%;
-    }
-
-    .w-col-small-10 {
-        width: 83.33333333%;
-    }
-
-    .w-col-small-11 {
-        width: 91.66666667%;
-    }
-
-    .w-col-small-12 {
-        width: 100%;
-    }
-}
-
-@media screen and (max-width: 479px) {
-    .w-container {
-        max-width: none;
-    }
-
-    .w-hidden-main {
-        display: inherit !important;
-    }
-
-    .w-hidden-medium {
-        display: inherit !important;
-    }
-
-    .w-hidden-small {
-        display: inherit !important;
-    }
-
-    .w-hidden-tiny {
-        display: none !important;
-    }
-
-    .w-col {
-        width: 100%;
-    }
-
-    .w-col-tiny-1 {
-        width: 8.33333333%;
-    }
-
-    .w-col-tiny-2 {
-        width: 16.66666667%;
-    }
-
-    .w-col-tiny-3 {
-        width: 25%;
-    }
-
-    .w-col-tiny-4 {
-        width: 33.33333333%;
-    }
-
-    .w-col-tiny-5 {
-        width: 41.66666667%;
-    }
-
-    .w-col-tiny-6 {
-        width: 50%;
-    }
-
-    .w-col-tiny-7 {
-        width: 58.33333333%;
-    }
-
-    .w-col-tiny-8 {
-        width: 66.66666667%;
-    }
-
-    .w-col-tiny-9 {
-        width: 75%;
-    }
-
-    .w-col-tiny-10 {
-        width: 83.33333333%;
-    }
-
-    .w-col-tiny-11 {
-        width: 91.66666667%;
-    }
-
-    .w-col-tiny-12 {
-        width: 100%;
-    }
-}
-
 .w-widget {
     position: relative;
 }
@@ -1317,46 +1102,6 @@ textarea.w-select {
     position: static;
 }
 
-@media screen and (max-width: 1458px) {
-
-    .w-nav[data-collapse="medium"] .w-dropdown,
-    .w-nav[data-collapse="medium"] .w-dropdown-toggle {
-        display: block;
-    }
-
-    .w-nav[data-collapse="medium"] .w-dropdown-list {
-        position: static;
-    }
-}
-
-@media screen and (max-width: 767px) {
-
-    .w-nav[data-collapse="small"] .w-dropdown,
-    .w-nav[data-collapse="small"] .w-dropdown-toggle {
-        display: block;
-    }
-
-    .w-nav[data-collapse="small"] .w-dropdown-list {
-        position: static;
-    }
-
-    .w-nav-brand {
-        padding-left: 10px;
-    }
-}
-
-@media screen and (max-width: 479px) {
-
-    .w-nav[data-collapse="tiny"] .w-dropdown,
-    .w-nav[data-collapse="tiny"] .w-dropdown-toggle {
-        display: block;
-    }
-
-    .w-nav[data-collapse="tiny"] .w-dropdown-list {
-        position: static;
-    }
-}
-
 /**
  * ## Note
  * Safari (on both iOS and OS X) does not handle viewport units (vh, vw) well.
@@ -1670,49 +1415,6 @@ textarea.w-select {
     overflow: hidden;
 }
 
-@media (min-width: 768px) {
-    .w-lightbox-content {
-        height: 96vh;
-        margin-top: 2vh;
-    }
-
-    .w-lightbox-view,
-    .w-lightbox-view:before {
-        height: 96vh;
-    }
-
-    /* .w-lightbox-content */
-    .w-lightbox-group,
-    .w-lightbox-group .w-lightbox-view,
-    .w-lightbox-group .w-lightbox-view:before {
-        height: 84vh;
-    }
-
-    .w-lightbox-image {
-        max-width: 96vw;
-        max-height: 96vh;
-    }
-
-    .w-lightbox-group .w-lightbox-image {
-        max-width: 82.3vw;
-        max-height: 84vh;
-    }
-
-    .w-lightbox-left,
-    .w-lightbox-right {
-        display: block;
-        opacity: .5;
-    }
-
-    .w-lightbox-close {
-        opacity: .8;
-    }
-
-    .w-lightbox-control:hover {
-        opacity: 1;
-    }
-}
-
 .w-lightbox-inactive,
 .w-lightbox-inactive:hover {
     opacity: 0;
@@ -1903,7 +1605,7 @@ textarea.w-select {
     display: inline-block;
     vertical-align: top;
     text-decoration: none;
-    color: #222222;
+    color: #e7e7e7;
     padding: 20px;
     text-align: left;
     margin-left: auto;
@@ -2000,40 +1702,6 @@ textarea.w-select {
     display: block;
 }
 
-@media screen and (max-width: 1458px) {
-    .w-nav[data-collapse="medium"] .w-nav-menu {
-        display: none;
-    }
-
-    .w-nav[data-collapse="medium"] .w-nav-button {
-        display: block;
-    }
-}
-
-@media screen and (max-width: 767px) {
-    .w-nav[data-collapse="small"] .w-nav-menu {
-        display: none;
-    }
-
-    .w-nav[data-collapse="small"] .w-nav-button {
-        display: block;
-    }
-
-    .w-nav-brand {
-        padding-left: 10px;
-    }
-}
-
-@media screen and (max-width: 479px) {
-    .w-nav[data-collapse="tiny"] .w-nav-menu {
-        display: none;
-    }
-
-    .w-nav[data-collapse="tiny"] .w-nav-button {
-        display: block;
-    }
-}
-
 .w-tabs {
     position: relative;
 }
@@ -2085,12 +1753,6 @@ textarea.w-select {
 
 .w--tab-active {
     display: block;
-}
-
-@media screen and (max-width: 479px) {
-    .w-tab-link {
-        display: block;
-    }
 }
 
 .w-ix-emptyfix:after {
