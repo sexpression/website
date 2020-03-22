@@ -18,6 +18,11 @@
     width: 100%;
 }
 
+.btn-grad {
+    background-color: rgb(0, 176, 216);
+    background-image: linear-gradient(19deg, rgb(0, 176, 216) 0%, #B721FF 100%);    
+}
+
 .container {
     max-width: 1500px;
     margin-right: auto;
@@ -142,21 +147,7 @@
 .nav-link-button-merch {
     background-color: #F4D03F;
     background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
-    
     color: #2c2c2c;
-}
-
-.nav-link-button-donate {
-    background-color: #FBDA61;
-    background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);    
-    color: #2c2c2c;
-}
-
-.nav-link-button:hover {
-    opacity: 1;
-    color: #ffffff;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
 }
 
 .nav-link.w--current {
@@ -541,10 +532,6 @@
 .container-banner {
     padding-top: 2em;
     padding-bottom: 2em;
-
-}
-
-.giffy {
 
 }
 

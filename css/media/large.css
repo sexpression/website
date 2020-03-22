@@ -54,6 +54,13 @@
         padding: 0px;
     }
 
+    .nav-link {
+        width: 100%;
+        max-width: 100%;
+        border-top: 1px solid #dcdcdc;
+        border-bottom: 1px none #dcdcdc;
+    }
+
     .menu-button {
         background-color: #fff;
         font-size: 40px;
@@ -273,6 +280,8 @@
     }
 
     .nav-link-button {
+        width: 100%;
+        max-width: 100%;
         border-radius: 0px;
         box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2);
     }
