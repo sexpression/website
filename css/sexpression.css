@@ -1288,3 +1288,11 @@
     line-height: 1.5em;
     font-weight: 300;
 }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+  .grid-item {
+    text-align: center;
+  }

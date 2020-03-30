@@ -71,7 +71,7 @@ img {
     max-width: 100%;
     vertical-align: middle;
     display: inline-block;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 html.w-mod-touch * {
