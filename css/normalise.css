@@ -168,7 +168,6 @@ sub {
  */
 img {
     border: 0;
-    image-orientation: from-image;
 }
 
 /**
