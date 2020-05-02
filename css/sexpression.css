@@ -18,9 +18,14 @@
     width: 100%;
 }
 
-.btn-grad {
-    background-color: rgb(0, 176, 216);
-    background-image: linear-gradient(19deg, rgb(0, 176, 216) 0%, #B721FF 100%);    
+.btn-grad-1 {
+    background: rgb(176,58,180);
+    background: linear-gradient(90deg, rgba(176,58,180,1) 0%, rgba(203,29,253,1) 50%, rgba(128,69,252,1) 100%);  
+}
+
+.btn-grad-2 {
+    background: rgb(128,69,252);
+    background: linear-gradient(90deg, rgba(128,69,252,1) 0%, rgba(29,137,253,1) 50%, rgba(58,164,180,1) 100%);
 }
 
 .container {
