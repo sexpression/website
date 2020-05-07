@@ -1041,7 +1041,8 @@
 
 .button {
     border-radius: 6px;
-    background-color: #9c00ff;
+    background: rgb(128,69,252);
+    background: linear-gradient(90deg, rgba(128,69,252,1) 0%, rgb(26, 129, 238) 50%, rgb(52, 139, 197) 100%);
     font-family: Roboto, sans-serif;
     font-weight: 300;
 }
