@@ -167,10 +167,12 @@
         margin-top: 0em;
     }
 
-    .column-2 {
+    /* ul { padding: 0px 20px 0px 0px } */
+
+    /* .column-2 {
         padding-top: 1em;
         padding-bottom: 1em;
-    }
+    } */
 
     .columns {
         margin-left: 0em;
