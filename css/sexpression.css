@@ -8,6 +8,40 @@
     font-size: smaller;
 }
 
+.sub-box {
+    display: flex;
+    flex-direction: row;
+}
+
+.sub-text {
+    display: flex;
+    flex: 1;
+    margin: 10px;
+}
+
+.disclaimer {
+    font-size: 0.7rem;
+    color: #a5a5a5;
+    margin: 10px;
+}
+
+@media (max-width: 766px) {
+    .sub-box {
+        display: block;
+        flex-direction: row;
+    }
+    
+    .sub-text {
+        display: flex;
+        flex: auto;
+        margin: 10px;
+    }
+
+    .subscribe-button {
+        width: 100%;
+    }
+  }
+
 .nav-content {
     display: -webkit-box;
     display: -webkit-flex;

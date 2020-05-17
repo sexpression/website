@@ -76,9 +76,9 @@
                         <a href="https://sexpression.teemill.com/" target="_blank"
                             class="nav-link-button btn-grad-1 w-nav-link"><span class="ec ec-tshirt"></span>
                             <b>Merch</b></a>
-                        <a href="https://donate.justgiving.com/donation-amount?uri=aHR0cHM6Ly9kb25hdGUtYXBpLmp1c3RnaXZpbmcuY29tL2FwaS9kb25hdGlvbnMvYmE4NGRkYWJmNDVmNDEzYzg5YmE2ZGYyMzkyMjg0YWQ="
-                            target="_blank" class="nav-link-button btn-grad-2 w-nav-link"><span
-                                class="ec ec-coffee"></span> <b>donate</b></a>
+                        <a href="https://www.justgiving.com/campaign/sexpressionuk" target="_blank"
+                            class="nav-link-button btn-grad-2 w-nav-link"><span class="ec ec-coffee"></span>
+                            <b>donate</b></a>
                     </nav>
                     <div class="nav-menu">
                         <div class="menu-button w-nav-button">
@@ -253,79 +253,80 @@
                         </div>
                     </div>
                 </div>
-                <h2 class="h2">Our Newsletter <span class="ec ec-newspaper-roll"></span></h2>
-                    <form class="form"  action="https://sexpression.us20.list-manage.com/subscribe/post?u=a12713abc0ae4f1b1d0841fcd&amp;id=d08e375582" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
-                        <div class="w-row">
-                            <div class="column-7 w-col w-col-6">
-                                <label for="Email-3" for="email" class="p">Email</label>
-                                <input type="email" class="text-field-2 w-input" maxlength="256" value="" name="EMAIL"/>
-                                <ul>
-                                    <li>You can unsubscribe at any time by clicking the link in the footer of our emails.</li>
-                                    <li>We use Mailchimp as our marketing platform.</li>
-                                    <li>By clicking below to subscribe, you acknowledge that your information will be transferred to Mailchimp for processing.</li>
-                                    <li><a href="https://mailchimp.com/legal/" target="_blank">Learn more about Mailchimp's privacy practices here.</a></li>
-                                </ul>
-                                <!--------------------->
-                                <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                                    <input type="text" name="b_a12713abc0ae4f1b1d0841fcd_d08e375582" tabindex="-1" value=""/>
-                                </div>
-                                <!--------------------->
-                                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                <div id="newsletter" class="div-block">
+                    <h2 class="h2">Our Newsletter <span class="ec ec-newspaper-roll"></span></h2>
+                    <form class="form"
+                        action="https://sexpression.us20.list-manage.com/subscribe/post?u=a12713abc0ae4f1b1d0841fcd&amp;id=d08e375582"
+                        method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                        <div class="sub-box">
+                            <div class="sub-text">
+                                <p class=""><span class="ec ec-checkered-flag"></span> Be the first to hear updates and news</p>
                             </div>
-
+                            <div class="sub-text">
+                                <p class=""><span class="ec ec-balloon"></span> Exclusive updates from your national committee</p>
+                            </div>
+                        </div>
+                        <div class="sub-box">
+                            <div class="sub-text">
+                                <p class=""><span class="ec ec-bar-chart"></span> Keep in the loop with all the amazing work our branches do</p>
+                            </div>
+                            <div class="sub-text">
+                                <p class=""><span class="ec ec-wave"></span> You can unsubscribe at any time</p>
+                            </div>
+                        </div>
+                        <div class="sub-box">
+                            <div class="sub-text" style="flex:auto;">
+                                <input type="email" placeholder="Enter your email here" class="text-field-2 w-input" maxlength="256" value="" name="EMAIL" />
+                                <input type="checkbox" id="gdpr_42467" name="gdpr[42467]" value="Y" class="av-checkbox gdpr" hidden />
+                            </div>
+                            <div class="sub-text" style="flex:initial;">
+                                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button w-button subscribe-button">
+                            </div>
+                        </div>
+                        <div class="sub-box">
+                            <p class="disclaimer">By clicking below to subscribe, you acknowledge that your information will be transferred to Mailchimp for processing.</p>
+                        </div>
+                                <!--------------------->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                            <input type="text" name="b_a12713abc0ae4f1b1d0841fcd_d08e375582" tabindex="-1" value="" />
+                        </div>
+                        <!--------------------->
+                    </form>
+                </div>
+                <div id="contact-us" class="div-block">
+                    <h2 class="h2">Contact us <span class="ec ec-love-letter"></span></h2>
+                    <form id="email-form" class="form" data-name="Email Form" name="Contact form" method="POST" action="sent.html" data-netlify="true" data-netlify-recaptcha="true">
+                        <div class="w-row">
                             <div class="column-6 w-col w-col-6">
-                                <ul>
-                                    <li>Reason 1</li>
-                                    <li>Reason 2</li>
-                                    <li>Reason 3</li>
-                                    <li>Reason 4</li>
-                                </ul>
+                                <label for="Name-3" for="name" class="p">Name</label>
+                                <input type="text" class="text-field w-input" maxlength="256" name="Name" data-name="Name"
+                                    id="Name-3" required="">
+                                <label for="Role" for="role" class="p">Role</label>
+                                <select id="Role" name="Role" required="" data-name="Role" class="select-field w-select">
+                                    <option value="Other">Other</option>
+                                    <option value="Student">Student</option>
+                                    <option value="Teacher">Teacher</option>
+                                </select>
+                                <label for="Email-3" for="email" class="p">Email</label>
+                                <input type="email" class="text-field-2 w-input" maxlength="256" name="Email"
+                                    data-name="Email" id="Email-3" required="">
+                            </div>
+                            <div class="column-6 w-col w-col-6">
+                                <label for="message" for="message" class="p">Your message</label>
+                                <textarea placeholder="Enter your message" maxlength="5000" id="message" name="message"
+                                    data-name="message" required="" class="textarea w-input"></textarea>
+                            </div>
+                        </div>
+                        <div class="w-row">
+                            <div class="form-spacing-buttons w-col w-col-6">
+                                <div data-netlify-recaptcha="true">
+                                </div>
+                            </div>
+                            <div class="form-spacing-buttons w-col w-col-6">
+                                <button class="button w-button" type="submit">Send message</button>
                             </div>
                         </div>
                     </form>
-                <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
-                <script type='text/javascript'>(function ($) { window.fnames = new Array(); window.ftypes = new Array(); fnames[0] = 'EMAIL'; ftypes[0] = 'email'; fnames[1] = 'FNAME'; ftypes[1] = 'text'; fnames[2] = 'LNAME'; ftypes[2] = 'text'; }(jQuery)); var $mcj = jQuery.noConflict(true);</script>
-                <!--End mc_embed_signup-->
-                <div id="contact-us" class="div-block">
-                    <div id="contact-us" class="div-block">
-                        <h2 class="h2">Contact us <span class="ec ec-love-letter"></span></h2>
-                        <form id="email-form" class="form" data-name="Email Form" name="Contact form" method="POST"
-                            action="sent.html" data-netlify="true" data-netlify-recaptcha="true">
-                            <div class="w-row">
-                                <div class="column-7 w-col w-col-6">
-                                    <label for="Name-3" for="name" class="p">Name</label>
-                                    <input type="text" class="text-field w-input" maxlength="256" name="Name"
-                                        data-name="Name" id="Name-3" required="">
-                                    <label for="Role" for="role" class="p">Role</label>
-                                    <select id="Role" name="Role" required="" data-name="Role"
-                                        class="select-field w-select">
-                                        <option value="Other">Other</option>
-                                        <option value="Student">Student</option>
-                                        <option value="Teacher">Teacher</option>
-                                    </select>
-                                    <label for="Email-3" for="email" class="p">Email</label>
-                                    <input type="email" class="text-field-2 w-input" maxlength="256" name="Email"
-                                        data-name="Email" id="Email-3" required="">
-                                </div>
-                                <div class="column-6 w-col w-col-6">
-                                    <label for="message" for="message" class="p">Your message</label>
-                                    <textarea placeholder="Enter your message" maxlength="5000" id="message"
-                                        name="message" data-name="message" required=""
-                                        class="textarea w-input"></textarea>
-                                </div>
-                            </div>
-
-                            <div class="w-row">
-                                <div class="form-spacing-buttons w-col w-col-6">
-                                    <div data-netlify-recaptcha="true">
-                                    </div>
-                                </div>
-                                <div class="form-spacing-buttons w-col w-col-6">
-                                    <button class="button w-button" type="submit">Send message</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
                 </div>
             </div>
         </main>
@@ -413,8 +414,8 @@
                             </a>
                         </div>
                         <div class="w-col w-col-3">
-                            <a href="https://donate.justgiving.com/donation-amount?uri=aHR0cHM6Ly9kb25hdGUtYXBpLmp1c3RnaXZpbmcuY29tL2FwaS9kb25hdGlvbnMvYmE4NGRkYWJmNDVmNDEzYzg5YmE2ZGYyMzkyMjg0YWQ="
-                                target="_blank" class="link-block w-inline-block">
+                            <a href="https://www.justgiving.com/campaign/sexpressionuk" target="_blank"
+                                class="link-block w-inline-block">
                                 <div data-w-id="25d880a6-f186-52ff-f108-58a2f4b3ec49"
                                     class="footer-content-block padding">
                                     <img src="images/icons/donate.png" width="40" alt="Hand holding a coin"
@@ -427,8 +428,12 @@
                 </div>
             </div>
         </footer>
-        <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js" type="text/javascript"
-            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script>
+            document.getElementById("gdpr_42467").checked = true;
+        </script>
+        <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+        <script type='text/javascript'>(function ($) { window.fnames = new Array(); window.ftypes = new Array(); fnames[0] = 'EMAIL'; ftypes[0] = 'email'; fnames[1] = 'FNAME'; ftypes[1] = 'text'; fnames[2] = 'LNAME'; ftypes[2] = 'text'; }(jQuery)); var $mcj = jQuery.noConflict(true);</script>
+        <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script src="js/webflow.js" type="text/javascript"></script>
 </body>
 
