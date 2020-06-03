@@ -594,6 +594,13 @@
     background: linear-gradient(0deg, rgba(91,0,255,1) 0%, rgba(61,164,255,1) 100%);
 }
 
+.header-3 {
+    margin: 1em;
+    background: linear-gradient(0deg, rgb(164, 121, 241) 0%, rgba(55, 161, 255, 0.03) 100%);
+    border-style: dotted;
+    border-color: #9359f2;
+}
+
 
 
 .div-block-11 {
