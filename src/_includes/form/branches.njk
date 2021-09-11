@@ -1,0 +1,12 @@
+<div class="field">
+    <label class="label is-uppercase">Sexpression:UK Branch</label>
+    <div class="control">
+        <div class="select">
+            <select name="branch[]" required="required">
+                {% for branch in branches.all %}
+                    <option value="{{ branch.fields["Email"] }},{{ branch.fields["Name"] }}">{{ branch.fields["Name (from University)"][0] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+</div>

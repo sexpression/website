@@ -1,0 +1,114 @@
+---
+layout: headerfooter.njk
+"about": "In November 2000, University College London held an ‘exploratory’ sex education workshop for medical students. This led to the original idea of Sexpression:UK and the formation of a committee along with a branch in Edinburgh. Since then Sexpression:UK has grown to more than twenty branches in universities across country in the United Kingdom."
+"visionandvalues": [
+        {
+            "icon": "fas fa-star",
+            "value": "Empowering",
+            "vision": "Young people's individual beliefs are respected, and our teaching helps young people to act on them. We also encourage young people to respect the beliefs of others."
+        },
+        {
+            "icon": "fas fa-chalkboard-teacher",
+            "value": "Near-Pear",
+            "vision": "Because university students are closer in age to the young people than their teachers and parents our near-peer teaching encourages young people to participate."
+        },
+        {
+            "icon": "fas fa-comments",
+            "value": "Informal",
+            "vision": "Young people learn best and are more likely to make informed decisions about sex and relationships if they participate in discussions rather than being lectured."
+        },
+        {
+            "icon": "fas fa-search",
+            "value": "Comprehensive",
+            "vision": "Young people should be informed about all aspects of their sexual and reproductive health."
+        }
+    ]
+---
+
+<section class="hero is-medium">
+    <div class="hero-body">
+        <div class="container content has-text-centered">
+            <h1 class="title is-size-2 black">
+                {{ site.subtitle }}
+            </h1>
+            <p class="subtitle column is-three-fifths is-offset-one-fifth">
+                {{ site.description }}
+            </p>
+            <div>
+                <a href="/contact/session" class="action-button primary hvr-grow button is-light">Request a session<i class="fas ml-2 fa-chalkboard-teacher"></i>
+                </a>
+                <a href="/contact/join" class="action-button secondary hvr-grow button is-light">Join a branch<i class="fas ml-2 fa-hands-helping"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section container has-text-centered">
+    <h2 class="subtitle">
+            Our Partners
+        </h2>
+    <div class="columns is-multiline is-mobile">
+        {% for partner in partners %}
+            <div class="column is-one-quarter-mobile">
+                <figure class="image">
+                    <img src="{{ partner.fields["Picture"][0]["url"] }}" alt="{{ partner.fields["Picture description"] }}">
+                </figure>
+            </div>
+            {% endfor%}
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container has-text-centered py-4">
+            <h2 class="title">About us</h2>
+            <p class="subtitle mb-6">{{ about }}</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container py-4">
+            <h2 class="title has-text-centered mb-6">Our Vision and Values</h2>
+            <div class="columns">
+                {% for vv in visionandvalues %}
+                    <div class="column is-3">
+                        <i class="{{ vv.icon }} is-size-2"></i>
+                        <h4 class="title is-spaced is-4 gradient">{{ vv.value }}</h4>
+                        <p class="subtitle is-6">{{ vv.vision }}</p>
+                    </div>
+                    {% endfor%}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="columns is-mobile mb-5 is-gapless">
+        <div class="column is-4"><img src="img/photo1.jpg" alt=""></div>
+        <div class="column is-4"><img src="img/photo2.jpg" alt=""></div>
+        <div class="column is-4"><img src="img/photo3.jpg" alt=""></div>
+    </div>
+
+    <section class="section">
+        <div class="container has-text-centered py-4">
+            <h2 class="title">Statistics from 2018-2019 academic year</h2>
+            <p class="subtitle mb-6">Rated agreement as 3/5-5/5 in post-session feedback forms. Preliminary data from 5287 feedback forms provided by 10 out of 28 operating branches.</p>
+            <div class="columns">
+                <div class="column">
+                    <p class="title">87%</p>
+                    <p class="heading">of people agreed or strongly agreed that they had learnt something</p>
+                </div>
+                <div class="column">
+                    <p class="title">93%</p>
+                    <p class="heading">of young people said that they agreed or strongly agreed that the session was delivered well</p>
+                </div>
+                <div class="column">
+                    <p class="title">85%</p>
+                    <p class="heading">of people said they agreed or strongly agreed that the session had made them feel better prepared for the topic in question</p>
+                </div>
+                <div class="column">
+                    <p class="title">83%</p>
+                    <p class="heading">reported they would like future sessions from Sexpression:UK</p>
+                </div>
+            </div>
+        </div>
+    </section>

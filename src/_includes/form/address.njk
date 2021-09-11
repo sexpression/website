@@ -1,0 +1,42 @@
+<div class="field">
+    <label class="label">Building and street</label>
+    <div class="control">
+        <input name="Building and street" class="input" type="text" required="required">
+    </div>
+</div>
+
+<div class="field">
+    <label class="label">Town or city</label>
+    <div class="control">
+        <input name="Town" class="input" type="text" required="required">
+    </div>
+</div>
+
+<div class="field">
+    <label class="label">County</label>
+    <div class="control">
+        <input name="County" class="input" type="text" required="required">
+    </div>
+</div>
+
+<div class="field">
+    <label class="label">Country</label>
+    <div class="control">
+        <div class="control">
+            <div class="select">
+                <select name="country[]" required="required">
+                    {% for country in countries %}
+                        <option>{{ country.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="field">
+    <label class="label">Postcode</label>
+    <div class="control">
+        <input name="institution" class="input" type="text" pattern="[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}" required="required">
+    </div>
+</div>

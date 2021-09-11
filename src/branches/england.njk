@@ -1,0 +1,66 @@
+---
+layout: section.njk
+title: England
+---
+
+{# ---
+layout: section.njk
+title: Branches
+eleventyComputed:
+    title: "{{ thisbranch.name }}"
+pagination:
+    data: branches
+    size: 1
+    alias: thisbranch
+permalink: "resources/{{ thisbranch.name | slug }}/"
+--- #}
+
+<h1 class="has-text-centered">
+    <i class="fas mr-2 fa-code-branch"></i>{{ title }}</h1>
+
+
+<div class="tabs">
+    <ul>
+        <li {% if title == "Branches" %} class="is-active"{% endif %}>
+            <a href="/branches">All Branches</a>
+        </li>
+        {% for country in countries %}
+            <li {% if title == country.name %} class="is-active"{% endif %}>
+                <a href="/branches/{{ country.name | slug }}">{{ country.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="columns is-multiline">
+    {% for branch in branches.england %}
+        <div class="column is-half">
+            <div class="card">
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure id="logo" class="image is-96x96">
+                                {% include 'svgOne.njk' %}
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">{{ branch.fields["Title"] }}</p>
+                            <p class="subtitle is-6">{{ branch.fields["Name (from University)"][0] }},
+                                {{ branch.fields["Country"][0] }}</p>
+                            <p class="subtitle is-6">{{ branch.fields["Email"] }}</p>
+                            <a href="https://www.instagram.com/sexpressionuk">
+                                <i class="fab mr-2 fa-instagram"></i>
+                            </a>
+                            <a href="https://twitter.com/sexpression">
+                                <i class="fab mr-2 fa-twitter"></i>
+                            </a>
+                            <a href="https://www.facebook.com/sexpressionuk">
+                                <i class="fab mr-2 fa-facebook"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

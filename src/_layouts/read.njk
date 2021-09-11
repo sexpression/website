@@ -1,0 +1,28 @@
+---
+layout: headerfooter.njk
+---
+
+<div class="container">
+    <div class="columns">
+        <div class="column is-4">
+            <aside class="menu is-hidden-mobile">
+                {{ content | toc | safe }}
+            </aside>
+        </div>
+        <div class="column is-8">
+            <nav class="breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                    <li>
+                        <a href="../">Sexpression:UK</a>
+                    </li>
+                    <li class="is-active">
+                        <a href="../">Safeguarding Policy</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="content">
+                {{ content | safe }}
+            </div>
+        </div>
+    </div>
+</div>

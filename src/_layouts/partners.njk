@@ -1,0 +1,46 @@
+---
+layout: headerfooter.njk
+---
+<section class="section">
+    <div class="container content">
+        {{ content | safe }}
+    </div>
+</section>
+
+<section class="section">
+    <div class="container has-text-centered">
+        <h2 class="subtitle">
+            Our Partners
+        </h2>
+        <div class="columns is-multiline is-mobile">
+            {% for partner in partners %}
+            <div class="column">
+                <figure class="image">
+                    <img src="{{ partner.fields.picture[0].url }}" alt="">
+                </figure>
+            </div>
+            {% endfor%}
+        </div>
+    </div>
+</section>
+
+    <section class="section topple">
+        <div class="container">
+            <div class="columns">
+                {% for vv in site.visionandvalues %}
+                <div class="column">
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title has-text-grey-dark">
+                                {{ vv.value }}
+                            </p>
+                            <p class="subtitle has-text-grey-dark">
+                                {{ vv.vision }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor%}
+            </div>
+        </div>
+    </section>

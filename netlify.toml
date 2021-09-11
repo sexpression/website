@@ -1,0 +1,14 @@
+[build]
+    command = "npm run build"
+    environment = {AIRTABLE_API_KEY = "keyXbPYpiRPqVt47G",AIRTABLE_BASE_ID = "app5BQoGuuWeGljLz",SENDGRID_API_KEY = "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",NODE_VERSION = "16.5.0"}
+    functions = "functions/"
+    publish = "dist/"
+
+[[redirects]]
+    from = "/api/*"
+    status = 200
+    to = "/.netlify/functions/:splat"
+
+
+# [dev]
+#     command = "npm start"

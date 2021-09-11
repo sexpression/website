@@ -1,0 +1,29 @@
+---
+layout: section.njk
+---
+
+<div class="columns">
+    <div class="column">
+        <section class="section mx-6">
+            <div class="mb-6">
+                <h2>{{ title }}</h2>
+                <p>{{ description }}</p>
+            </div>
+                        {% for feature in features %}
+            <div class="block">
+                <div class="is-flex-grow-1">
+                    <i class="{{ feature.icon }} is-size-3"></i>
+                </div>
+                <div class="is-flex-grow-2">
+                    <p class="has-text-weight-semibold">{{ feature.text }}</p>
+                </div>
+            </div>
+            {% endfor%}
+        </section>
+    </div>
+    <div class="column">
+        <div class="box">
+    {{ content | safe }}
+        </div>
+    </div>
+</div>

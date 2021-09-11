@@ -1,0 +1,59 @@
+---
+layout: section.njk
+title: Branches
+---
+
+<h1 class="has-text-centered">
+    <i class="fas mr-2 fa-code-branch"></i>{{ title }}</h1>
+
+<div class="tabs">
+    <ul>
+        <li {% if title == "Branches" %} class="is-active" {% endif %}>
+            <a href="/branches">All Branches</a>
+        </li>
+        {% for country in countries %}
+            <li {% if title == country.name %} class="is-active" {% endif %}>
+                <a href="/branches/{{ country.name | slug }}">{{ country.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="columns is-multiline">
+    {% for branch in branches.all %}
+        <div class="column is-half is-two-thirds-tablet">
+            <div class="card border-radius-2 p-5">
+                <div class="card-content">
+                    <div class="columns is-vcentered">
+                        <div class="media-left is-vcentered">
+                            <figure id="logo" class="image is-96x96">
+                                {% include 'svgOne.njk' %}
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                        <div class="content">
+                            <p class="title is-4 is-size-5-mobile">{{ branch.fields["Title"] }}</p>
+                            <p class="subtitle is-6 is-size-7-mobile">{{ branch.fields["Name (from University)"][0] }},
+                                {{ branch.fields["Country"][0] }}</p>
+                        </div>
+                            <div class="content">
+                                                        <a class="color-black" href="mailto:{{ branch.fields["Email"] }}">
+                                <p class="subtitle is-6 is-size-7-mobile">{{ branch.fields["Email"] }}</p>
+                            </a>
+                                <a class="color-black" href="https://www.instagram.com/sexpressionuk">
+                                    <i class="fab mr-2 fa-instagram"></i>
+                                </a>
+                                <a class="color-black" href="https://twitter.com/sexpression">
+                                    <i class="fab mr-2 fa-twitter"></i>
+                                </a>
+                                <a class="color-black" href="https://www.facebook.com/sexpressionuk">
+                                    <i class="fab mr-2 fa-facebook"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

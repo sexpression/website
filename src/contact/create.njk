@@ -1,0 +1,37 @@
+---
+layout: contact.njk
+title: Create a branch
+description: Is your University missing a Sexpression Branch? Fill out this form if you want to start a Branch.
+"features": [
+    {
+        "icon":"far fa-paper-plane",
+        "text":"Get together a few students who are willing and committed to start up the Branch with you."
+    },
+    {
+        "icon":"far fa-paper-plane",
+        "text":"One person from the team fills out the application, which is sent to the Branches Director."
+    },
+    {
+        "icon":"far fa-paper-plane",
+        "text":"The Branches Director will be in touch with the next steps in the application process. Branch applications are reviewed twice a year, and we usually have a waitlist of Branches to be set-up."
+    }
+
+]
+---
+
+<form name="{{ title }}" method="POST" data-netlify-recaptcha="true" data-netlify="true">
+    <section class="section">
+
+        {% include 'form/fullname.njk' %}
+        {% include 'form/genderpronouns.njk' %}
+        {% include 'form/email.njk' %}
+        {% include 'form/branches.njk' %}
+
+        <div data-netlify-recaptcha="true"></div>
+        <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-link">Send</button>
+            </div>
+        </div>
+    </section>
+</form>

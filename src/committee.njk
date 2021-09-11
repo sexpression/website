@@ -1,0 +1,39 @@
+---
+layout: section.njk
+title: Committee
+---
+
+<h1>{{ title }}</h1>
+
+<div class="columns is-multiline">
+    {% for director in members.committee %}
+        <div class="column is-half">
+            <div class="card">
+                <div class="card-content">
+                    <div class="columns">
+                        <div class="column">
+                            <figure class="image is-128x128">
+                                <img class="is-rounded" src="{{ director.fields['Picture'][0].url }}" alt="{{ director.fields["Profile description"] }}">
+                            </figure>
+                        </div>
+                        <div class="column is-two-thirds is-flex is-flex-direction-column is-justify-content-center">
+                            <p class="">{{ director.fields["Position"] }}</p>
+                            <p class="">{{ director.fields["Name"] }}</p>
+                            <p class="">{{ director.fields["Pronouns"] }}</p>
+                            {# <p class="">{{ director.fields["Branch"] }}</p> #}
+                            <p class="">{{ director.fields["Email"] }}</p>
+                            <a id="{{ director.fields['Name'] }}" href="#">Open modal</a>
+                        </div>
+                        <div id="modal-{{ director.fields['Name'] }}" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                {{ director.fields["Biography"] }}
+                            </div>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

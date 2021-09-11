@@ -1,0 +1,33 @@
+---
+layout: contact.njk
+title: Fundraise
+description: Help us pay for volunteer travel and training, and help Sexpression:UK thrive! We are 100% volunteer-run, and appreciate any fundraising efforts and campaigns.
+"features": [
+    {
+        "icon":"far fa-paper-plane",
+        "text":"In the past we've had people organise recipe swaps, sale of charity calendars, and various physical challenges to help raise money. For donations, see our JustGiving page."
+    },
+    {
+        "icon":"far fa-paper-plane",
+        "text":"Got a fundraising idea? Fill out the form and our Fundraising Director will let you know about the next steps and guidance. Thank you!"
+    }
+
+]
+---
+
+<form name="{{ title }}" method="POST" data-netlify-recaptcha="true" data-netlify="true">
+    <section class="section">
+
+        {% include 'form/fullname.njk' %}
+        {% include 'form/genderpronouns.njk' %}
+        {% include 'form/email.njk' %}
+        {% include 'form/branches.njk' %}
+
+        <div data-netlify-recaptcha="true"></div>
+        <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-link">Send</button>
+            </div>
+        </div>
+    </section>
+</form>

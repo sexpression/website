@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sexpression:UK</title>
+        <link rel="stylesheet" href="/style.css">
+        <link rel="icon" href="/svg/logo-icon.svg">
+        <link rel="”mask-icon”" href="”/svg/logo-icon.svg”" color="”#000000" ">
+        <script src="https://kit.fontawesome.com/417e77464b.js" crossorigin="anonymous"></script>
+        <script type="module" src="/js/app.js"></script>
+        <!-- Primary Meta Tags -->
+        <title>{{ title }} | {{ site.title }}</title>
+        <meta name="title" content="{{ title }} | {{ site.title }}">
+        <meta
+        name="description" content="{{ description }}"> <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ url }}">
+        <meta property="og:title" content="{{ title }} | {{ site.title }}">
+        <meta property="og:description" content="{{ description }}">
+        <meta
+        property="og:image" content="{{ image_url }}"> <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="{{ image_url }}">
+        <meta property="twitter:title" content="{{ title }} | {{ site.title }}">
+        <meta property="twitter:description" content="{{ description }}">
+        <meta property="twitter:image" content="{{ image_url }}">
+    </head>
+    <body>
+        {# <nav class="navbar is-transparent transparent-background" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <img src="/svg/logo-text.svg" alt="Sexpression:UK logo" width="200">
+                </a>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item">
+                        Home
+                    </a>
+                    <a class="navbar-item">
+                        Documentation
+                    </a>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            More
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item">
+                                About
+                            </a>
+                            <a class="navbar-item">
+                                Jobs
+                            </a>
+                            <a class="navbar-item">
+                                Contact
+                            </a>
+                            <hr class="navbar-divider">
+                            <a class="navbar-item">
+                                Report an issue
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-primary">
+                                <strong>Sign up</strong>
+                            </a>
+                            <a class="button is-light">
+                                Log in
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav> #}
+        <nav class="navbar is-transparent transparent-background" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <img src="/svg/logo-text.svg" alt="Sexpression:UK logo" width="200">
+                </a>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item" href="/curriculum">
+                        <i class="fas mr-2 fa-bookmark"></i>
+                        Curriculum
+                    </a>
+                    <a class="navbar-item" href="/resources">
+                        <i class="fas mr-2 fa-paperclip"></i>
+                        Resources
+                    </a>
+                    <a class="navbar-item" href="/branches">
+                        <i class="fas mr-2 fa-code-branch"></i>
+                        Branches
+                    </a>
+                    <a class="navbar-item" href="/committee">
+                        <i class="fas mr-2 fa-users"></i>
+                        Committee
+                        <span class="tag is-warning is-micro is-uppercase">2019 - 2020</span>
+                    </a>
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="action-button primary hvr-grow button is-light">
+                                <strong>Donate now</strong>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        {{ content | safe }}
+        <footer class="footer">
+            <div class="container">
+                <div class="columns">
+                    <div class="column menu">
+                        <p class="menu-label">Pages</p>
+                        <ul class="menu-list">
+                            <li>
+                                <a href="/curriculum">
+                                    <i class="fas mr-2 fa-bookmark"></i>Curriculum</a>
+                            </li>
+                            <li>
+                                <a href="/resources">
+                                    <i class="fas mr-2 fa-paperclip"></i>Resources</a>
+                            </li>
+                            <li>
+                                <a href="/branches">
+                                    <i class="fas mr-2 fa-code-branch"></i>Branches</a>
+                            </li>
+                            <li>
+                                <a href="/committee">
+                                    <i class="fas mr-2 fa-users"></i>Committee</a>
+                            </li>
+                            <li>
+                                <a href="/trustees">
+                                    <i class="fas mr-2 fa-users"></i>Trustees</a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fas mr-2 fa-meteor"></i>Impact Reports</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column menu">
+                        <p class="menu-label">Connect with us</p>
+                        <ul class="menu-list">
+                            <li>
+                                <a href="https://www.facebook.com/sexpressionuk">
+                                    <i class="fab mr-2 fa-facebook"></i>Facebook</a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/sexpressionuk">
+                                    <i class="fab mr-2 fa-instagram"></i>Instagram</a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/sexpression">
+                                    <i class="fab mr-2 fa-twitter"></i>Twitter</a>
+                            </li>
+                            <li>
+                                <a href="https://eventbrite.com">
+                                    <i class="fas mr-2 fa-calendar-day"></i>Eventbrite</a>
+                            </li>
+                            <li>
+                                <a href="https://sexpression.teemill.com">
+                                    <i class="fas mr-2 fa-tshirt"></i>TeeMill</a>
+                            </li>
+                            <li>
+                                <a href="https://www.justgiving.com/campaign/sexpressionuk">
+                                    <i class="fas mr-2 fa-coins"></i>JustGiving</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column menu">
+                        <p class="menu-label">Contact us</p>
+                        <ul class="menu-list">
+                            <li>
+                                <a href="/contact/session">Request a session</a>
+                            </li>
+                            <li>
+                                <a href="/contact/join">Join a branch</a>
+                            </li>
+                            <li>
+                                <a href="/contact/create">Create a branch</a>
+                            </li>
+                            <li>
+                                <a href="/contact/fundraise">Fundraise</a>
+                            </li>
+                            <li>
+                                <a href="/contact/media">Media inquery</a>
+                            </li>
+                            <li>
+                                <a href="/contact/legacy">Leave a legacy</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column menu">
+                        <form>
+                            <div class="field">
+                                <p class="menu-label">Subscribe to our newsletter</p>
+                                <p>Get the latest news on a monthly basis. <input class="input" type="text" placeholder="Enter your email">
+                                </p>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <button class="action-button hvr-grow button is-light">Subscribe</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
