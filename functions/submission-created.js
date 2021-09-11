@@ -12,11 +12,11 @@ exports.handler = async event => {
             const branchEmail = branchArr[0];
             const branchName = branchArr[1];
 
-            const sender = "sheppardnexus@gmail.com"
+            const sender = "website@sexpression.org.uk"
 
             const msg = {
                 to: `${branchEmail}`,
-                from: sender,
+                from: `${sender}`,
                 subject: "You have a new volunteer!",
                 text: `${fullName} wants to join your branch.`,
                 html: `
