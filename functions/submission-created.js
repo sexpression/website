@@ -1,9 +1,9 @@
 const sgMail = require('@sendgrid/mail');
-console.log("hello world");
-console.log(SENDGRID_API_KEY);
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.handler = async event => {
+    console.log("hello world");
+    console.log(process.env.SENDGRID_API_KEY);
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     const payload = JSON.parse(event.body).payload.data;
     const referrer = new URL(payload.referrer);
     if (referrer.pathname === "/contact/join/") {
