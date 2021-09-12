@@ -45,6 +45,8 @@ exports.handler = async event => {
 
             sgMail.send(msg).then(() => {
                 console.log('Email sent');
+            }).catch((error) => {
+                console.error(error);
             })
 
             return {
