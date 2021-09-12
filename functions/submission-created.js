@@ -1,4 +1,5 @@
 const sgMail = require('@sendgrid/mail');
+console.log(process.env.SENDGRID_API_KEY);
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.handler = async event => {
@@ -10,6 +11,10 @@ exports.handler = async event => {
             const volunteerEmail = payload.email;
             const volunteerName = payload.fullname;
             const volunteerPronouns = payload.pronouns;
+
+            if (volunteerPronouns == null) {
+                volunteerPronouns = 'They/Them/Their'
+            }
 
             const branchEmail = branchArr[0];
             const branchName = branchArr[1];
