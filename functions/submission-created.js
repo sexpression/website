@@ -43,17 +43,16 @@ exports.handler = async event => {
             // console.log("Email sent");
             // return response;
 
-            sgMail
-            .send(msg)
-            .then(() => {
-                console.log('Email sent')
-                return {
-                    statusCode: 200,
-                    body: JSON.stringify({
-                      message: 'Email sent'
-                    })
-                  };
+            sgMail.send(msg).then(() => {
+                console.log('Email sent');
             })
+
+            return {
+                statusCode: 200,
+                body: JSON.stringify({
+                  message: 'Email sent'
+                })
+              };
             
         } catch (error) {
             console.error(error);
