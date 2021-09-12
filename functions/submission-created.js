@@ -22,7 +22,7 @@ exports.handler = async event => {
 
             const sender = "website@sexpression.org.uk"
 
-            const msg = {
+            const msgToBranch = {
                 to: `${branchEmail}`,
                 from: `${sender}`,
                 subject: "You have a new volunteer!",
@@ -37,14 +37,25 @@ exports.handler = async event => {
                 </div>`,
             };
 
-            console.log(msg);
+            const msgToVolunteer = {
+                to: `${volunteerEmail}`,
+                from: `${sender}`,
+                subject: `Thanks for reaching out to Sexpression:${branchName}`,
+                text: `The branch committee memeber of Sexpression:${branchName} will reach out to you shortly.`,
+            };
 
             // let response = await sgMail.send(msg);
             // console.log("Email sent");
             // return response;
 
-            sgMail.send(msg).then(() => {
-                console.log('Email sent');
+            sgMail.send(msgToBranch).then(() => {
+                console.log('Branch email sent');
+            }).catch((error) => {
+                console.error(error);
+            })
+
+            sgMail.send(msgToVolunteer).then(() => {
+                console.log('Volunteer Email sent');
             }).catch((error) => {
                 console.error(error);
             })
@@ -52,7 +63,7 @@ exports.handler = async event => {
             return {
                 statusCode: 200,
                 body: JSON.stringify({
-                  message: 'Email sent'
+                  message: 'Emails sent'
                 })
               };
             
