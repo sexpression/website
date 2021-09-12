@@ -16,7 +16,7 @@ exports.handler = async event => {
             if (volunteerPronouns == null) {
                 volunteerPronouns = 'They/Them/Their'
             }
-            const branchArr = payload.branch[0].split(",");
+            const branchArr = payload.branch.split(",");
             const branchEmail = branchArr[0];
             const branchName = branchArr[1];
 
