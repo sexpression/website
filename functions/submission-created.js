@@ -7,16 +7,16 @@ exports.handler = async event => {
     const payload = JSON.parse(event.body).payload.data;
     const referrer = new URL(payload.referrer);
     if (referrer.pathname === "/contact/join/") {
-        const branchArr = payload.branch[0].split(",");
+
         try {
             const volunteerEmail = payload.email;
             const volunteerName = payload.fullname;
-            const volunteerPronouns = payload.pronouns;
+            const volunteerPronouns = payload.genderpronouns;
 
             if (volunteerPronouns == null) {
                 volunteerPronouns = 'They/Them/Their'
             }
-
+            const branchArr = payload.branch[0].split(",");
             const branchEmail = branchArr[0];
             const branchName = branchArr[1];
 
@@ -37,11 +37,22 @@ exports.handler = async event => {
                 </div>`,
             };
 
-            console.log(JSON.stringify({ msg: msg }));
+            // let response = await sgMail.send(msg);
+            // console.log("Email sent");
+            // return response;
 
-            let response = await sgMail.send(msg);
-            console.log("Email sent");
-            return response;
+            sgMail
+            .send(msg)
+            .then(() => {
+                console.log('Email sent')
+                return {
+                    statusCode: 200,
+                    body: JSON.stringify({
+                      message: 'Email sent'
+                    })
+                  };
+            })
+            
         } catch (error) {
             console.error(error);
 
