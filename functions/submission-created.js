@@ -37,6 +37,8 @@ exports.handler = async event => {
                 </div>`,
             };
 
+            console.log(msg);
+
             // let response = await sgMail.send(msg);
             // console.log("Email sent");
             // return response;
