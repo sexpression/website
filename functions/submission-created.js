@@ -45,11 +45,11 @@ exports.handler = async function (event, context, callback) {
     };
 
     try {
-        await client.send(msgToBranch);
-        await client.send(msgToVolunteer);
+       let response = await client.send(msgToBranch);
+
         return {
             statusCode: 200,
-            body: 'Messages sent',
+            body: JSON.stringify({ msg: response }),
         };
     } catch (err) {
         return {
