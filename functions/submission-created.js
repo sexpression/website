@@ -1,8 +1,6 @@
 const sgMail = require('@sendgrid/mail');
 
 exports.handler = async event => {
-    console.log("hello world");
-    console.log(process.env.SENDGRID_API_KEY);
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     const payload = JSON.parse(event.body).payload.data;
     const referrer = new URL(payload.referrer);
@@ -16,6 +14,7 @@ exports.handler = async event => {
             if (volunteerPronouns == null) {
                 volunteerPronouns = 'They/Them/Their'
             }
+            
             const branchArr = payload.branch.split(",");
             const branchEmail = branchArr[0];
             const branchName = branchArr[1];
@@ -37,12 +36,12 @@ exports.handler = async event => {
                 </div>`,
             };
 
-            const msgToVolunteer = {
-                to: `${volunteerEmail}`,
-                from: `${sender}`,
-                subject: `Thanks for reaching out to Sexpression:${branchName}`,
-                text: `The branch committee memeber of Sexpression:${branchName} will reach out to you shortly.`,
-            };
+            // const msgToVolunteer = {
+            //     to: `${volunteerEmail}`,
+            //     from: `${sender}`,
+            //     subject: `Thanks for reaching out to Sexpression:${branchName}`,
+            //     text: `The branch committee memeber of Sexpression:${branchName} will reach out to you shortly.`,
+            // };
 
             // let response = await sgMail.send(msg);
             // console.log("Email sent");
@@ -54,11 +53,11 @@ exports.handler = async event => {
                 console.error(error);
             })
 
-            sgMail.send(msgToVolunteer).then(() => {
-                console.log('Volunteer Email sent');
-            }).catch((error) => {
-                console.error(error);
-            })
+            // sgMail.send(msgToVolunteer).then(() => {
+            //     console.log('Volunteer Email sent');
+            // }).catch((error) => {
+            //     console.error(error);
+            // })
 
             return {
                 statusCode: 200,
