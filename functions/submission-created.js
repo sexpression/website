@@ -36,28 +36,29 @@ exports.handler = async event => {
                 </div>`,
             };
 
-            // const msgToVolunteer = {
-            //     to: `${volunteerEmail}`,
-            //     from: `${sender}`,
-            //     subject: `Thanks for reaching out to Sexpression:${branchName}`,
-            //     text: `The branch committee memeber of Sexpression:${branchName} will reach out to you shortly.`,
-            // };
+            const msgToVolunteer = {
+                to: `${volunteerEmail}`,
+                from: `${sender}`,
+                subject: `Thanks for reaching out to Sexpression:${branchName}`,
+                text: `The branch committee memeber of Sexpression:${branchName} will reach out to you shortly.`,
+            };
 
             // let response = await sgMail.send(msg);
             // console.log("Email sent");
             // return response;
 
+            console.log('Got here');
             sgMail.send(msgToBranch).then(() => {
                 console.log('Branch email sent');
             }).catch((error) => {
                 console.error(error);
             })
 
-            // sgMail.send(msgToVolunteer).then(() => {
-            //     console.log('Volunteer Email sent');
-            // }).catch((error) => {
-            //     console.error(error);
-            // })
+            sgMail.send(msgToVolunteer).then(() => {
+                console.log('Volunteer Email sent');
+            }).catch((error) => {
+                console.error(error);
+            })
 
             return {
                 statusCode: 200,
