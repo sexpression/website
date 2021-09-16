@@ -49,14 +49,16 @@ exports.handler = async event => {
 
             console.log('Got here');
             sgMail.send(msgToBranch).then(() => {
-                console.log('Branch email sent');
+                console.log('Branch email: SUCCESS');
             }).catch((error) => {
+                console.log('Branch email: FAIL');
                 console.error(error);
             })
 
             sgMail.send(msgToVolunteer).then(() => {
-                console.log('Volunteer Email sent');
+                console.log('Volunteer email: SUCCESS');
             }).catch((error) => {
+                console.log('Volunteer email: FAIL');
                 console.error(error);
             })
 
