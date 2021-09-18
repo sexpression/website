@@ -1,0 +1,13 @@
+<script>
+function modalToggle(slug) {
+    console.log('hell yes' + slug);
+    const active = "is-active";
+    const element = document.getElementById(`${slug}`);
+    const isActive = element.classList.contains(active);
+    if (isActive == false) {
+        element.classList.add(active)
+    } else {
+        element.classList.remove(active)
+    }
+};
+</script>

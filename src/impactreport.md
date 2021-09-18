@@ -1,5 +1,5 @@
 ---
-layout: section.njk
+layout: container.njk
 title: Impact Report
 ---
 # {{ title }}

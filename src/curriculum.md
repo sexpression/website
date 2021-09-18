@@ -1,5 +1,5 @@
 ---
-layout: section.njk
+layout: container_is-max-desktop.njk
 title: Curriculum
 ---
 # {{ title }}
