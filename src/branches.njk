@@ -36,20 +36,23 @@ title: Branches
                             <p class="subtitle is-6 is-size-7-mobile">{{ branch.fields["Name (from University)"][0] }},
                                 {{ branch.fields["Country"][0] }}</p>
                         </div>
-                            <div class="content">
-                                                        <a class="color-black" href="mailto:{{ branch.fields["Email"] }}">
-                                <p class="subtitle is-6 is-size-7-mobile">{{ branch.fields["Email"] }}</p>
+                            {# <div class="content">
+                                <a class="color-black" href="mailto:{{ branch.fields["Email"] }}">
+                                    <p class="subtitle is-6 is-size-7-mobile">{{ branch.fields["Email"] }}</p>
+                                </a>
+                            </div> #}
+                            <a class="color-black" href="mailto:{{ branch.fields["Email"] }}">
+                                <i class="fas mr-2 fa-envelope"></i></i>
                             </a>
-                                <a class="color-black" href="https://www.instagram.com/sexpressionuk">
-                                    <i class="fab mr-2 fa-instagram"></i>
-                                </a>
-                                <a class="color-black" href="https://twitter.com/sexpression">
-                                    <i class="fab mr-2 fa-twitter"></i>
-                                </a>
-                                <a class="color-black" href="https://www.facebook.com/sexpressionuk">
-                                    <i class="fab mr-2 fa-facebook"></i>
-                                </a>
-                            </div>
+                            <a class="color-black" href="{{ branch.fields["Instagram"] }}">
+                                <i class="fab mr-2 fa-instagram"></i>
+                            </a>
+                            <a class="color-black" href="{{ branch.fields["Twitter"] }}">
+                                <i class="fab mr-2 fa-twitter"></i>
+                            </a>
+                            <a class="color-black" href="{{ branch.fields["Facebook"] }}">
+                                <i class="fab mr-2 fa-facebook"></i>
+                            </a>
                         </div>
                     </div>
                 </div>

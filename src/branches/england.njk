@@ -34,27 +34,36 @@ permalink: "resources/{{ thisbranch.name | slug }}/"
 
 <div class="columns is-multiline">
     {% for branch in branches.england %}
-        <div class="column is-half">
-            <div class="card">
+        <div class="column is-half is-two-thirds-tablet">
+            <div class="card border-radius-2 p-5">
                 <div class="card-content">
-                    <div class="media">
-                        <div class="media-left">
+                    <div class="columns is-vcentered">
+                        <div class="media-left is-vcentered">
                             <figure id="logo" class="image is-96x96">
                                 {% include 'svgOne.njk' %}
                             </figure>
                         </div>
                         <div class="media-content">
-                            <p class="title is-4">{{ branch.fields["Title"] }}</p>
-                            <p class="subtitle is-6">{{ branch.fields["Name (from University)"][0] }},
+                        <div class="content">
+                            <p class="title is-4 is-size-5-mobile">{{ branch.fields["Title"] }}</p>
+                            <p class="subtitle is-6 is-size-7-mobile">{{ branch.fields["Name (from University)"][0] }},
                                 {{ branch.fields["Country"][0] }}</p>
-                            <p class="subtitle is-6">{{ branch.fields["Email"] }}</p>
-                            <a href="https://www.instagram.com/sexpressionuk">
+                        </div>
+                            {# <div class="content">
+                                <a class="color-black" href="mailto:{{ branch.fields["Email"] }}">
+                                    <p class="subtitle is-6 is-size-7-mobile">{{ branch.fields["Email"] }}</p>
+                                </a>
+                            </div> #}
+                            <a class="color-black" href="mailto:{{ branch.fields["Email"] }}">
+                                <i class="fas mr-2 fa-envelope"></i></i>
+                            </a>
+                            <a class="color-black" href="{{ branch.fields["Instagram"] }}">
                                 <i class="fab mr-2 fa-instagram"></i>
                             </a>
-                            <a href="https://twitter.com/sexpression">
+                            <a class="color-black" href="{{ branch.fields["Twitter"] }}">
                                 <i class="fab mr-2 fa-twitter"></i>
                             </a>
-                            <a href="https://www.facebook.com/sexpressionuk">
+                            <a class="color-black" href="{{ branch.fields["Facebook"] }}">
                                 <i class="fab mr-2 fa-facebook"></i>
                             </a>
                         </div>
