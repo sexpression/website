@@ -46,10 +46,10 @@ exports.handler = async function (event, context, callback) {
 
     try {
        let response = await client.send(msgToBranch);
-
+        console.log(response);
         return {
             statusCode: 200,
-            body: JSON.stringify({ msg: response }),
+            body: JSON.stringify({ msg: response}),
         };
     } catch (err) {
         return {
