@@ -27,29 +27,23 @@ exports.handler = async function (event, context, callback) {
         from: SENDGRID_FROM_EMAIL,
         subject: "You have a new volunteer!",
         text: `${volunteerName} wants to join your branch.`,
-        html: `
-        <div>
-            <p><strong><i>${volunteerName}</i></strong> (${volunteerPronouns})</p>
-            <p><a href="mailto:${volunteerEmail}">${volunteerEmail}</a></p>
-        </div>
-        <div>
-            <p><i>${volunteerName}</i> wants to join <i>Sexpression:${branchName}</i>. Introduce yourself by sending them an email. Invite them to your social media and make sure they feel welcomed! 🌈</p>
-        </div>`,
+        html: `<div>🌈</div>`,
     };
 
-    const msgToVolunteer = {
-        to: `${volunteerEmail}`,
-        from: SENDGRID_FROM_EMAIL,
-        subject: `Thanks for reaching out to Sexpression:${branchName}`,
-        text: `The branch committee memeber of Sexpression:${branchName} will reach out to you shortly.`,
-    };
+    // const msgToVolunteer = {
+    //     to: `${volunteerEmail}`,
+    //     from: SENDGRID_FROM_EMAIL,
+    //     subject: `Thanks for reaching out to Sexpression:${branchName}`,
+    //     text: `The branch committee memeber of Sexpression:${branchName} will reach out to you shortly.`,
+    // };
 
     try {
-       let response = await client.send(msgToBranch);
-        console.log(response);
+       let response1 = await client.send(msgToBranch);
+    //    let response2 = await client.send(msgToVolunteer);
+        console.log(response1);
         return {
             statusCode: 200,
-            body: JSON.stringify({ msg: response}),
+            body: JSON.stringify({ msg: response1}),
         };
     } catch (err) {
         return {
