@@ -45,7 +45,9 @@ exports.handler = async function (event, context, callback) {
     // };
 
     try {
+        console.log('tiger');
        let response1 = await client.send(msgToBranch);
+       console.log('frog');
     //    let response2 = await client.send(msgToVolunteer);
         console.log(response1);
         return {
