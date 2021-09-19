@@ -8,6 +8,8 @@ const {
 exports.handler = async function (event, context, callback) {
     const payload = JSON.parse(event.body).payload.data;
 
+    console.log('dog');
+
     const volunteerEmail = payload.email;
     const volunteerName = payload.fullname;
     const volunteerPronouns = payload.genderpronouns;
@@ -20,7 +22,11 @@ exports.handler = async function (event, context, callback) {
     const branchEmail = branchArr[0];
     const branchName = branchArr[1];
 
+    console.log('cat');
+
     client.setApiKey(SENDGRID_API_KEY);
+
+    console.log('mouse');
 
     const msgToBranch = {
         to: `${branchEmail}`,
@@ -29,6 +35,7 @@ exports.handler = async function (event, context, callback) {
         text: `${volunteerName} wants to join your branch.`,
         html: `<div>🌈</div>`,
     };
+    console.log('fish');
 
     // const msgToVolunteer = {
     //     to: `${volunteerEmail}`,
