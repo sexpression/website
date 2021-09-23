@@ -44,21 +44,20 @@ exports.handler = async function (event, context, callback) {
     //     text: `The branch committee memeber of Sexpression:${branchName} will reach out to you shortly.`,
     // };
 
-    try {
-        console.log('tiger');
-       let response1 = await client.send(msgToBranch);
-       console.log('frog');
-    //    let response2 = await client.send(msgToVolunteer);
-        console.log(response1);
-        return {
-            statusCode: 200,
-            body: JSON.stringify({ msg: response1}),
-        };
-    } catch (err) {
-        return {
-            statusCode: err.code,
-            body: JSON.stringify({ msg: err.message }),
-        };
-    }
 
-};
+    console.log('tiger');
+
+    let response1 = await client.send(msgToBranch);
+
+    console.log('frog');
+
+    //    let response2 = await client.send(msgToVolunteer);
+
+    console.log(response1);
+
+    return {
+        statusCode: 200,
+        body: JSON.stringify({ msg: response1 }),
+    };
+
+}

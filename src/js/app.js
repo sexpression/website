@@ -75,6 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
 //             },
 //             body: raw
 //         }
-//         const response = await fetch("https://sex2.tjsheppard.dev/api/downloads", data);
+//         const response = await fetch("api/downloads", data);
 //     }
 // }
