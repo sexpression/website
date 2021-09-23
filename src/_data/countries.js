@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 
 const domain = "https://sexpression.org.uk";
-const path = "/api/countries";
+const path = "/.netlify/functions/countries";
 
 const url = new URL(path, domain);
 module.exports = async function () {

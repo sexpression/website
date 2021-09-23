@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 
 const domain = "https://sexpression.org.uk";
-const path = "/api/branches-northern_ireland";
+const path = "/.netlify/functions/branches-northern_ireland";
 
 const url = new URL(path, domain);
 
