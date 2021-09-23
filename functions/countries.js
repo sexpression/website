@@ -6,6 +6,8 @@ const baseName = "Universities";
 const baseView = "Active universities";
 const baseField = "Country";
 
+console.log({ apiKey: `${AIRTABLE_API_KEY}`, base: `${AIRTABLE_BASE_ID}` });
+
 exports.handler = function (event, context, callback) {
     try {
         base(baseName).select({
