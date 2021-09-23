@@ -1,9 +1,11 @@
 const fetch = require("node-fetch");
 
-const { DEPLOY_PRIME_URL } = process.env;
+const domain = "https://develop.sexpression.org.uk";
+const path = "/api/countries";
 
+const url = new URL(path, domain);
 module.exports = async function () {
-    const response = await fetch(`${DEPLOY_PRIME_URL}/api/countries`);
+    const response = await fetch(url);
     const jsonResponse = await response.json();
     return jsonResponse.records;
 };
