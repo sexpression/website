@@ -11,6 +11,8 @@ exports.handler = async function (event, context, callback) {
     const volunteerName = payload.fullname;
     const volunteerPronouns = payload.genderpronouns;
 
+    console.log(volunteerPronouns);
+
     if (volunteerPronouns == null) {
         volunteerPronouns = 'They/Them/Their'
     }
@@ -31,7 +33,7 @@ exports.handler = async function (event, context, callback) {
     const msgToVolunteer = {
         to: `${volunteerEmail}`,
         from: SENDGRID_FROM_EMAIL,
-        subject: `Thank you from Sexpression:${branchName} 💖`,
+        subject: `Thank you - Sexpression:${branchName} 💖`,
         text: `Sexpression:${branchName} will reach out to you shortly.`,
     };
 
@@ -41,7 +43,7 @@ exports.handler = async function (event, context, callback) {
     return {
         statusCode: 200,
         body: JSON.stringify(
-            {
+            { 
                 msg: {
                     branch: response1,
                     volunteer: response2
