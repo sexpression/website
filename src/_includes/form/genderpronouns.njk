@@ -3,19 +3,28 @@
     <div class="field-body">
         <div class="field">
             <div class="control">
-                <label class="checkbox">
-                    <input type="checkbox" onchange="document.getElementById('genderpronouns').disabled = this.checked;">
-       Prefer not to answer and default to gender-neutral they/them pronouns.
-    </label>
+                <input name="genderpronouns" id="genderpronouns" class="input is-rounded" type="text" required="required">
             </div>
         </div>
-        <fieldset id="genderpronouns">
-            <div class="field">
-                <div class="control">
-                    <input name="genderpronouns" class="input is-rounded" type="text" required="required">
-                </div>
-                <p class="help">Examples could be he/him, she/her, they/them, ze/zim/zis</p>
+        <div class="field">
+            <div class="control">
+                <label class="checkbox">
+                    <input type="checkbox" onchange="genderPronouns()">
+                    Prefer not to answer. Default to gender-neutral <i>they/them/their</i> pronouns.
+                </label>
             </div>
-        </fieldset>
+        </div>
     </div>
 </div>
+
+<script>
+    function genderPronouns() {
+        let elem = document.getElementById("genderpronouns");
+        if (elem.disabled) {
+            elem.disabled = false;
+        } else {
+            elem.value = "";
+            elem.disabled = true;
+        }
+    }
+    </script>
