@@ -18,13 +18,9 @@ exports.handler = async function (event, context, callback) {
         const volunteerName = payload.fullname;
         let volunteerPronouns = payload.genderpronouns;
 
-        console.log(`Pre: ${volunteerPronouns} - ${typeof volunteerPronouns}`);
-
         if (volunteerPronouns == null | volunteerPronouns == "") {
             volunteerPronouns = 'They/Them/Their'
         }
-
-        console.log(`Post: ${volunteerPronouns} -  ${typeof volunteerPronouns}`);
 
         const branchArr = payload.branch.split(",");
         const branchEmail = branchArr[0];
@@ -60,7 +56,9 @@ exports.handler = async function (event, context, callback) {
                 }
             ),
         };
-    } else if (referrer.pathname === "/contact/session/") {
+    }
+    
+    if (referrer.pathname === "/contact/session/") {
 
         // teacher
 
