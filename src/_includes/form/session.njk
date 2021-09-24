@@ -4,7 +4,7 @@
         <div class="select">
             <select name="branch[]" required="required">
                 {% for branch in branches.all %}
-                    <option>{{ branch.fields["Name"] }}</option>
+                    <option value="{{ branch.fields["Email"] }},{{ branch.fields["Name"] }}">{{ branch.fields["Name"] }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -91,7 +91,7 @@
     <div class="control">
         <div>
             <label class="checkbox">
-                <input type="checkbox" name="Age range[]" value="11 - 12">
+                <input type="checkbox" name="agerange[]" value="11 - 12">
                     11 - 12 year olds
                     <span class="tag">
                         Year 7
@@ -102,7 +102,7 @@
     <div class="control">
         <div>
             <label class="checkbox">
-                <input type="checkbox" name="Age range[]" value="12 - 13">
+                <input type="checkbox" name="agerange[]" value="12 - 13">
                     12 - 13 year olds
                     <span class="tag">
                         Year 8
@@ -113,7 +113,7 @@
     <div class="control">
         <div>
             <label class="checkbox">
-                <input type="checkbox" name="Age range[]" value="13 - 14">
+                <input type="checkbox" name="agerange[]" value="13 - 14">
                     13 - 14 year olds
                     <span class="tag">
                         Year 9
@@ -124,7 +124,7 @@
     <div class="control">
         <div>
             <label class="checkbox">
-                <input type="checkbox" name="Age range[]" value="14 - 15">
+                <input type="checkbox" name="agerange[]" value="14 - 15">
                     14 - 15 year olds
                     <span class="tag">
                         Year 10
@@ -135,7 +135,7 @@
     <div class="control">
         <div>
             <label class="checkbox">
-                <input type="checkbox" name="Age range[]" value="15 - 16">
+                <input type="checkbox" name="agerange[]" value="15 - 16">
                     15 - 16 year olds
                     <span class="tag">
                         Year 11
@@ -146,7 +146,7 @@
     <div class="control">
         <div>
             <label class="checkbox">
-                <input type="checkbox" name="Age range[]" value="16 - 17">
+                <input type="checkbox" name="agerange[]" value="16 - 17">
                     16 - 17 year olds
                     <span class="tag">
                         Year 12
@@ -157,7 +157,7 @@
     <div class="control">
         <div>
             <label class="checkbox">
-                <input type="checkbox" name="Age range[]" value="17 - 18+">
+                <input type="checkbox" name="agerange[]" value="17 - 18+">
                     17 - 18+ year olds
                     <span class="tag">
                         Year 13
