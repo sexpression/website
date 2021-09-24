@@ -11,11 +11,13 @@ exports.handler = async function (event, context, callback) {
     const volunteerName = payload.fullname;
     const volunteerPronouns = payload.genderpronouns;
 
-    console.log(volunteerPronouns);
+    console.log(`Pre: ${volunteerPronouns}`);
 
-    if (volunteerPronouns == null) {
+    if (volunteerPronouns == null | volunteerPronouns == "") {
         volunteerPronouns = 'They/Them/Their'
     }
+
+    console.log(`Post: ${volunteerPronouns}`);
 
     const branchArr = payload.branch.split(",");
     const branchEmail = branchArr[0];
