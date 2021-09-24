@@ -60,7 +60,9 @@ exports.handler = async function (event, context, callback) {
                 }
             ),
         };
-    } else if (referrer.pathname === "/contact/session/") {
+    }
+    
+    if (referrer.pathname === "/contact/session/") {
 
         // teacher
 
