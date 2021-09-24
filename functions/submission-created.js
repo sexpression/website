@@ -24,7 +24,7 @@ exports.handler = async function (event, context, callback) {
     const msgToBranch = {
         to: `${branchEmail}`,
         from: SENDGRID_FROM_EMAIL,
-        subject: "New volunteer - ${volunteerName} 🎉",
+        subject: `New volunteer - ${volunteerName} 🎉`,
         text: `${volunteerName} (${volunteerPronouns}) wants to join your branch.`,
     };
 
