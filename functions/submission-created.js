@@ -9,15 +9,15 @@ exports.handler = async function (event, context, callback) {
     const payload = JSON.parse(event.body).payload.data;
     const volunteerEmail = payload.email;
     const volunteerName = payload.fullname;
-    const volunteerPronouns = payload.genderpronouns;
+    let volunteerPronouns = payload.genderpronouns;
 
-    console.log(`Pre: ${volunteerPronouns}`);
+    console.log(`Pre: ${volunteerPronouns} - ${typeof volunteerPronouns}`);
 
     if (volunteerPronouns == null | volunteerPronouns == "") {
         volunteerPronouns = 'They/Them/Their'
     }
 
-    console.log(`Post: ${volunteerPronouns}`);
+    console.log(`Post: ${volunteerPronouns} -  ${typeof volunteerPronouns}`);
 
     const branchArr = payload.branch.split(",");
     const branchEmail = branchArr[0];
