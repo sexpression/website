@@ -8,7 +8,7 @@ const {
 exports.handler = async function (event, context, callback) {
     const payload = JSON.parse(event.body).payload.data;
     const referrer = new URL(payload.referrer);
-    
+
     console.log(`Pathname: ${referrer.pathname}`);
 
     if (referrer.pathname === "/contact/join/") {
@@ -30,14 +30,14 @@ exports.handler = async function (event, context, callback) {
         const msgToBranch = {
             to: `${branchEmail}`,
             from: SENDGRID_FROM_EMAIL,
-            subject: `New volunteer - ${volunteerName} 🎉`,
+            subject: `🎉 New volunteer - ${volunteerName}`,
             text: `${volunteerName} (${volunteerPronouns}) wants to join your branch.`,
         };
 
         const msgToVolunteer = {
             to: `${volunteerEmail}`,
             from: SENDGRID_FROM_EMAIL,
-            subject: `Thank you - Sexpression:${branchName} 💖`,
+            subject: `💖 Thank you - Sexpression:${branchName}`,
             text: `Sexpression:${branchName} will reach out to you shortly.`,
         };
 
@@ -56,7 +56,7 @@ exports.handler = async function (event, context, callback) {
             ),
         };
     }
-    
+
     if (referrer.pathname === "/contact/session/") {
 
         // teacher
@@ -100,7 +100,38 @@ exports.handler = async function (event, context, callback) {
             to: `${branchEmail}`,
             from: SENDGRID_FROM_EMAIL,
             subject: `📌 New session - ${institutionName} (${institutionType})`,
-            text: `${institutionName} (${institutionType} is requesting a session for ${sessionWeek}. ${sessionSubjects}. ${sessionAgeRange}. ${sessionMessage}`,
+            html:
+                `<div>
+                <div>
+                    <h1>Teacher</h1>
+                    <p>${teacherName} (${teacherPronouns})</p>
+                    <p>${teacherEmail}</p>
+                    <p>${teacherPosition}</p>
+                </div>
+                <div>
+                    <h1>Institution</h1>
+                    <p>${institutionName}</p>
+                    <p>${institutionType}</p>
+                    <h2>Address</h2>
+                    <p>${institutionBuildingStreet}, ${institutionTownCity}</p>
+                    <p>${institutionCounty}</p>
+                    <p>${institutionCountry}</p>
+                    <p>${institutionPostcode}</p>
+                </div>
+                <div>
+                    <h1>Session</h1>
+                    <h2>Week of</h2>
+                    <p>${sessionWeek}</p>
+                    <h2>Subjects</h2>
+                    <p>${sessionSubjects}</p>
+                    <h2>Age range</h2>
+                    <p>${sessionAgeRange}</p>
+                </div>
+                <div>
+                    <h1>Message</h1>
+                    <p>${sessionMessage}</p>
+                </div>
+            </div>`
         };
 
         const msgToTeacher = {
