@@ -1,15 +1,4 @@
-<div class="field">
-    <label class="label">Sexpression:UK Branch</label>
-    <div class="control">
-        <div class="select">
-            <select name="branch" required="required">
-                {% for branch in branches.all %}
-                    <option value="{{ branch.fields["Email"] }},{{ branch.fields["Name"] }}">{{ branch.fields["Name"] }}</option>
-                {% endfor %}
-            </select>
-        </div>
-    </div>
-</div>
+{% include 'form/branches.njk' %}
 
 <div class="field">
     <label class="label">Choose a week for the session</label>
