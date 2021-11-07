@@ -9,7 +9,7 @@
     status = 200
     to = "/.netlify/functions/:splat"
 
-# [dev]
-#     command = "npx run build"
-#     functions = "functions/"
-#     publish = "dist/"
+[dev]
+    command = "npx run serve"
+    functions = "functions/"
+    publish = "dist/"
