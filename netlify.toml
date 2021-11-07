@@ -8,3 +8,8 @@
     from = "/api/*"
     status = 200
     to = "/.netlify/functions/:splat"
+
+# [dev]
+#     command = "npx run build"
+#     functions = "functions/"
+#     publish = "dist/"

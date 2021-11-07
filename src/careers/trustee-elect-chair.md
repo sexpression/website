@@ -1,3 +1,10 @@
+---
+layout: career.njk
+title: Trustee & Chair Elect (2 positions)
+---
+
+[Download PDF](/downloads/careers/sexpressionuk-trustee_elect_chair.pdf)
+
 **Are you passionate about using your skills and expertise to help support and develop a UK-wide relationships and sex education charity?**
 
 Sexpression:UK is looking for one new trustee to join the existing Board immediately as well as a Chair Elect who will take over when our current Chair of Trustees steps down in June 2022.  
