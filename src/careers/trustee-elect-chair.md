@@ -24,4 +24,4 @@ To apply, please submit your CV and a supporting letter (maximum 2 pages) that i
 - Your motivations for applying for the role of Sexpression:UK Trustee or Chair Elect (please specify which role you are applying for in your application)
 - A detailed explanation about your suitability for the role with specific focus on how you meet the criteria set out in the person specification for the role
 
-Applications must be submitted by no later than 23.59pm on Sunday 28th November 2021
+Applications must be submitted to [chair@sexpression.org.uk](mailto:chair@sexpression.org.uk) by no later than 23.59pm on Sunday 28th November 2021
