@@ -1,0 +1,29 @@
+---
+layout: container.njk
+pagination:
+    data: opportunities
+    size: 1
+    alias: opportunity
+permalink: "opportunities/{{ opportunity.fields.Name | slug }}/"
+---
+
+<h1 class="has-text-centered">
+    <i class="fas mr-2 fa-code-branch"></i>{{ opportunity.fields.Name }}</h1>
+
+<div class="container">
+
+<h2>Email</h2>
+<p>{{ opportunity.fields.Email }}</p>
+
+<h2>Equity</h2>
+<p>{{ opportunity.fields.Equity }}</p>
+
+<h2>About</h2>
+<p>{{ opportunity.fields.About }}</p>
+
+<h2>Slogan</h2>
+<p>{{ opportunity.fields.Slogan }}</p>
+
+<h2>Description</h2>
+{{ opportunity.fields.Description }}
+</div>
