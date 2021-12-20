@@ -22,6 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // const oneDay = 24 * 60 * 60 * 1000;
+    // const firstDate = new Date(2008, 1, 12);
+    // const secondDate = new Date();
+
+    // const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+
 });
 
 // if (window.location.pathname == "/contact/session/") {

@@ -7,23 +7,48 @@ pagination:
 permalink: "opportunities/{{ opportunity.fields.Name | slug }}/"
 ---
 
-<h1 class="has-text-centered">
-    <i class="fas mr-2 fa-code-branch"></i>{{ opportunity.fields.Name }}</h1>
+<div class="columns">
+    <div class="column is-half container">
+        <div class="mb-4">
+            <a href="/opportunities"><i class="fas mr-2 fa-arrow-left"></i> Back to opportunities</a>
+        </div>
+        <div>
+            <h2>{{ opportunity.fields.Name }}</h2>
+            <p><b>{{ opportunity.fields.Slogan }}</b></p>
+        </div>
+        <div class="mb-6 mt-6">
+            <div class="mb-3 mt-3">
+                <p class="mb-0"><b>Deadline</b></p>
+                <p>{{ opportunity.fields.Date }}</p>
+            </div>
 
-<div class="container">
+            <div class="mb-3 mt-3">
+                <p class="mb-0"><b>Positions</b></p>
+                <p>{{ opportunity.fields.Positions }}</p>
+            </div>
+        </div>
 
-<h2>Email</h2>
-<p>{{ opportunity.fields.Email }}</p>
+        <p>{{ opportunity.fields.Description }}</p>
 
-<h2>Equity</h2>
-<p>{{ opportunity.fields.Equity }}</p>
+        <h3>How to apply</h3>
 
-<h2>About</h2>
-<p>{{ opportunity.fields.About }}</p>
+        <p>Applications must include:</p>
+        <ul>
+            <li><b>CV</b></li>
+            <li><b>Supporting letter</b> (maximum 2 pages)</li>
+            <ul>
+                <li>Your motivations for applying for the role of {{ opportunity.fields.Name }} (please specify which role you are applying for in your application)</li>
+                <li>A detailed explanation about your suitability for the role with specific focus on how you meet the criteria set out in the person specification for the role</li>    
+            </ul>
+        </ul>
 
-<h2>Slogan</h2>
-<p>{{ opportunity.fields.Slogan }}</p>
+        <p>Email applications to <a href="mailto:{{ opportunity.fields.Email }}">{{ opportunity.fields.Email }}</a></p>
 
-<h2>Description</h2>
-{{ opportunity.fields.Description }}
+        <h3>Equity statement</h3>
+        <p>{{ opportunity.fields.Equity }}</p>
+
+        <h3>About Sexpression:UK</h3>
+        <p>{{ opportunity.fields.About }}</p>
+    </div>
+</div>
 </div>

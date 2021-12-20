@@ -2,26 +2,27 @@
 layout: container.njk
 title: Opportunities
 ---
+<div class="columns">
 
-<h1 class="has-text-centered">
-    <i class="fas mr-2 fa-briefcase"></i>{{ title }}</h1>
+        <div class="column is-half container">
 
-<div class="columns is-multiline">
+        <div class="mb-4">
+            <h1><i class="fas mr-2 fa-briefcase"></i> {{ title }}</h1>
+        </div>
     {% for opportunity in opportunities %}
-        <div class="column is-half is-two-thirds-tablet">
-            <div class="card border-radius-2 p-5">
+
+            <div class="card border-radius-2 p-5 m-3">
                 <div class="card-content">
                     <div class="columns is-vcentered">
                         <div class="media-content">
                         <div class="content">
-                            <a href="{{ opportunity.fields.Name | slug }}/" class="is-4 is-size-5-mobile">{{ opportunity.fields["Name"] }}</a>
+                            <h3><a href="{{ opportunity.fields.Name | slug }}/" class="is-4 is-size-5-mobile">{{ opportunity.fields["Name"] }}</a> ({{ opportunity.fields["Positions"] }})</h3>
+                            <p class="subtitle is-6 is-size-7-mobile"><b>Closes:</b> {{ opportunity.fields["Date"] }}</p>
                         </div>
-                        <p class="subtitle is-6 is-size-7-mobile">{{ opportunity.fields["Number of Positions"] }} position</p>
-                        <p class="subtitle is-6 is-size-7-mobile">{{ opportunity.fields["Ends"] }}</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     {% endfor %}
+    </div>
 </div>
