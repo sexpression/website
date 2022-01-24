@@ -56,7 +56,6 @@ exports.handler = async function (event, context, callback) {
             ),
         };
     }
-
     if (referrer.pathname === "/contact/session/") {
 
         // teacher
