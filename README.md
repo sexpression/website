@@ -5,7 +5,7 @@
 
 First of all install the NPM dependencies. This will pull down everything you need.
 
-## create .env file
+## create .env file 
 ```
 SENDGRID_API_KEY=
 AIRTABLE_API_KEY=
