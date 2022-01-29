@@ -174,7 +174,7 @@ Although it is acknowledged that this document does not necessarily provide volu
    1. If, as a volunteer, you have a safeguarding concern about another volunteer, you must report this to your Branch Coordinator.
       1. The Branch Coordinator should then report this issue to the NCPD.
       2. If the safeguarding concern is regarding the Branch Coordinator, the volunteer should consult with the NCPD directly and the steps outlined in Section 5.2 will be taken.
-   2. On receiving an allegation, the Sexpression:UK NCPD will initiate an internal inquiry.
+   2. On receiving an allegation, the Sexpression:UK NCPD will initiate an internal enquiry.
    3. The NCPD will consult with the National Director and if necessary, the trustees, to decide on the most appropriate cause of action.
       1. The NCPD will inform the DSLs of external organisations involved should any evidence of harm be found.
       2. This may involve liaison with statutory organisations.

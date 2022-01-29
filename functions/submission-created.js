@@ -9,8 +9,6 @@ exports.handler = async function (event, context, callback) {
     const payload = JSON.parse(event.body).payload.data;
     const referrer = new URL(payload.referrer);
 
-    console.log(`Pathname: ${referrer.pathname}`);
-
     if (referrer.pathname === "/contact/join/") {
 
         const volunteerEmail = payload.email;
