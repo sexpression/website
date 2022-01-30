@@ -1,14 +1,13 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Robotodisplay=swap");
 body {
-  background-color: #f2f2f2;
+  background-color: #e0e0e0;
 }
 
 img {
   max-width: 100%;
   vertical-align: middle;
   display: inline-block;
-  /* border-radius: 10px; */
 }
 
 html.w-mod-touch * {
@@ -116,8 +115,6 @@ html[data-w-dynpage] [data-w-cloak] {
   text-transform: inherit;
   list-style-type: disc;
   text-shadow: none;
-  font-smoothing: auto;
-  vertical-align: baseline;
   cursor: inherit;
   white-space: inherit;
   word-break: normal;
@@ -316,7 +313,6 @@ label {
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
-  vertical-align: middle;
   background-color: #ffffff;
   border: 1px solid #cccccc;
 }
@@ -831,7 +827,6 @@ textarea.w-select {
   background: #dddddd;
   clear: both;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .w-slider-mask {
@@ -867,7 +862,6 @@ textarea.w-select {
   height: 40px;
   text-align: center;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .w-slider-nav.w-round > div {
@@ -927,7 +921,6 @@ textarea.w-select {
   color: white;
   font-size: 40px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1086,11 +1079,7 @@ textarea.w-select {
   outline: 0;
   /* 1 */
   opacity: 0;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   -webkit-tap-highlight-color: transparent;
-  -webkit-transform: translate(0, 0);
   /* 2 */
 }
 
@@ -1268,7 +1257,6 @@ textarea.w-select {
   box-sizing: content-box;
   /* 1 */
   cursor: pointer;
-  -webkit-transform: translate3d(0, 0, 0);
   /* 2 */
 }
 
@@ -1616,7 +1604,6 @@ textarea.w-select {
   display: none;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -12050,6 +12037,12 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 
 .border-radius-2 {
   border-radius: 2rem;
+}
+
+.navbar {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 1rem;
 }
 
 /* Grow */
