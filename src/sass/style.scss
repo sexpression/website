@@ -5,8 +5,11 @@
 
 @import "../../node_modules/bulma/bulma.sass";
 
-.title {
+$title-family: theme.$family-primary;
+
+.poppins {
     font-family: theme.$family-primary;
+    color: theme.$primary;
 }
 
 .transparent-background {
@@ -35,7 +38,7 @@
 //     box-shadow: 0px 0px 20px -1px rgba(197,197,197) !important;
 // }
 
-// .action-button.primary {    
+// .action-button.primary {     
 //     color: white !important;
 //     background-color: theme.$primary;
 //     box-shadow: 0px 0px 120px -1px rgba(124,77,255,1) !important;
