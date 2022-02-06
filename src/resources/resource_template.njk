@@ -43,10 +43,8 @@ permalink: "resources/{{ thisresource.name | slug }}/"
                     </div>
 
                     <div class="content">
-                        <div class="buttons">
-  <button class="button is-primary is-light">Download</button>
-</div>
-                        <time datetime="2016-1-1">{{ resource.fields["Last updated"] }}</time>
+                        <p><a href="{{ resource.fields["File"][0]["url"] }}">Download</a></p>
+                        <p class="has-text-grey-light"><time datetime="2016-1-1">{{ resource.fields["Last updated"] }}</time></p>
                     </div>
                 </div>
             </div>
