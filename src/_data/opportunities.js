@@ -12,7 +12,6 @@ module.exports = async function () {
     const results = jsonResponse.records;
 
     results.forEach(function (record, i) {
-        console.log(record);
         const date = hdate.prettyPrint(record.fields.Deadline);
         record.fields.Date = date;
         results[i] = record;
