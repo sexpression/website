@@ -12,11 +12,14 @@ module.exports = async function () {
     const results = jsonResponse.records;
 
     results.forEach(function (record, i) {
-        let formattedDate = moment().format(record.fields["Last updated"]); 
+        let formattedDate = moment(record.fields["Last updated"]).format("MMMM Do YYYY");
+        let formattedTime = moment(record.fields["Last updated"]).format("h:mm:ss a");
         // const date = hdate.prettyPrint(record.fields.Las§tUpdated);
         // record.fields.Date = date;
-        results[i].fields["Last updated"] = formattedDate;
+        results[i].fields["Last updated"] = { "date": formattedDate, "time": formattedDate };
     });
+
+    console.log(results);
 
     return results;
 };
