@@ -1,0 +1,63 @@
+---
+layout: container.njk
+title: Meet the team
+---
+
+<h1 class="has-text-centered mb-6"><i class="fas mr-2 fa-users"></i>{{ title }}</h1>
+
+<div class="tabs">
+    <ul>
+        <li class="">
+            <a href="/teams">All members</a>
+        </li>
+            <li class="">
+                <a href="/teams/national-committee">National Committee</a>
+            </li>
+                        <li class="is-active">
+                <a href="/teams/trustees">Trustees</a>
+            </li>
+    </ul>
+</div>
+
+<div class="columns is-multiline">
+    {% for member in members.trusteeship %}
+        <div class="column is-half is-two-thirds-tablet">
+            <div class="card border-radius-2 p-5">
+                <div class="card-content">
+                    <div class="columns is-vcentered">
+                        <div class="media-left is-vcentered">
+                            <figure class="image is-128x128">
+                                <img class="is-rounded" src="{{ member.fields['Picture'][0].url }}" alt="{{ member.fields["Profile description"] }}">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                        <div class="content">
+                        <p class="subtitle is-uppercase is-6 is-size-7-mobile">{{ member.fields["Position"] }}</p>
+                            <p class="title is-4 is-size-5-mobile has-text-link"><a onclick="modalToggle('{{ member.fields["Slug"] }}')">{{ member.fields["Name"] }}</a></p>
+                            <p class="subtitle is-6 is-size-7-mobile">{{ member.fields["Pronouns"] }}</p>
+                            {% for email in member.fields.Email %}
+                                <p class="mb-0"><a class="has-text-link" href="mailto:{{ email }}">{{ email }}</a></p>
+                            {% endfor %}
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="{{ member.fields["Slug"] }}" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="card">
+  <div class="card-content">
+    <div class="content">
+      {{ member.fields["Biography"] }}
+    </div>
+  </div>
+</div>
+            </div>
+            <button class="modal-close is-large" onclick="modalToggle('{{ member.fields["Slug"] }}')" aria-label="close"></button>
+        </div>
+    {% endfor %}
+    {% include 'modalToggle.njk'%}
+</div>
