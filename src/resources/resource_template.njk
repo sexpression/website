@@ -27,30 +27,23 @@ permalink: "resources/{{ thisresource.name | slug }}/"
 <div class="columns is-multiline">
     {% for resource in resources %}
         {% if resource.fields["Tag"] == title %}
-            <div class="column is-one-quarter-tablet is-one-quarter-desktop is-one-quarter-widescreen is-one-quarter-fullhd">
-                <div class="card">
-                    <figure class="image is-2by3 m-0">
-                        <img src="{{ resource.fields["File"][0]["thumbnails"]["large"]["url"] }}" alt="Placeholder image">
-                    </figure>
-                    <div class="card-content">
-                        <div class="media">
-                            <div class="media-content">
-                                <p class="title is-size-6-mobile is-size-6-touch is-size-5-tablet is-4 pb-3">{{ resource.fields["Title"] }}</p>
-                                <p class="subtitle is-size-6-mobile is-size-6-touch is-size-5-tablet is-4">{{ resource.fields["Tag"] }}</p>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            <p class="is-size-6-mobile is-size-6-touch is-size-5-tablet is-4">
-                                <a href="{{ resource.fields["File"][0]["url"] }}">Download</a>
-                            </p>
-                            <p class="is-size-6-mobile is-size-6-touch is-size-5-tablet is-4 has-text-grey-light">
-                                <time datetime="2016-1-1">{{ resource.fields["Last updated"] }}</time>
-                            </p>
-                        </div>
-                    </div>
+        <div class="column is-half-mobile is-half-touch is-one-quarter-tablet is-one-quarter-desktop is-one-quarter-widescreen is-one-quarter-fullhd">
+            <div class="card">
+                <figure class="image is-2by3 m-0">
+                    <img src="{{ resource.fields["File"][0]["thumbnails"]["large"]["url"] }}" alt="Placeholder image">
+                </figure>
+                <div class="card-content p-4">
+                    <p class="is-size-6 is-size-6-tablet is-size-5-desktop pb-3">{{ resource.fields["Title"] }}</p>
+                    <p class="is-size-6 is-size-6-tablet is-size-5-desktop">{{ resource.fields["Tag"] }}</p>
+                    <p class="is-size-6 is-size-6-tablet is-size-5-desktop">
+                        <a href="{{ resource.fields["File"][0]["url"] }}">Download</a>
+                    </p>
+                    <p class="is-size-7-mobile is-size-6-touch is-size-5-tablet is-4 has-text-grey-light">
+                        <time datetime="2016-1-1">{{ resource.fields["Last updated"] }}</time>
+                    </p>
                 </div>
             </div>
+        </div>
         {% endif %}
     {% else %}
         Could not get resources.
