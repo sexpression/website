@@ -25,10 +25,10 @@ title: Resources
                     <img src="{{ resource.fields["File"][0]["thumbnails"]["large"]["url"] }}" alt="Placeholder image">
                 </figure>
                 <div class="card-content p-4">
-                    <p class="is-size-6 is-size-6-tablet is-size-5-desktop pb-3">{{ resource.fields["Title"] }}</p>
-                    <p class="is-size-6 is-size-6-tablet is-size-5-desktop">{{ resource.fields["Tag"] }}</p>
+                    <p class="is-size-6 is-size-6-tablet is-size-5-desktop mb-0"><b>{{ resource.fields["Title"] | truncate(18) }}</b></p>
+                    <p class="is-size-6 is-size-6-tablet is-size-5-desktop">{{ resource.fields["Tag"] | truncate(18) }}</p>
                     <p class="is-size-6 is-size-6-tablet is-size-5-desktop">
-                        <a href="{{ resource.fields["File"][0]["url"] }}">Download</a>
+                        <a class="button is-link is-light is-small" href="{{ resource.fields["File"][0]["url"] }}">Download</a>
                     </p>
                     <p class="is-size-7-mobile is-size-6-touch is-size-5-tablet is-4 has-text-grey-light">
                         <time datetime="2016-1-1">{{ resource.fields["Last updated"] }}</time>
