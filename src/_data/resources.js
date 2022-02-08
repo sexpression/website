@@ -19,7 +19,5 @@ module.exports = async function () {
         results[i].fields["Last updated"] = { "date": formattedDate, "time": formattedTime };
     });
 
-    console.log(results);
-
     return results;
 };
