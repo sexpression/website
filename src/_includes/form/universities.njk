@@ -1,0 +1,12 @@
+<div class="field">
+    <label class="label is-uppercase">Universities</label>
+    <div class="control">
+        <div class="select">
+            <select name="university" required="required">
+                {% for university in universities.inactive %}
+                    <option value="{{ university.fields["Email"] }},{{ university.fields["Name"] }}">{{ university.fields["Name"] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+</div>
