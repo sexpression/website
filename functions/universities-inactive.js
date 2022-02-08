@@ -3,7 +3,7 @@ const {AIRTABLE_BASE_ID, AIRTABLE_API_KEY} = process.env;
 const base = new Airtable({apiKey: `${AIRTABLE_API_KEY}`}).base(`${AIRTABLE_BASE_ID}`);
 
 const baseName = "Universities";
-const baseView = "All universities";
+const baseView = "Inactive universities"
 
 exports.handler = function (event, context, callback) {
     try {
