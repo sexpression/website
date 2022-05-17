@@ -9,7 +9,7 @@ title: Trustee & Chair Elect (2 positions)
 
 Sexpression:UK is looking for one new trustee to join the existing Board immediately as well as a Chair Elect who will take over when our current Chair of Trustees steps down in June 2022.  
 
-Sexpression:UK provides high quality, comprehensive relationships and sex education workshops to young people between the ages of 11-18 in schools and youth groups. We operate across the UK through our unique network of affiliated branches and volunteers based at universities and students’ unions in 26 towns and cities from Aberdeen to Southampton.
+Sexpression:UK provides high quality, comprehensive relationships and sex education workshops to young people between the ages of 11-18 in schools and youth groups. We operate across the UK through our unique network of affiliated branches and volunteers based at universities and students' unions in 26 towns and cities from Aberdeen to Southampton.
 
 You will have strong empathy with our mission to educate and empower young people to make individual, informed decisions about their bodies and their health. You will be committed to using your expertise to contribute to the future development of the charity and to ensure high quality governance.
 
