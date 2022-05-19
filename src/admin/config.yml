@@ -9,8 +9,10 @@ collections:
   - label: Pages
     name: "Page"
     folder: "src/"
+    slug: "{{slug}}"
     create: true
     fields:
+    - { default: container_is-max-desktop, label: Layout, name: layout, widget: hidden }
     - { label: "Title", name: "title", widget: "string" }
     - { label: "Description", name: "description", widget: "string" }
     - { label: "Body", name: "body", widget: "markdown" }
