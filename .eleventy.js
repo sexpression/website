@@ -12,10 +12,13 @@ function eleventy(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/svg");
     eleventyConfig.addPassthroughCopy("src/robots.txt");
     eleventyConfig.addPassthroughCopy({ "src/css": "/" });
+    eleventyConfig.addPassthroughCopy({
+        "./src/admin/config.yml": "./admin/config.yml",
+    });
     eleventyConfig.addPlugin(eleventyNavigationPlugin);
     eleventyConfig.setLibrary("md", markdownLib);
     eleventyConfig.addPlugin(pluginTOC);
-    eleventyConfig.addNunjucksAsyncFilter("jsmin", async function (code, callback) {
+    eleventyConfig.addNunjucksAsyncFilter("jsmin", async function(code, callback) {
         try {
             const minified = await minify(code);
             callback(null, minified.code);
