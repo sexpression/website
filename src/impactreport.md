@@ -4,7 +4,7 @@ name: Impact Report
 description: 
 lastmodified: 
 ---
-# {{ title }}
+# {{ name }}
 
 ## Director’s foreword
 > It is my absolute delight to write this foreword for our first ever impact report. I am incredibly proud of our achievements this past academic year, and would like to extend acknowledgement and thanks to Eva Zilber, our 2019-2020 Branches Director for preparing this report.   
