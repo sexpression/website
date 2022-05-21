@@ -24,10 +24,11 @@ collections:
     create: true
     fields:
     - { label: "Layout", name: "layout", widget: "hidden", default: "container.njk" }
-    - { label: Tags, name: "tags", widget: "hidden", default: opport"unity }
+    - { label: "Tags", name: "tags", widget: "hidden", default: "opportunity" }
     - { label: "Name", name: "name", widget: "string" }
     - { label: "Positions", name: "positions", widget: "number", default: 1, value_type: "int", min: 1, max: 9  }
     - { label: "Description", name: "description", widget: "string" }
     - { label: "Last Modified", name: "lastmodified", widget: "hidden", default: "", date_format: "DD.MM.YYYY", time_format: "HH:mm", picker_utc: true }
     - { label: "Deadline", name: "deadline", widget: "datetime", default: "", date_format: "DD.MM.YYYY", time_format: "HH:mm", picker_utc: true }
+    - { label: "Charity Jobs URL", name: "link", widget: "string" }
     - { label: "Body", name: "body", widget: "markdown" }
