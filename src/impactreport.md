@@ -4,8 +4,6 @@ name: Impact Report
 description: 
 lastmodified: 
 ---
-# {{ name }}
-
 ## Director’s foreword
 > It is my absolute delight to write this foreword for our first ever impact report. I am incredibly proud of our achievements this past academic year, and would like to extend acknowledgement and thanks to Eva Zilber, our 2019-2020 Branches Director for preparing this report.   
 > Whilst the numbers in our impact report are impressive, from numbers of volunteers to the amount of sessions delivered, each number reflects countless hours of hard work, dedication, and passion for providing quality RSE. Sexpression:UK is student and volunteer-led, and as such, the continued growth of the charity is a result of tireless work at all levels - from branch volunteers, branch committees, National Committee, and our Trustees. It is from the bottom of my heart that I thank everyone who contributed to these successes; it wouldn’t have been possible without our nationwide, dedicated Sexpression:UK members at every level.  

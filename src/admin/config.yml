@@ -1,13 +1,12 @@
 backend:
   name: git-gateway
   branch: dev
-publish_mode: editorial_workflow
 media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  - label: "Pages"
-    name: "Page"
+  - name: "pages"
+    label: "Pages"
     folder: "src/"
     slug: "{{slug}}"
     create: true
@@ -17,8 +16,8 @@ collections:
     - { label: "Description", name: "description", widget: "string" }
     - { label: "Last Modified", name: "lastmodified", widget: "hidden", default: "", date_format: "DD.MM.YYYY", time_format: "HH:mm", picker_utc: true }
     - { label: "Body", name: "body", widget: "markdown" }
-  - label: "Opportunities"
-    name: "Opportunity"
+  - name: "opportunities"
+    label: "Opportunities"
     folder: "src/opportunities"
     slug: "{{slug}}"
     create: true
