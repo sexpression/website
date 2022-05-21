@@ -13,18 +13,18 @@ permalink: "opportunities/{{ opportunity.fields.Name | slug }}/"
             <a href="/opportunities"><i class="fas mr-2 fa-arrow-left"></i> Back to opportunities</a>
         </div>
         <div>
-            <h2>{{ opportunity.fields.Name }}</h2>
-            <p><b>{{ opportunity.fields.Slogan }}</b></p>
+            <h2>{{ opportunity.data.name }}</h2>
+            <p><b>{{ opportunity.data.description }}</b></p>
         </div>
         <div class="mb-6 mt-6">
             <div class="mb-3 mt-3">
                 <p class="mb-0"><b>Deadline</b></p>
-                <p>{{ opportunity.fields.Date }}</p>
+                <p>{{ opportunity.data.deadline }}</p>
             </div>
 
             <div class="mb-3 mt-3">
                 <p class="mb-0"><b>Positions</b></p>
-                <p>{{ opportunity.fields.Positions }}</p>
+                <p>{{ opportunity.data.positions }}</p>
             </div>
         </div>
 
