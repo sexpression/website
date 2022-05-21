@@ -1,0 +1,17 @@
+---
+layout: headerfooter.njk
+---
+<section class="section">
+    <div class="container content is-max-desktop">
+        <section class="hero">
+            <div class="hero-body">
+                <p class="title">{{ name }}</p>
+                <p class="subtitle">{{ description }}</p>
+            </div>
+        </section>
+        <section class="p-6">
+
+{{ content | safe }}
+        </section>
+    </div>
+</section>

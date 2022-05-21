@@ -1,10 +1,9 @@
 ---
-layout: container.njk
+layout: programme.njk
 name: Programme
-description: 
+description: At Sexpression, we can help your school meet the requirements of the new National RSHE programme. Our programme is tailor-made to your school and lesson requirements, accessible to all students and LGBT+ inclusive. Our programme is inline with the Department of Education statutory guidance.
 lastmodified: 
 ---
-At Sexpression, we can help your school meet the requirements of the new National RSHE programme. Our resources are tailor-made to your school and lesson requirements, accessible to all students and LGBT+ inclusive. Our programme is inline with the Department of Education statutory guidance.
 
 ## Bodily changes
 - Physical and emotional changes during puberty (p35)

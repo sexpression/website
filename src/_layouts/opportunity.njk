@@ -3,11 +3,32 @@ layout: headerfooter.njk
 ---
 <section class="section">
     <div class="container content is-max-desktop">
-        <h1>{{ name }}</h1>
-        <h3>{{ description }}</h3>
-        <p>{{ positions }} positions</p>
-        <p>Deadline: {{ deadline }}</p>
-        <p>{{ link }}</p>
-        {{ content | safe }}
+        <section class="hero">
+            <div class="hero-body">
+                <p class="title">{{ name }}</p>
+                <p class="subtitle">{{ description }}</p>
+                <div class="is-flex is-flex-direction-column" style="gap: 0.5rem;">
+                <div class="is-flex is-align-items-center" style="gap: 0.5rem;">
+                    <i class="fa-solid fa-person"></i>
+                    <p class="">{{ positions }} positions</p>
+                </div>
+
+                <div class="is-flex is-align-items-center" style="gap: 0.5rem;">
+                    <i class="fa-solid fa-clock"></i>
+                    <p>Deadline: {{ deadline }}</p>
+                </div>
+
+                <div class="is-flex is-align-items-center" style="gap: 0.5rem;">
+                    <i class="fa-solid fa-link"></i>
+                    <a href="{{ link }}" target="_blank">Charity Jobs</a>
+                </div>
+                </div>
+
+            </div>
+        </section>
+        <section class="p-6">
+            {{ content | safe }}
+        </section>
+
     </div>
 </section>
