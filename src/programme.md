@@ -1,6 +1,8 @@
 ---
 layout: container_is-max-desktop.njk
-title: Programme
+name: Programme
+description: 
+lastmodified: 
 ---
 # {{ title }}
 
