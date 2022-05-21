@@ -1,7 +1,7 @@
 ---
 layout: opportunity.njk
 tags: opportunity
-title: Digital manager
+title: Digital managerr
 positions: 1
 description: gfghghghfh
 deadline: 2022-05-18T11:00:00.000Z
