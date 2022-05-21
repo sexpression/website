@@ -1,7 +1,7 @@
 ---
 layout: opportunity.njk
 tags: opportunity
-name: test job
+title: test job
 positions: 1
 description: fgfgf
 deadline: 2022-05-27T00:00:00.000Z

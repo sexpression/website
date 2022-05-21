@@ -1,6 +1,6 @@
 ---
 layout: programme.njk
-name: Programme
+title: Programme
 description: At Sexpression, we can help your school meet the requirements of the new National RSHE programme. Our programme is tailor-made to your school and lesson requirements, accessible to all students and LGBT+ inclusive. Our programme is inline with the Department of Education statutory guidance.
 lastmodified: 
 ---
