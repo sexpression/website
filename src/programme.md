@@ -7,7 +7,7 @@ description: At Sexpression, we can help your school meet the requirements of
   programme is inline with the Department of Education statutory guidance.
 lastmodified: null
 ---
-## Bodily changes yay
+## Bodily changes 
 
 * Physical and emotional changes during puberty (p35)
 * Changes during menstruation and managing them (p35)
