@@ -21,7 +21,7 @@ Our workshops are:
 ## Sex & the Media
 
 * Laws and guidance about sexting (p28, p30)
-* he influence and realism of pornography (p28)
+* The influence and realism of pornography (p28)
 * Influence of media (including social media) on body image and self-esteem (p36)
 
 ## Contraception & Sexually Transmitted Infections
