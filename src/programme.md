@@ -1,13 +1,18 @@
 ---
 layout: programme.njk
 title: Programme
-description: At Sexpression, we can help your school meet the requirements of
-  the new National RSHE programme. Our programme is tailor-made to your school
-  and lesson requirements, accessible to all students and LGBT+ inclusive. Our
-  programme is inline with the Department of Education statutory guidance.
+description: " "
 lastmodified: null
 ---
-## Bodily changes 
+At Sexpression, our workshops are delivered by trained student volunteers, passionate about comprehensive RSHE. We use an interactive and near-peer approach that engages young people and addresses their questions.   
+
+Our workshops are:  
+
+* Informed by the most recent RSHE Government guidance specific to England, Scotland and Wales alongside guidance from PSHE Association, Sex Education Forum and UNESCO technical guidance on comprehensive sexuality education.
+* LGBTQ+ inclusive, age appropriate and accessible to young people.
+* Flexible to school timetables and complement the existing RSE provision, tailor made for school requirements.
+
+## Bodily changes
 
 * Physical and emotional changes during puberty (p35)
 * Changes during menstruation and managing them (p35)
