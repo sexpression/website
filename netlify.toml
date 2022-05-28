@@ -1,6 +1,6 @@
 [build]
     command = "npm run build"
-    environment = {AIRTABLE_API_KEY = "keyXbPYpiRPqVt47G",AIRTABLE_BASE_ID = "app5BQoGuuWeGljLz",SENDGRID_API_KEY = "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",SENDGRID_FROM_EMAIL = "website@sexpression.org.uk"}
+    environment = {AIRTABLE_API_KEY = "keyXbPYpiRPqVt47G",AIRTABLE_BASE_ID = "app5BQoGuuWeGljLz",SENDGRID_API_KEY = "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",SENDGRID_FROM_EMAIL = "website@sexpression.org.uk", HOOK_REBUILD_TOKEN = "628e00b2f5095567a2f82fcb"}
     functions = "functions/"
     publish = "dist/"
 
@@ -8,3 +8,6 @@
     from = "/api/*"
     status = 200
     to = "/.netlify/functions/:splat"
+
+[functions.scheduled."build"]
+schedule = "@daily"
