@@ -71,10 +71,12 @@ layout: headerfooter.njk
             <h2 class="title has-text-centered mb-6">Our Vision and Values</h2>
             <div class="columns">
                 {% for vv in visionandvalues %}
-                    <div class="column is-3">
-                        <i class="{{ vv.icon }} is-size-2"></i>
-                        <h4 class="title is-spaced is-4 gradient">{{ vv.value }}</h4>
+                    <div class="column is-3 is-flex is-flex-direction-column" style="gap: 2rem;">
+                        <i class="{{ vv.icon }} is-size-1 primary"></i>
+                        <div>
+                        <h4 class="title is-4 gradient primary">{{ vv.value }}</h4>
                         <p class="subtitle is-6">{{ vv.vision }}</p>
+                        </div>
                     </div>
                     {% endfor%}
                 </div>
@@ -94,19 +96,19 @@ layout: headerfooter.njk
             <p class="subtitle mb-6">Rated agreement as 3/5-5/5 in post-session feedback forms. Preliminary data from 5287 feedback forms provided by 10 out of 28 operating branches.</p>
             <div class="columns">
                 <div class="column">
-                    <p class="title">87%</p>
+                    <p class="title is-size-1 primary">87%</p>
                     <p class="heading">of people agreed or strongly agreed that they had learnt something</p>
                 </div>
                 <div class="column">
-                    <p class="title">93%</p>
+                    <p class="title is-size-1 primary">93%</p>
                     <p class="heading">of young people said that they agreed or strongly agreed that the session was delivered well</p>
                 </div>
                 <div class="column">
-                    <p class="title">85%</p>
+                    <p class="title is-size-1 primary">85%</p>
                     <p class="heading">of people said they agreed or strongly agreed that the session had made them feel better prepared for the topic in question</p>
                 </div>
                 <div class="column">
-                    <p class="title">83%</p>
+                    <p class="title is-size-1 primary">83%</p>
                     <p class="heading">reported they would like future sessions from Sexpression:UK</p>
                 </div>
             </div>

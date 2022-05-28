@@ -12073,6 +12073,10 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   color: #7C4DFF;
 }
 
+.primary {
+  color: #7C4DFF;
+}
+
 .transparent-background {
   background-color: transparent;
 }
