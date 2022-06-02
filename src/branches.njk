@@ -28,27 +28,27 @@ title: Branches
                     {% include 'svgOne.njk' %}
                 </figure>
                 <div class="card-content p-0">
-                    <p class="title is-size-6 pb-1">{{ branch.fields["Title"] }}</p>
-                    <p class="subtitle is-size-7">{{ branch.fields["Name (from University)"][0] }},
-                    {{ branch.fields["Country"][0] }}</p>
+                    <p class="title is-size-6 pb-1">{{ branch.name }}</p>
+                    <p class="subtitle is-size-7">{{ branch.university.name }},
+                    {{ branch.university.country }}</p>
                     <p>
-                        <a class="color-black has-text-link is-size-7" href="mailto:{{ branch.fields["Email"] }}">
-                            {{ branch.fields["Email"] }}
+                        <a class="color-black has-text-link is-size-7" href="mailto:{{ branch.email }}">
+                            {{ branch.email }}
                         </a>
                     </p>
                     <div>
-                        {% if branch.fields["Instagram"] %}
-                            <a class="color-black has-text-link" href="{{ branch.fields["Instagram"] }}">
+                        {% if branch.instagram %}
+                            <a class="color-black has-text-link" href="{{ branch.instagram }}">
                                 <i class="fab mr-2 fa-instagram"></i>
                             </a>
                         {% endif %}
-                        {% if branch.fields["Twitter"] %}
-                            <a class="color-black has-text-link" href="{{ branch.fields["Twitter"] }}">
+                        {% if branch.twitter %}
+                            <a class="color-black has-text-link" href="{{ branch.twitter }}">
                                 <i class="fab mr-2 fa-twitter"></i>
                             </a>
                         {% endif %}
-                        {% if branch.fields["Facebook"] %}
-                            <a class="color-black has-text-link" href="{{ branch.fields["Facebook"] }}">
+                        {% if branch.facebook %}
+                            <a class="color-black has-text-link" href="{{ branch.facebook }}">
                                 <i class="fab mr-2 fa-facebook"></i>
                             </a>
                         {% endif %}
