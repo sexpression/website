@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@11ty/eleventy": "^0.12.1",
+    "@directus/sdk": "^9.11.1",
     "@sendgrid/mail": "^7.4.6",
     "airtable": "^0.11.1",
     "netlify-cli": "^6.14.16"
