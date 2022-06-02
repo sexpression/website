@@ -1,32 +1,28 @@
-const Airtable = require('airtable');
-const {AIRTABLE_BASE_ID, AIRTABLE_API_KEY} = process.env;
-const base = new Airtable({apiKey: `${AIRTABLE_API_KEY}`}).base(`${AIRTABLE_BASE_ID}`);
+const { Directus } = require('@directus/sdk');
+const directus = new Directus('https://zq5bmezp.directus.app');
 
-const baseName = "Branches";
-const baseView = "All branches"
+const table = 'branches';
+const fields = ['*', 'university.country', 'university.name'];
 
-exports.handler = function (event, context, callback) {
+exports.handler = async function(event, context) {
     try {
-        base(baseName).select({
-            view: baseView,
-            filterByFormula: "NOT({Live} = '')",
-            sort: [{field: "Name", direction: "asc"}]
-        }).firstPage(function(err, records) {
-            if (err) { console.error(err); return; }
+        const data = await directus.items(table, fields).readByQuery({ meta: 'total_count', fields: fields });
+        console.log("successful!");
 
-            callback(null, {
-                statusCode: 200,
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ records })
-            });
-        });
+        return {
+            statusCode: 200,
+            message: "All good in the hood",
+            body: JSON.stringify({
+                items: data.data,
+                total: data.meta.total_count,
+            })
+        }
+
     } catch (err) {
-        console.log(err) // output to netlify function log
+        console.log(JSON.stringify({ msg: err.message }));
         return {
             statusCode: 500,
-            body: JSON.stringify({ msg: err.message }), // Could be a custom message or object i.e. JSON.stringify(err)
+            message: JSON.stringify({ msg: err.message }), // Could be a custom message or object i.e. JSON.stringify(err)
         }
     }
 }
