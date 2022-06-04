@@ -4,7 +4,7 @@ title: Resources
 ---
 <h1 class="is-size-5-mobile">{{ title }}</h1>
 
-<div class="tabs">
+{# <div class="tabs">
     <ul>
         <li {% if title == "Resources" %} class="is-active" {% endif %}>
             <a href="/resources">All Resources</a>
@@ -15,29 +15,26 @@ title: Resources
             </li>
         {% endfor %}
     </ul>
-</div>
+</div> #}
 
 <div class="columns is-multiline is-mobile">
     {% for resource in resources %}
         <div class="column is-half-mobile is-half-touch is-one-quarter-tablet is-one-quarter-desktop is-one-quarter-widescreen is-one-quarter-fullhd">
             <div class="card border-radius-2">
                 <figure class="image is-2by3 m-0">
-                    <img src="{{ resource.fields["File"][0]["thumbnails"]["large"]["url"] }}" alt="Placeholder image">
+                    <img src="https://zq5bmezp.directus.app/{{ resource.file }}" alt="Placeholder image">
                 </figure>
                 <div class="card-content py-5 px-5 is-flex is-flex-direction-column" style="gap: 1rem">
                     <div>
                         <p class="is-size-7 is-size-7-tablet is-size-5-desktop mb-0">
-                            <b>{{ resource.fields["Title"] | truncate(20, true, '...') }}</b>
+                            <b>{{ resource.name | truncate(20, true, '...') }}</b>
                         </p>
-                        <p class="is-size-7 is-size-7-tablet is-size-6-desktop">{{ resource.fields["Tag"] |  truncate(22, true, '...') }}</p>
+                        <p class="is-size-7 is-size-7-tablet is-size-6-desktop">{{ resource.Tag |  truncate(22, true, '...') }}</p>
                     </div>
-                    <a class="button is-link is-light is-small" href="{{ resource.fields["File"][0]["url"] }}">Download</a>
+                    <a class="button is-link is-light is-small" href="https://zq5bmezp.directus.app/{{ resource.file }}?download">Download</a>
                     <div>
                         <p class="is-size-7-mobile is-size-7-touch is-size-6-tablet has-text-grey-light mb-0">
-                            <time datetime="">{{ resource.fields["Last updated"].date }}</time>
-                        </p>
-                        <p class="is-size-7-mobile is-size-7-touch is-size-6-tablet has-text-grey-light">
-                            <time datetime="">{{ resource.fields["Last updated"].time }}</time>
+                            <time datetime="">{{ resource.date_updated }}</time>
                         </p>
                     </div>
                 </div>
