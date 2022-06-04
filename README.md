@@ -1,5 +1,11 @@
 # Sexpression:UK
 
+## main branch
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ab979f81-b039-4ddf-af84-ced9ce8f5aba/deploy-status?branch=main)](https://app.netlify.com/sites/sexpression/deploys)
+
+## dev branch
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ab979f81-b039-4ddf-af84-ced9ce8f5aba/deploy-status?branch=dev)](https://app.netlify.com/sites/sexpression/deploys)
+
 - This project requires Node.js to be installed.
 - and the Netlify CLI - `npm install netlify-cli -g` and then `netlify login` to login to your Netlify account.
 
