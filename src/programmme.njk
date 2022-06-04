@@ -1,0 +1,26 @@
+---
+layout: container.njk
+pagination:
+    data: programme
+    size: 1
+    alias: chapter
+permalink: "programme/{{ chapter.title | slug }}/"
+---
+
+
+<div class="tabs">
+    <ul>
+        {% for section in programme %}
+            <li {% if section.title == chapter.title %} class="is-active" {% endif %}>
+                <a href="/programme/{{ section.title | slug }}">{{ section.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<h1>{{ chapter.title }}</h1>
+<p>{{ chapter.date_created }}</p>
+
+<section>
+{{ chapter.body | safe }}
+</section>
