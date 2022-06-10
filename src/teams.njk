@@ -18,37 +18,33 @@ title: Meet the team
 </div>
 
 <div class="columns is-multiline">
-    {% for member in members.committee %}
+    {% for member in members %}
         <div class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen is-one-quarter-fullhd">
             <div class="card border-radius-2 is-flex is-flex-direction-column py-6 is-align-items-center" style="gap: 2rem;">
                 <figure class="image is-128x128 m-0">
-                    <img class="is-rounded" src="{{ member.fields['Picture'][0].url }}" alt="{{ member.fields["Profile description"] }}">
+                    <img class="is-rounded" src="https://zq5bmezp.directus.app/assets/{{ member.image }}" alt="{{ member.fields["Profile description"] }}">
                 </figure>
                 <div class="card-content p-0">
-                    <p class="title is-size-6 pb-0 mb-1">{{ member.fields["Position"] }}</p>
-                    <a onclick="modalToggle('{{ member.fields["Slug"] }}')" class="is-size-6 mb-0">{{ member.fields["Name"] }}</a>
-                    <p class="is-size-7">{{ member.fields["Pronouns"] }}</p>
-                    {% for email in member.fields.Email %}
-                        <p class="mb-0">
-                            <a class="color-black has-text-link is-size-7" href="mailto:{{ email }}">{{ email }}</a>
-                        </p>
-                    {% endfor %}
+                    <p class="title is-size-6 pb-0 mb-1">{{ member.role }}</p>
+                    <a onclick="modalToggle('{{ member.full_name | slug }}')" class="is-size-6 mb-0">{{ member.full_name }}</a>
+                    <p class="is-size-7">{{ member.gender_pronouns[0] }}</p>
+                    <a class="color-black has-text-link is-size-7" href="mailto:{{ member.email }}">{{ member.email }}</a>
                 </div>
             </div>
         </div>
 
-        <div id="{{ member.fields["Slug"] }}" class="modal">
+        <div id="{{ member.full_name | slug }}" class="modal">
             <div class="modal-background"></div>
             <div class="modal-content">
                 <div class="card">
                     <div class="card-content">
                         <div class="content">
-                            {{ member.fields["Biography"] }}
+                            {{ member.description }}
                         </div>
                     </div>
                 </div>
             </div>
-            <button class="modal-close is-large" onclick="modalToggle('{{ member.fields["Slug"] }}')"
+            <button class="modal-close is-large" onclick="modalToggle('{{ member.full_name | slug }}')"
         aria-label="close"></button>
         </div>
     {% endfor %}
