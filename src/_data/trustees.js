@@ -1,32 +1,12 @@
-// import { Directus } from '@directus/sdk';
-const { Directus } = require('@directus/sdk');
-const directus = new Directus('https://zq5bmezp.directus.app');
+const fetch = require("node-fetch");
 
-const table = 'trustees';
-// const fields = ['*', 'university.country', 'university.name'];
+const domain = "https://sexpression.org.uk";
+const path = "/.netlify/functions/trustees";
 
-exports.handler = async function(event, context) {
-    try {
-        const data = await directus.items(table).readByQuery({ meta: 'total_count' });
+const url = new URL(path, domain);
 
-        //fields('university.name')
-
-        console.log("successful!");
-
-        return {
-            statusCode: 200,
-            message: "All good in the hood",
-            body: JSON.stringify({
-                items: data.data,
-                total: data.meta.total_count,
-            })
-        }
-
-    } catch (err) {
-        console.log(JSON.stringify({ msg: err.message }));
-        return {
-            statusCode: 500,
-            message: JSON.stringify({ msg: err.message }), // Could be a custom message or object i.e. JSON.stringify(err)
-        }
-    }
-}
+module.exports = async function() {
+    const response = await fetch(url);
+    const jsonResponse = await response.json();
+    return jsonResponse.records;
+};
