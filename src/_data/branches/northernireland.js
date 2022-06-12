@@ -1,12 +1,12 @@
 const fetch = require("node-fetch");
 
 const domain = "https://sexpression.org.uk";
-const path = "/.netlify/functions/branches-northern_ireland";
+const path = "/.netlify/functions/branches?Country=northern-ireland";
 
 const url = new URL(path, domain);
 
-module.exports = async function () {
+module.exports = async function() {
     const response = await fetch(url);
     const jsonResponse = await response.json();
-    return jsonResponse.records;
+    return jsonResponse.items;
 };
