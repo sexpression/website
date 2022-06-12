@@ -1,4 +1,3 @@
-// import { Directus } from '@directus/sdk';
 const { Directus } = require('@directus/sdk');
 const directus = new Directus('https://zq5bmezp.directus.app');
 
