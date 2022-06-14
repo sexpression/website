@@ -31,8 +31,13 @@ function updateFilterCountry(string) {
 
 exports.handler = async function(event, context) {
 
+    console.log(event);
+
     let queryStatus = event.queryStringParameters.status;
     let queryCountry = event.queryStringParameters.country;
+
+    console.log(queryStatus);
+    console.log(queryCountry)
 
     if (queryStatus) {
         updateFilterStatus(queryFormatter(queryStatus));
