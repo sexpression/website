@@ -1,10 +1,11 @@
 ---
 layout: container.njk
-title: Scotland
+title: Northern Ireland
 ---
 
 <h1 class="has-text-centered">
     <i class="fas mr-2 fa-code-branch"></i>{{ title }}</h1>
+
 
 <div class="tabs">
     <ul>
@@ -14,10 +15,10 @@ title: Scotland
         <li>
             <a href="/branches/england">England</a>
         </li>
-        <li>
+        <li class="is-active">
             <a href="/branches/nothern-ireland">Northern Ireland</a>
         </li>
-        <li class="is-active">
+        <li>
             <a href="/branches/scotland">Scotland</a>
         </li>
         <li>
@@ -27,7 +28,7 @@ title: Scotland
 </div>
 
 <div class="columns is-multiline">
-    {% for branch in branches.scotland %}
+    {% for branch in branches.northern-ireland %}
         <div class="column is-half-tablet is-half-desktop is-one-quarter-widescreen is-one-quarter-fullhd">
             <div class="card border-radius-2 p-5 is-flex is-flex-direction-column p-2" style="gap: 0.75rem;">
                 <figure id="logo" class="image is-96x96 m-0">

@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 
 const domain = "https://sexpression.org.uk";
-const path = "/.netlify/functions/branches?Country=wales";
+const path = "/.netlify/functions/branches?country=wales";
 
 // Wales wales
 // England england
