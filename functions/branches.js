@@ -15,22 +15,18 @@ function queryFormatter(string) {
 }
 
 function updateFilterStatus(string) {
-    if (string) {
-        filter.status = { "_eq": queryStatus };
-    }
+    filter.status = { "_eq": queryStatus };
 }
 
 function updateFilterCountry(string) {
-    if (string) {
-        let country = {
-            "university": {
-                "country": {
-                    "_eq": string
-                }
+    let country = {
+        "university": {
+            "country": {
+                "_eq": string
             }
         }
-        Object.assign(filter, country);
     }
+    Object.assign(filter, country);
 }
 
 exports.handler = async function(event, context) {
@@ -39,13 +35,11 @@ exports.handler = async function(event, context) {
     let queryCountry = event.queryStringParameters.country;
 
     if (queryStatus) {
-        let item = queryFormatter(queryStatus)
-        updateFilterStatus(item);
+        updateFilterStatus(queryFormatter(queryStatus));
     }
 
     if (queryCountry) {
-        let item = queryFormatter(queryCountry)
-        updateFilterCountry(item)
+        updateFilterCountry(queryFormatter(queryCountry))
     }
 
     console.log(filter);
