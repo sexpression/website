@@ -6,7 +6,7 @@ const fields = ['*', 'university.country', 'university.name'];
 const filter = { "status": { "_eq": "published" } };
 
 function queryFormatter(string) {
-    string.replaceAll('-', ' ');
+    string.replaceAll('-', / /g);
     let splitStr = string.toLowerCase().split(' ');
     for (let i = 0; i < splitStr.length; i++) {
         splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
