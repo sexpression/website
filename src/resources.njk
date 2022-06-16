@@ -22,16 +22,16 @@ title: Resources
         <div class="column is-half-mobile is-half-touch is-one-quarter-tablet is-one-quarter-desktop is-one-quarter-widescreen is-one-quarter-fullhd">
             <div class="card border-radius-2">
                 <figure class="image is-2by3 m-0">
-                    <img src="https://sexpression.directus.app/{{ resource.file }}" alt="Placeholder image">
+                    <img src="https://sexpression.directus.app/assets/{{ resource.file }}?fit=cover&width=200&quality=50" alt="{{ resource.name }}">
                 </figure>
                 <div class="card-content py-5 px-5 is-flex is-flex-direction-column" style="gap: 1rem">
                     <div>
                         <p class="is-size-7 is-size-7-tablet is-size-5-desktop mb-0">
                             <b>{{ resource.name | truncate(20, true, '...') }}</b>
                         </p>
-                        <p class="is-size-7 is-size-7-tablet is-size-6-desktop">{{ resource.Tag |  truncate(22, true, '...') }}</p>
+                        <p class="is-size-7 is-size-7-tablet is-size-6-desktop">{{ resource.tag |  truncate(22, true, '...') }}</p>
                     </div>
-                    <a class="button is-link is-light is-small" href="https://sexpression.directus.app/{{ resource.file }}?download">Download</a>
+                    <a class="button is-link is-light is-small" href="https://sexpression.directus.app/assets/{{ resource.file }}?download"  target="_blank" download="{{ resource.name }}">Download</a>
                     <div>
                         <p class="is-size-7-mobile is-size-7-touch is-size-6-tablet has-text-grey-light mb-0">
                             <time datetime="">{{ resource.date_updated }}</time>
