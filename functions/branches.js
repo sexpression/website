@@ -16,7 +16,7 @@ function queryFormatter(string) {
 }
 
 function updateFilterStatus(string) {
-    filter.status = { "_eq": queryStatus };
+    filter.status = { "_eq": string };
 }
 
 function updateFilterCountry(string) {
