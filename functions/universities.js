@@ -3,7 +3,6 @@ const { Directus } = require('@directus/sdk');
 const directus = new Directus(`https://${DIRECTUS_URL}`);
 
 const table = 'universities';
-const fields = ['*', 'branches.country', 'university.name'];
 const filter = { "status": { "_eq": "published" } };
 
 function queryFormatter(string) {
@@ -16,7 +15,7 @@ function queryFormatter(string) {
 }
 
 function updateFilterStatus(string) {
-    filter.branch = { "_eq": queryStatus };
+    filter.status = { "_eq": queryStatus };
 }
 
 function updateFilterCountry(string) {
@@ -34,7 +33,7 @@ exports.handler = async function(event, context) {
     let queryCountry = event.queryStringParameters.country;
 
     if (queryStatus) {
-        updateFilterStatus(queryFormatter(queryBranch));
+        updateFilterStatus(queryFormatter(queryStatus));
     }
 
     if (queryCountry) {
