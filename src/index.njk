@@ -51,7 +51,9 @@ layout: headerfooter.njk
     <div class="columns is-multiline is-mobile is-vcentered">
         {% for partner in partners %}
             <div class="column is-one-quarter-mobile">
+                <a href="{{ partner.website }}" target="_blank">
                     <img src="https://sexpression.directus.app/assets/{{ partner.logo }}" alt="{{ partner.name }}">
+                    </a>
             </div>
             {% endfor%}
         </div>
