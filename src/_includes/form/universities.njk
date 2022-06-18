@@ -3,8 +3,8 @@
     <div class="control">
         <div class="select">
             <select name="university" required="required">
-                {% for university in universities.inactive %}
-                    <option value="{{ university.fields["Email"] }},{{ university.fields["Name"] }}">{{ university.fields["Name"] }}</option>
+                {% for university in universities.archived %}
+                    <option value="{{ university.name }}">{{ university.name }}</option>
                 {% endfor %}
             </select>
         </div>

@@ -3,7 +3,7 @@
     <div class="control">
         <div class="select">
             <select name="branch" required="required">
-                {% for branch in branches.all %}
+                {% for branch in branches %}
                     <option value="{{ branch.email }},{{ branch.name }}">{{ branch.university.name }}</option>
                 {% endfor %}
             </select>
