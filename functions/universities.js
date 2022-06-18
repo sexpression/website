@@ -3,11 +3,11 @@ const { Directus } = require('@directus/sdk');
 const directus = new Directus(`https://${DIRECTUS_URL}`);
 
 const table = 'universities';
-const fields = ['country'];
+const fields = ['*', 'branches.country', 'university.name'];
 const filter = { "status": { "_eq": "published" } };
 
 function queryFormatter(string) {
-    string.replaceAll('-', ' ');
+    string.replace('-', / /g);
     let splitStr = string.toLowerCase().split(' ');
     for (let i = 0; i < splitStr.length; i++) {
         splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
@@ -16,9 +16,16 @@ function queryFormatter(string) {
 }
 
 function updateFilterStatus(string) {
-    if (string) {
-        filter.status = { "_eq": queryStatus };
+    filter.branch = { "_eq": queryStatus };
+}
+
+function updateFilterCountry(string) {
+    let country = {
+        "country": {
+            "_eq": string
+        }
     }
+    Object.assign(filter, country);
 }
 
 exports.handler = async function(event, context) {
@@ -27,13 +34,11 @@ exports.handler = async function(event, context) {
     let queryCountry = event.queryStringParameters.country;
 
     if (queryStatus) {
-        let item = queryFormatter(queryStatus)
-        updateFilterStatus(item);
+        updateFilterStatus(queryFormatter(queryBranch));
     }
 
     if (queryCountry) {
-        let item = queryFormatter(queryCountry)
-        updateFilterCountry(item)
+        updateFilterCountry(queryFormatter(queryCountry))
     }
 
     console.log(filter);

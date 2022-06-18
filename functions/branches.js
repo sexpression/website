@@ -3,7 +3,7 @@ const { Directus } = require('@directus/sdk');
 const directus = new Directus(`https://${DIRECTUS_URL}`);
 
 const table = 'branches';
-const fields = ['*', 'university.country', 'university.name'];
+const fields = ['*', 'branches .country', 'university.name'];
 const filter = { "status": { "_eq": "published" } };
 
 function queryFormatter(string) {

@@ -39,7 +39,7 @@ permalink: "resources/{{ thisresource.name | slug }}/"
                         </p>
                         <p class="is-size-7 is-size-7-tablet is-size-6-desktop">{{ resource.fields["Tag"] |  truncate(22, true, '...') }}</p>
                     </div>
-                    <a class="button is-link is-light is-small" href="{{ resource.fields["File"][0]["url"] }}">Download</a>
+                    <a class="button is-link is-light is-small" href="{{ resource.fields["File"][0]["url"] }}" target="_blank" download="Your File.pdf">Download</a>
                     <div>
                         <p class="is-size-7-mobile is-size-7-touch is-size-6-tablet has-text-grey-light mb-0">
                             <time datetime="">{{ resource.fields["Last updated"].date }}</time>
