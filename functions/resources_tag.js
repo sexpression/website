@@ -6,18 +6,18 @@ const baseName = "Resources";
 const baseView = "All resources";
 const baseField = "Tag";
 
-exports.handler = function (event, context, callback) {
+exports.handler = function(event, context, callback) {
     try {
         base(baseName).select({
             view: baseView,
             fields: [baseField],
             sort: [{ field: baseField, direction: "asc" }]
-        }).firstPage(function (err, records) {
+        }).firstPage(function(err, records) {
             if (err) { console.error(err); return; }
 
             const obj = { records: [] };
             let last = "test";
-            records.forEach(function (record) {
+            records.forEach(function(record) {
                 let tag = record.fields.Tag;
                 if (tag != last) {
                     let newbie = { name: tag };

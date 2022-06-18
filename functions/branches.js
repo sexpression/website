@@ -1,5 +1,6 @@
+const { DIRECTUS_URL } = process.env;
 const { Directus } = require('@directus/sdk');
-const directus = new Directus('https://zq5bmezp.directus.app');
+const directus = new Directus(`https://${DIRECTUS_URL}`);
 
 const table = 'branches';
 const fields = ['*', 'university.country', 'university.name'];
@@ -31,13 +32,8 @@ function updateFilterCountry(string) {
 
 exports.handler = async function(event, context) {
 
-    console.log(event);
-
     let queryStatus = event.queryStringParameters.status;
     let queryCountry = event.queryStringParameters.country;
-
-    console.log(queryStatus);
-    console.log(queryCountry)
 
     if (queryStatus) {
         updateFilterStatus(queryFormatter(queryStatus));

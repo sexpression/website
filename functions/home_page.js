@@ -2,14 +2,12 @@ const { DIRECTUS_URL } = process.env;
 const { Directus } = require('@directus/sdk');
 const directus = new Directus(`https://${DIRECTUS_URL}`);
 
-const table = 'members';
-// const fields = ['*', 'university.country', 'university.name'];
+const table = 'home_page';
+
 
 exports.handler = async function(event, context) {
     try {
         const data = await directus.items(table).readByQuery({ meta: 'total_count' });
-
-        //fields('university.name')
 
         console.log("successful!");
 

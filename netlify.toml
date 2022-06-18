@@ -1,6 +1,6 @@
 [build]
     command = "npm run build"
-    environment = {AIRTABLE_API_KEY = "keyXbPYpiRPqVt47G",AIRTABLE_BASE_ID = "app5BQoGuuWeGljLz",SENDGRID_API_KEY = "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",SENDGRID_FROM_EMAIL = "website@sexpression.org.uk",NODE_VERSION = "16.5.0"}
+    environment = {AIRTABLE_API_KEY = "keyXbPYpiRPqVt47G",AIRTABLE_BASE_ID = "app5BQoGuuWeGljLz",SENDGRID_API_KEY = "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",SENDGRID_FROM_EMAIL = "website@sexpression.org.uk",NODE_VERSION = "16.5.0", DIRECTUS_URL = "sexpression.directus.app"}
     functions = "functions/"
     publish = "dist/"
 

@@ -1,6 +1,6 @@
-// import { Directus } from '@directus/sdk';
+const { DIRECTUS_URL } = process.env;
 const { Directus } = require('@directus/sdk');
-const directus = new Directus('https://zq5bmezp.directus.app');
+const directus = new Directus(`https://${DIRECTUS_URL}`);
 
 const table = 'programme';
 // const fields = ['*', 'university.country', 'university.name'];

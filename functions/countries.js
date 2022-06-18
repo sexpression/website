@@ -1,47 +1,62 @@
-const Airtable = require('airtable');
-const { AIRTABLE_BASE_ID, AIRTABLE_API_KEY } = process.env;
-const base = new Airtable({ apiKey: `${AIRTABLE_API_KEY}` }).base(`${AIRTABLE_BASE_ID}`);
+const { DIRECTUS_URL } = process.env;
+const { Directus } = require('@directus/sdk');
+const directus = new Directus(`https://${DIRECTUS_URL}`);
 
-const baseName = "Universities";
-const baseView = "Active universities";
-const baseField = "Country";
+const table = 'universities';
+const fields = ['country'];
+const filter = { "status": { "_eq": "published" } };
 
-console.log({ apiKey: `${AIRTABLE_API_KEY}`, base: `${AIRTABLE_BASE_ID}` });
-console.log('dogs')
-exports.handler = function(event, context, callback) {
+function queryFormatter(string) {
+    string.replaceAll('-', ' ');
+    let splitStr = string.toLowerCase().split(' ');
+    for (let i = 0; i < splitStr.length; i++) {
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+    return splitStr.join(' ');
+}
+
+function updateFilterStatus(string) {
+    if (string) {
+        filter.status = { "_eq": queryStatus };
+    }
+}
+
+exports.handler = async function(event, context) {
+
+    let queryStatus = event.queryStringParameters.status;
+    let queryCountry = event.queryStringParameters.country;
+
+    if (queryStatus) {
+        let item = queryFormatter(queryStatus)
+        updateFilterStatus(item);
+    }
+
+    if (queryCountry) {
+        let item = queryFormatter(queryCountry)
+        updateFilterCountry(item)
+    }
+
+    console.log(filter);
+
     try {
-        base(baseName).select({
-            view: baseView,
-            fields: [baseField],
-            sort: [{ field: baseField, direction: "asc" }]
-        }).firstPage(function(err, records) {
-            console.log('cats')
-            if (err) { console.error(err); return; }
+        const data = await directus.items(table).readByQuery({ meta: 'total_count', fields: fields, filter: filter });
 
-            const obj = { records: [] };
-            let last = "test";
-            records.forEach(function(record) {
-                let country = record.fields.Country;
-                if (country != last) {
-                    let newbie = { name: country };
-                    last = country;
-                    obj.records.push(newbie);
-                }
-            });
-            console.log('monkey')
-            callback(null, {
-                statusCode: 200,
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(obj)
-            });
-        });
+        console.log("successful!");
+
+        return {
+            statusCode: 200,
+            message: "All good in the hood",
+            body: JSON.stringify({
+                items: data.data,
+                total: data.meta.total_count,
+            })
+        }
+
     } catch (err) {
-        console.log(err) // output to netlify function log
+        console.log(JSON.stringify({ msg: err.message }));
         return {
             statusCode: 500,
-            body: JSON.stringify({ msg: err.message }), // Could be a custom message or object i.e. JSON.stringify(err)
+            message: JSON.stringify({ msg: err.message }), // Could be a custom message or object i.e. JSON.stringify(err)
         }
     }
 }

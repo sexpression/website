@@ -1,16 +1,16 @@
 const Airtable = require('airtable');
-const {AIRTABLE_BASE_ID, AIRTABLE_API_KEY} = process.env;
-const base = new Airtable({apiKey: `${AIRTABLE_API_KEY}`}).base(`${AIRTABLE_BASE_ID}`);
+const { AIRTABLE_BASE_ID, AIRTABLE_API_KEY } = process.env;
+const base = new Airtable({ apiKey: `${AIRTABLE_API_KEY}` }).base(`${AIRTABLE_BASE_ID}`);
 
 const baseName = "Partners";
 const baseView = "All partners";
 
-exports.handler = function (event, context, callback) {
+exports.handler = function(event, context, callback) {
     try {
         base(baseName).select({
             view: "All partners",
             filterByFormula: "NOT({Live} = '')",
-            sort: [{field: "Name", direction: "asc"}]
+            sort: [{ field: "Name", direction: "asc" }]
         }).firstPage(function(err, records) {
             if (err) { console.error(err); return; }
 
