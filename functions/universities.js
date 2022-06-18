@@ -43,7 +43,7 @@ exports.handler = async function(event, context) {
     console.log(filter);
 
     try {
-        const data = await directus.items(table).readByQuery({ meta: 'total_count', fields: fields, filter: filter });
+        const data = await directus.items(table).readByQuery({ meta: 'total_count', filter: filter });
 
         console.log("successful!");
 
