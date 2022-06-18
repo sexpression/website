@@ -17,8 +17,7 @@ exports.handler = async function(event, context) {
             statusCode: 200,
             message: "All good in the hood",
             body: JSON.stringify({
-                items: data.data,
-                total: data.meta.total_count,
+                items: data.data
             })
         }
 
