@@ -1,13 +1,13 @@
-// import { Directus } from '@directus/sdk';
+const { DIRECTUS_URL } = process.env;
 const { Directus } = require('@directus/sdk');
-const directus = new Directus('https://zq5bmezp.directus.app');
+const directus = new Directus(`https://${DIRECTUS_URL}`);
 
 const table = 'trustees';
 // const fields = ['*', 'university.country', 'university.name'];
 
 exports.handler = async function(event, context) {
     try {
-        const data = await directus.items(table).readByQuery({ meta: 'total_count' });
+        const data = await directus.items(table);
 
         //fields('university.name')
 
