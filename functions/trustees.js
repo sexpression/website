@@ -7,7 +7,7 @@ const table = 'trustees';
 
 exports.handler = async function(event, context) {
     try {
-        const data = await directus.items(table).readByQuery({ meta: 'total_count' });
+        const data = await directus.items(table);
 
         //fields('university.name')
 

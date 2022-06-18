@@ -52,7 +52,7 @@ layout: headerfooter.njk
         {% for partner in partners %}
             <div class="column is-one-quarter-mobile">
                 <figure class="image">
-                    <img src="{{ partner.fields["Picture"][0]["url"] }}" alt="{{ partner.fields["Picture description"] }}">
+                    <img src="https://sexpression.directus.app/assets/{{ partner.logo }}" alt="{{ partner.name }}">
                 </figure>
             </div>
             {% endfor%}
