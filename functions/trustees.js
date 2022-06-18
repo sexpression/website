@@ -3,13 +3,15 @@ const { Directus } = require('@directus/sdk');
 const directus = new Directus(`https://${DIRECTUS_URL}`);
 
 const table = 'trustees';
-// const fields = ['*', 'university.country', 'university.name'];
 
 exports.handler = async function(event, context) {
     try {
-        const data = await directus.items(table);
+        const data = await directus.items(table).readByQuery({ meta: 'total_count' });
 
-        //fields('university.name')
+        console.log({
+            items: data.data,
+            total: data.meta.total_count,
+        });
 
         console.log("successful!");
 
@@ -17,8 +19,7 @@ exports.handler = async function(event, context) {
             statusCode: 200,
             message: "All good in the hood",
             body: JSON.stringify({
-                items: data.data,
-                total: data.meta.total_count,
+                items: data.data
             })
         }
 
