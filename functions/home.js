@@ -2,8 +2,7 @@ const { DIRECTUS_URL } = process.env;
 const { Directus } = require('@directus/sdk');
 const directus = new Directus(`https://${DIRECTUS_URL}`);
 
-const table = 'home_page';
-
+const table = 'home';
 
 exports.handler = async function(event, context) {
     try {

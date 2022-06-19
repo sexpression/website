@@ -1,38 +1,15 @@
 ---
 layout: headerfooter.njk
-"about": "Since forming in 2000, Sexpression members from over 25 university branches have been delivering teaching to 11-18-year olds in schools and community groups providing informative, open and engaging relationships, sex and health education. Although originally founded by a group of medical students at University College London, Sexpression:UK has since expanded to train volunteers from all university courses, in order to capture the diverse perspectives that these students can offer."
-"visionandvalues": [
-        {
-            "icon": "fas fa-star",
-            "value": "Empowering",
-            "vision": "Young people's individual beliefs are respected, and our teaching helps young people to act on them. We also encourage young people to respect the beliefs of others."
-        },
-        {
-            "icon": "fas fa-chalkboard-teacher",
-            "value": "Near-peer",
-            "vision": "Because university students are closer in age to the young people than their teachers and parents our near-peer teaching encourages young people to participate."
-        },
-        {
-            "icon": "fas fa-comments",
-            "value": "Informal",
-            "vision": "Young people learn best and are more likely to make informed decisions about sex and relationships if they participate in discussions rather than being lectured."
-        },
-        {
-            "icon": "fas fa-search",
-            "value": "Comprehensive",
-            "vision": "Young people should be informed about all aspects of their sexual and reproductive health."
-        }
-    ]
 ---
 
 <section class="hero is-medium container py-5">
     <div class="hero-body colour-background box">
         <div class="content has-text-centered">
             <h1 class="title is-size-2 has-text-white">
-                {{ site.subtitle }}
+                {{ home.hero_title }}
             </h1>
             <p class="subtitle column is-three-fifths is-offset-one-fifth has-text-white">
-                {{ site.description }}
+                {{ home.hero_description }}
             </p>
             <div>
                 <a href="/contact/session" class="action-button primary hvr-grow button is-light">Request a session<i class="fas ml-2 fa-chalkboard-teacher"></i>
@@ -61,14 +38,14 @@ layout: headerfooter.njk
 
     <section class="section">
         <div class="container has-text-centered py-4">
-            <h2 class="title">About us</h2>
-            <p class="subtitle mb-6">{{ about }}</p>
+            <h2 class="title">{{ home.about_us_title }}</h2>
+            <p class="subtitle mb-6">{{ home.about_us_description }}</p>
         </div>
     </section>
 
     <section class="section">
         <div class="container py-4">
-            <h2 class="title has-text-centered mb-6">Our Vision and Values</h2>
+            <h2 class="title has-text-centered mb-6">{{ home.our_vision_and_values_title }}</h2>
             <div class="columns">
                 {% for vv in visionandvalues %}
                     <div class="column is-3 is-flex is-flex-direction-column" style="gap: 2rem;">
