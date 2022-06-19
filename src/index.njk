@@ -25,13 +25,13 @@ layout: headerfooter.njk
     ]
 ---
 
-<section class="hero is-medium">
-    <div class="hero-body">
-        <div class="container content has-text-centered">
-            <h1 class="title is-size-2 black">
+<section class="hero is-medium container py-5">
+    <div class="hero-body colour-background box">
+        <div class="content has-text-centered">
+            <h1 class="title is-size-2 has-text-white">
                 {{ site.subtitle }}
             </h1>
-            <p class="subtitle column is-three-fifths is-offset-one-fifth">
+            <p class="subtitle column is-three-fifths is-offset-one-fifth has-text-white">
                 {{ site.description }}
             </p>
             <div>
@@ -45,9 +45,9 @@ layout: headerfooter.njk
 </section>
 
 <section class="section container has-text-centered">
-    <h2 class="subtitle">
+    <h2 class="subtitle"><b>
             Our Partners, Sponsors, Friends and Donors
-        </h2>
+        </b></h2>
     <div class="columns is-multiline is-mobile is-vcentered">
         {% for partner in partners %}
             <div class="column is-one-quarter-mobile">

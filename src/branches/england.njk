@@ -28,12 +28,11 @@ title: Branches
 </div>
 
 <div class="columns is-multiline">
+    {% from 'macros/svgOne.njk' import svgOne %}
     {% for branch in branches.england %}
         <div class="column is-half-tablet is-half-desktop is-one-quarter-widescreen is-one-quarter-fullhd">
             <div class="card border-radius-2 p-5 is-flex is-flex-direction-column p-2" style="gap: 0.75rem;">
-                <figure id="logo" class="image is-96x96 m-0">
-                    {% include 'svgOne.njk' %}
-                </figure>
+                {{ svgOne (one=branch.primary_colour, two=branch.secondary_colour, size="96px") }}
                 <div class="card-content p-0">
                     <p class="title is-size-6 pb-1">{{ branch.name }}</p>
                     <p class="subtitle is-size-7">{{ branch.university.name }},

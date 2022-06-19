@@ -7,19 +7,21 @@
         <link rel="stylesheet" href="/style.css">
         <link rel="icon" href="/svg/logo-icon.svg">
         <link rel="”mask-icon”" href="”/svg/logo-icon.svg”" color="”#000000">
-<script src="https://kit.fontawesome.com/4a8cf76ed6.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/4a8cf76ed6.js" crossorigin="anonymous"></script>
         <script type="module" src="/js/app.js"></script>
         <!-- Primary Meta Tags -->
         <title>{{ title }} | {{ site.title }}</title>
         <meta name="title" content="{{ title }} | {{ site.title }}">
         <meta
-        name="description" content="{{ description }}"> <!-- Open Graph / Facebook -->
+        name="description" content="{{ description }}">
+        <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ url }}">
         <meta property="og:title" content="{{ title }} | {{ site.title }}">
         <meta property="og:description" content="{{ description }}">
         <meta
-        property="og:image" content="{{ image_url }}"> <!-- Twitter -->
+        property="og:image" content="{{ image_url }}">
+        <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image">
         <meta property="twitter:url" content="{{ image_url }}">
         <meta property="twitter:title" content="{{ title }} | {{ site.title }}">
@@ -28,158 +30,170 @@
         <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     </head>
     <body>
-    <div class="container pt-4">
-        <nav class="navbar is-transparent transparent-background" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                {% include 'svgOne.njk' %}
-                <a class="navbar-item is-size-3 is-uppercase poppins" href="/">Sexpression:UK</a>
-                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
-            <div id="navbarBasicExample" class="navbar-menu">
-                <div class="navbar-end">
-                    <a class="navbar-item" href="/programme/core-offer">
-                        <i class="fas mr-2 fa-bookmark"></i>
+        <div class="container pt-4">
+            <nav class="navbar is-transparent transparent-background" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    <div class="is-flex">
+                        <a class="navbar-item is-size-3 is-uppercase poppins" href="/">
+                            <a class="navbar-item is-size-3 is-uppercase poppins" href="/">
+                                {% from 'macros/svgTwo.njk' import svgTwo %}
+                                {{ svgTwo(size="3rem") }}
+                                <p>Sexpression:UK</p>
+                            </a>
+                        </div>
+                        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <div id="navbarBasicExample" class="navbar-menu">
+                        <div class="navbar-end">
+                            <a class="navbar-item" href="/programme/core-offer">
+                                <i class="fas mr-2 fa-bookmark"></i>
                         Programme
                     </a>
-                    <a class="navbar-item" href="/resources">
-                        <i class="fas mr-2 fa-paperclip"></i>
+                            <a class="navbar-item" href="/resources">
+                                <i class="fas mr-2 fa-paperclip"></i>
                         Resources
                     </a>
-                    <a class="navbar-item" href="/branches">
-                        <i class="fas mr-2 fa-code-branch"></i>
+                            <a class="navbar-item" href="/branches">
+                                <i class="fas mr-2 fa-code-branch"></i>
                         Branches
                     </a>
-                    <a class="navbar-item" href="/teams">
-                        <i class="fas mr-2 fa-users"></i>
+                            <a class="navbar-item" href="/teams">
+                                <i class="fas mr-2 fa-users"></i>
                         Meet the team
                     </a>
-                    <div class="navbar-item">
-                        <div class="buttons">
-                            <a href="https://www.justgiving.com/campaign/sexpressionuk" class="action-button primary hvr-grow button is-light">
-                                <strong>Donate now</strong>
-                            </a>
+                            <div class="navbar-item">
+                                <div class="buttons">
+                                    <a href="https://www.justgiving.com/campaign/sexpressionuk" class="action-button primary hvr-grow button is-light">
+                                        <strong>Donate now</strong>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            {{ content | safe }}
+            <footer class="footer">
+                <div class="container">
+                    <div class="columns">
+                        <div class="column menu">
+                            <p class="menu-label">Pages</p>
+                            <ul class="menu-list">
+                                <li>
+                                    <a href="/programme/core-offer">
+                                        <i class="fas mr-2 fa-bookmark"></i>Programme</a>
+                                </li>
+                                <li>
+                                    <a href="/resources">
+                                        <i class="fas mr-2 fa-paperclip"></i>Resources</a>
+                                </li>
+                                <li>
+                                    <a href="/branches">
+                                        <i class="fas mr-2 fa-code-branch"></i>Branches</a>
+                                </li>
+                                <li>
+                                    <a href="/teams">
+                                        <i class="fas mr-2 fa-users"></i>Meet the team</a>
+                                </li>
+                                <li>
+                                    <a href="/opportunities">
+                                        <i class="fas mr-2 fa-briefcase"></i>Opportunities</a>
+                                </li>
+                                <li>
+                                    <a href="https://sexpressionuk.notion.site/Sexpression-UK-Policies-4383c90bcc9a4085af3ba9d6c6c41bd4" target="_blank">
+                                        <i class="fas mr-2 fa-scroll"></i>Policies</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="column menu">
+                            <p class="menu-label">Connect with us</p>
+                            <ul class="menu-list">
+                                <li>
+                                    <a href="https://www.facebook.com/sexpressionuk" target="_blank">
+                                        <i class="fab mr-2 fa-facebook"></i>Facebook</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/sexpressionuk" target="_blank">
+                                        <i class="fab mr-2 fa-instagram"></i>Instagram</a>
+                                </li>
+                                <li>
+                                    <a href="https://twitter.com/sexpression" target="_blank">
+                                        <i class="fab mr-2 fa-twitter"></i>Twitter</a>
+                                </li>
+                                <li>
+                                    <a href="https://eventbrite.com" target="_blank">
+                                        <i class="fas mr-2 fa-calendar-day"></i>Eventbrite</a>
+                                </li>
+                                <li>
+                                    <a href="https://sexpression.teemill.com" target="_blank">
+                                        <i class="fas mr-2 fa-tshirt"></i>TeeMill</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.justgiving.com/campaign/sexpressionuk" target="_blank">
+                                        <i class="fas mr-2 fa-coins"></i>JustGiving</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="column menu">
+                            <p class="menu-label">Contact us</p>
+                            <ul class="menu-list">
+                                <li>
+                                    <a href="/contact/session">Request a session</a>
+                                </li>
+                                <li>
+                                    <a href="/contact/join">Join a branch</a>
+                                </li>
+                                <li>
+                                    <a href="/contact/create">Create a branch</a>
+                                </li>
+                                <li>
+                                    <a href="/contact/fundraise">Fundraise</a>
+                                </li>
+                                <li>
+                                    <a href="/contact/media">Media enquiry</a>
+                                </li>
+                                <li>
+                                    <a href="/contact/legacy">Leave a legacy</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="column menu">
+                            <form action="https://sexpression.us20.list-manage.com/subscribe/post?u=a12713abc0ae4f1b1d0841fcd&id=d08e375582" method="post">
+                                <div class="field">
+                                    <p class="menu-label">Subscribe to our newsletter</p>
+                                    <p>Get the latest news on a monthly basis.</p>
+                                    <input class="input" type="text" placeholder="Enter your email">
+                                    <p>Our <a href="https://sexpressionuk.notion.site/Sexpression-UK-Policies-4383c90bcc9a4085af3ba9d6c6c41bd4" target="_blank">Privacy Policy</a>
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <div class="control">
+                                        <button class="action-button hvr-grow button is-light">Subscribe</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </div>
-        </nav>
-            </div>
-        {{ content | safe }}
-        <footer class="footer">
-            <div class="container">
-                <div class="columns">
-                    <div class="column menu">
-                        <p class="menu-label">Pages</p>
-                        <ul class="menu-list">
-                            <li>
-                                <a href="/programme/core-offer">
-                                    <i class="fas mr-2 fa-bookmark"></i>Programme</a>
-                            </li>
-                            <li>
-                                <a href="/resources">
-                                    <i class="fas mr-2 fa-paperclip"></i>Resources</a>
-                            </li>
-                            <li>
-                                <a href="/branches">
-                                    <i class="fas mr-2 fa-code-branch"></i>Branches</a>
-                            </li>
-                            <li>
-                                <a href="/teams">
-                                    <i class="fas mr-2 fa-users"></i>Meet the team</a>
-                            </li>
-                            <li>
-                                <a href="/opportunities">
-                                    <i class="fas mr-2 fa-briefcase"></i>Opportunities</a>
-                            </li>
-                            <li>
-                                <a href="https://sexpressionuk.notion.site/Sexpression-UK-Policies-4383c90bcc9a4085af3ba9d6c6c41bd4" target="_blank"><i class="fas mr-2 fa-scroll"></i>Policies</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="column menu">
-                        <p class="menu-label">Connect with us</p>
-                        <ul class="menu-list">
-                            <li>
-                                <a href="https://www.facebook.com/sexpressionuk" target="_blank">
-                                    <i class="fab mr-2 fa-facebook"></i>Facebook</a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/sexpressionuk" target="_blank">
-                                    <i class="fab mr-2 fa-instagram"></i>Instagram</a>
-                            </li>
-                            <li>
-                                <a href="https://twitter.com/sexpression" target="_blank">
-                                    <i class="fab mr-2 fa-twitter"></i>Twitter</a>
-                            </li>
-                            <li>
-                                <a href="https://eventbrite.com" target="_blank">
-                                    <i class="fas mr-2 fa-calendar-day"></i>Eventbrite</a>
-                            </li>
-                            <li>
-                                <a href="https://sexpression.teemill.com" target="_blank">
-                                    <i class="fas mr-2 fa-tshirt"></i>TeeMill</a>
-                            </li>
-                            <li>
-                                <a href="https://www.justgiving.com/campaign/sexpressionuk" target="_blank">
-                                    <i class="fas mr-2 fa-coins"></i>JustGiving</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="column menu">
-                        <p class="menu-label">Contact us</p>
-                        <ul class="menu-list">
-                            <li>
-                                <a href="/contact/session">Request a session</a>
-                            </li>
-                            <li>
-                                <a href="/contact/join">Join a branch</a>
-                            </li>
-                            <li>
-                                <a href="/contact/create">Create a branch</a>
-                            </li>
-                            <li>
-                                <a href="/contact/fundraise">Fundraise</a>
-                            </li>
-                            <li>
-                                <a href="/contact/media">Media enquiry</a>
-                            </li>
-                            <li>
-                                <a href="/contact/legacy">Leave a legacy</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="column menu">
-                        <form action="https://sexpression.us20.list-manage.com/subscribe/post?u=a12713abc0ae4f1b1d0841fcd&id=d08e375582" method="post">
-                            <div class="field">
-                                <p class="menu-label">Subscribe to our newsletter</p>
-                                <p>Get the latest news on a monthly basis.</p>
-                                <input class="input" type="text" placeholder="Enter your email">
-                                <p>Our <a href="https://sexpressionuk.notion.site/Sexpression-UK-Policies-4383c90bcc9a4085af3ba9d6c6c41bd4" target="_blank">Privacy Policy</a></p>
-                            </div>
-                            <div class="field">
-                                <div class="control">
-                                    <button class="action-button hvr-grow button is-light">Subscribe</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-  }
-</script>
-    </body>
-</html>
+            </footer>
+            <script>
+                if (window.netlifyIdentity) {
+                    window
+                        .netlifyIdentity
+                        .on("init", user => {
+                            if (!user) {
+                                window
+                                    .netlifyIdentity
+                                    .on("login", () => {
+                                        document.location.href = "/admin/";
+                                    });
+                            }
+                        });
+                }
+            </script>
+        </body>
+    </html>
