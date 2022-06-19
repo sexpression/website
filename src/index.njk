@@ -1,5 +1,45 @@
 ---
 layout: headerfooter.njk
+"visionandvalues": [
+        {
+            "icon": "fas fa-star",
+            "value": "Empowering",
+            "vision": "Young people's individual beliefs are respected, and our teaching helps young people to act on them. We also encourage young people to respect the beliefs of others."
+        },
+        {
+            "icon": "fas fa-chalkboard-teacher",
+            "value": "Near-peer",
+            "vision": "Because university students are closer in age to the young people than their teachers and parents our near-peer teaching encourages young people to participate."
+        },
+        {
+            "icon": "fas fa-comments",
+            "value": "Informal",
+            "vision": "Young people learn best and are more likely to make informed decisions about sex and relationships if they participate in discussions rather than being lectured."
+        },
+        {
+            "icon": "fas fa-search",
+            "value": "Comprehensive",
+            "vision": "Young people should be informed about all aspects of their sexual and reproductive health."
+        }
+    ]
+"stats": [
+    {
+        "percentage": "87%",
+        "description": "of people agreed or strongly agreed that they had learnt something"
+    },
+        {
+        "percentage": "93%",
+        "description": "of young people said that they agreed or strongly agreed that the session was delivered well"
+    },
+        {
+        "percentage": "85%",
+        "description": "of people said they agreed or strongly agreed that the session had made them feel better prepared for the topic in question"
+    },
+        {
+        "percentage": "83%",
+        "description": "reported they would like future sessions from Sexpression:UK"
+    }
+]
 ---
 
 <section class="hero is-medium container py-5">
@@ -69,25 +109,15 @@ layout: headerfooter.njk
 
     <section class="section">
         <div class="container has-text-centered py-4">
-            <h2 class="title">Statistics from 2018-2019 academic year</h2>
-            <p class="subtitle mb-6">Rated agreement as 3/5-5/5 in post-session feedback forms. Preliminary data from 5287 feedback forms provided by 10 out of 28 operating branches.</p>
+            <h2 class="title">{{ home.statistics_title }}</h2>
+            <p class="subtitle mb-6">{{ home.statistics_description }}</p>
             <div class="columns">
+                {% for stat in stats %}
                 <div class="column">
-                    <p class="title is-size-1 primary">87%</p>
-                    <p class="heading">of people agreed or strongly agreed that they had learnt something</p>
+                    <p class="title is-size-1 primary">{{ stat.percentage }}</p>
+                    <p class="heading">{{ stat.description }}</p>
                 </div>
-                <div class="column">
-                    <p class="title is-size-1 primary">93%</p>
-                    <p class="heading">of young people said that they agreed or strongly agreed that the session was delivered well</p>
-                </div>
-                <div class="column">
-                    <p class="title is-size-1 primary">85%</p>
-                    <p class="heading">of people said they agreed or strongly agreed that the session had made them feel better prepared for the topic in question</p>
-                </div>
-                <div class="column">
-                    <p class="title is-size-1 primary">83%</p>
-                    <p class="heading">reported they would like future sessions from Sexpression:UK</p>
-                </div>
+                {% endfor%}
             </div>
         </div>
     </section>
