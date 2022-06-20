@@ -9,15 +9,15 @@ title: Opportunities
         <div class="mb-4">
             <h1><i class="fas mr-2 fa-briefcase"></i> {{ title }}</h1>
         </div>
-    {% for opportunity in collections.opportunity %}
+    {% for opportunity in opportunities %}
 
             <div class="card border-radius-2 p-5 m-3">
                 <div class="card-content">
                     <div class="columns is-vcentered">
                         <div class="media-content">
                         <div class="content">
-                            <h3><a href="{{ opportunity.data.title | slug }}/" class="is-4 is-size-5-mobile">{{ opportunity.data.title }}</a> ({{ opportunity.data.positions }})</h3>
-                            <p class="subtitle is-6 is-size-7-mobile"><b>Closes:</b> {{ opportunity.data.deadline }}</p>
+                            <h3><a href="{{ opportunity.title | slug }}/" class="is-4 is-size-5-mobile">{{ opportunity.title }}</a></h3>
+                            <p class="subtitle is-6 is-size-7-mobile"><b>Closes:</b> {{ opportunity.deadline }}</p>
                         </div>
                         </div>
                     </div>
