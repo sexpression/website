@@ -8,19 +8,38 @@ const table = 'resources';
 
 exports.handler = async function(event, context) {
     try {
-        const data = await directus.items(table).readByQuery({ meta: 'total_count' });
 
-        //fields('university.name')
+        let tagsStatus = event.queryStringParameters.tags;
 
-        console.log("successful!");
+        console.log("here!");
+        console.log(tagsStatus);
 
-        return {
-            statusCode: 200,
-            message: "All good in the hood",
-            body: JSON.stringify({
-                items: data.data,
-                total: data.meta.total_count,
-            })
+        if (tagsStatus) {
+            const data = await directus.items(table, "fields");
+            console.log("tags!");
+            console.log("successful!");
+
+            return {
+                statusCode: 200,
+                message: "All good in the hood",
+                body: JSON.stringify({
+                    items: data.data,
+                    total: data.meta.total_count,
+                })
+            }
+        } else {
+            const data = await directus.items(table).readByQuery({ meta: 'total_count' });
+            console.log("no tags!");
+            console.log("successful!");
+
+            return {
+                statusCode: 200,
+                message: "All good in the hood",
+                body: JSON.stringify({
+                    items: data.data,
+                    total: data.meta.total_count,
+                })
+            }
         }
 
     } catch (err) {

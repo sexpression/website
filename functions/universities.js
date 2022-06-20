@@ -28,21 +28,19 @@ function updateFilterCountry(string) {
 }
 
 exports.handler = async function(event, context) {
-
-    let queryStatus = event.queryStringParameters.status;
-    let queryCountry = event.queryStringParameters.country;
-
-    if (queryStatus) {
-        updateFilterStatus(queryFormatter(queryStatus));
-    }
-
-    if (queryCountry) {
-        updateFilterCountry(queryFormatter(queryCountry))
-    }
-
-    console.log(filter);
-
     try {
+        let queryStatus = event.queryStringParameters.status;
+        let queryCountry = event.queryStringParameters.country;
+
+        if (queryStatus) {
+            updateFilterStatus(queryFormatter(queryStatus));
+        }
+
+        if (queryCountry) {
+            updateFilterCountry(queryFormatter(queryCountry))
+        }
+
+        console.log(filter);
         const data = await directus.items(table).readByQuery({ meta: 'total_count', filter: filter });
 
         console.log("successful!");
