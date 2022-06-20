@@ -3,6 +3,8 @@ const { Directus } = require('@directus/sdk');
 const directus = new Directus(`https://${DIRECTUS_URL}`);
 
 const table = 'resources';
+// ?resources=all
+// ?tags=all
 
 exports.handler = async function(event, context) {
     try {

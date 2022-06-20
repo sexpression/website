@@ -4,14 +4,14 @@ title: Resouces
 eleventyComputed:
     title: "{{ thisresource.name }}"
 pagination:
-    data: resourcestag
+    data: resources.tag
     size: 1
     alias: thisresource
 permalink: "resources/{{ thisresource.name | slug }}/"
 ---
 <h1 class="has-text-centered">{{ title }}</h1>
 
-<div class="tabs">
+{# <div class="tabs">
     <ul>
         <li {% if title == "Resources" %} class="is-active" {% endif %}>
             <a href="/resources">All Resources</a>
@@ -22,7 +22,7 @@ permalink: "resources/{{ thisresource.name | slug }}/"
             </li>
         {% endfor %}
     </ul>
-</div>
+</div> #}
 
 <div class="columns is-multiline is-mobile">
     {% for resource in resources %}
