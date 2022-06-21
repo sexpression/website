@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// if (window.location.pathname == "/contact/session/") {
-//     console.log("/contact/session/");
+// if (window.location.pathname == "/form/session/") {
+//     console.log("/form/session/");
 //     let fin = dte();
 //     let weekInput = document.getElementById("week");
 //     weekInput.setAttribute("min", `${fin.minyear}-W${fin.week}`);

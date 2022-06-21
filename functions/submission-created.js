@@ -5,11 +5,11 @@ const {
     SENDGRID_FROM_EMAIL,
 } = process.env;
 
-exports.handler = async function (event, context, callback) {
+exports.handler = async function(event, context, callback) {
     const payload = JSON.parse(event.body).payload.data;
     const referrer = new URL(payload.referrer);
 
-    if (referrer.pathname === "/contact/join/") {
+    if (referrer.pathname === "/form/join/") {
 
         const volunteerEmail = payload.email;
         const volunteerName = payload.fullname;
@@ -44,17 +44,15 @@ exports.handler = async function (event, context, callback) {
 
         return {
             statusCode: 200,
-            body: JSON.stringify(
-                {
-                    msg: {
-                        branch: response1,
-                        volunteer: response2
-                    }
+            body: JSON.stringify({
+                msg: {
+                    branch: response1,
+                    volunteer: response2
                 }
-            ),
+            }),
         };
     }
-    if (referrer.pathname === "/contact/session/") {
+    if (referrer.pathname === "/form/session/") {
 
         // teacher
 
@@ -97,8 +95,7 @@ exports.handler = async function (event, context, callback) {
             to: `${branchEmail}`,
             from: SENDGRID_FROM_EMAIL,
             subject: `📌 New session - ${institutionName} (${institutionType})`,
-            html:
-                `<div>
+            html: `<div>
                 <div>
                     <h1>Teacher</h1>
                     <p>${teacherName} (${teacherPronouns})</p>
@@ -143,14 +140,12 @@ exports.handler = async function (event, context, callback) {
 
         return {
             statusCode: 200,
-            body: JSON.stringify(
-                {
-                    msg: {
-                        branch: response1,
-                        volunteer: response2
-                    }
+            body: JSON.stringify({
+                msg: {
+                    branch: response1,
+                    volunteer: response2
                 }
-            ),
+            }),
         };
     }
 }

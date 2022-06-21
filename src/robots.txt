@@ -4,6 +4,10 @@ Disallow: /nogooglebot/
 
 # Group 2
 User-agent: *
+Disallow: /sent
+
+# Group 3
+User-agent: *
 Allow: /
 
 Sitemap: https://sexpression.org.uk/sitemap.xml
