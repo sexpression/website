@@ -3,11 +3,10 @@ const { Directus } = require('@directus/sdk');
 const directus = new Directus(`https://${DIRECTUS_URL}`);
 
 const table = 'trustees';
-// const fields = ['*', 'university.country', 'university.name'];
 
 exports.handler = async function(event, context) {
     try {
-        const data = await directus.items(table).readByQuery({ meta: 'total_count' });
+        const data = await directus.items(table).readByQuery({ meta: 'total_count', sort: "full_name" });
 
         console.log({
             items: data.data,
