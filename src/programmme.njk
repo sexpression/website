@@ -7,7 +7,6 @@ pagination:
 permalink: "programme/{{ chapter.title | slug }}/"
 ---
 
-
 <div class="tabs">
     <ul>
         {% for section in programme %}
@@ -18,9 +17,8 @@ permalink: "programme/{{ chapter.title | slug }}/"
     </ul>
 </div>
 
-<h1>{{ chapter.title }}</h1>
-<p>{{ chapter.date_created }}</p>
-
-<section>
-{{ chapter.body | safe }}
+<section class="" style="margin: 5rem auto 5rem auto; max-width: 640px;">
+    <p><b>Last updated</b><br>{{ chapter.date_updated }}</p>
+    <h1>{{ chapter.title }}</h1>
+    {{ chapter.body | safe }}
 </section>
