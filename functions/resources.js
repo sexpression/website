@@ -28,7 +28,7 @@ exports.handler = async function(event, context) {
                 })
             }
         } else {
-            const data = await directus.items(table).readByQuery({ meta: 'total_count' });
+            const data = await directus.items(table).readByQuery({ meta: 'total_count', sort: "name" });
             console.log("no tags!");
             console.log("successful!");
 
