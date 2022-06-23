@@ -18,8 +18,7 @@ permalink: "form/{{ form.title | slug }}/"
         <form name="{{ form.title }}" method="POST" data-netlify-recaptcha="true" data-netlify="true">
             <section class="section">
 
-                {% set htmlform = form.title | slug %}
-                {% include "forms/" + htmlform + ".njk" %}
+                {% include "forms/" + form.template + ".njk" %}
 
                 <div data-netlify-recaptcha="true"></div>
                 <div class="field">
