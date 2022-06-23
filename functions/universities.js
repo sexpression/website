@@ -65,7 +65,7 @@ exports.handler = async function(event, context) {
 
         return {
             statusCode: 200,
-            message: "All good in the hood",
+            message: "Successful",
             body: JSON.stringify({
                 items: data.data,
                 total: data.meta.total_count,
@@ -73,10 +73,10 @@ exports.handler = async function(event, context) {
         }
 
     } catch (err) {
-        console.log(JSON.stringify({ msg: err.message }));
         return {
             statusCode: 500,
-            message: JSON.stringify({ msg: err.message }), // Could be a custom message or object i.e. JSON.stringify(err)
+            message: "Failed",
+            body: JSON.stringify({ msg: err.message })
         }
     }
 }

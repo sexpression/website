@@ -6,28 +6,21 @@ const table = 'trustees';
 
 exports.handler = async function(event, context) {
     try {
-        const data = await directus.items(table).readByQuery({ meta: 'total_count', sort: "full_name" });
-
-        console.log({
-            items: data.data,
-            total: data.meta.total_count,
-        });
-
-        console.log("successful!");
+        let data = await directus.items(table).readByQuery({ meta: 'total_count', sort: "full_name" });
 
         return {
             statusCode: 200,
-            message: "All good in the hood",
+            message: "Successful",
             body: JSON.stringify({
                 items: data.data
             })
         }
 
     } catch (err) {
-        console.log(JSON.stringify({ msg: err.message }));
         return {
             statusCode: 500,
-            message: JSON.stringify({ msg: err.message }), // Could be a custom message or object i.e. JSON.stringify(err)
+            message: "Failed",
+            body: JSON.stringify({ msg: err.message })
         }
     }
 }
