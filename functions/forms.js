@@ -1,21 +1,15 @@
 const { DIRECTUS_URL } = process.env;
 const { Directus } = require('@directus/sdk');
 const directus = new Directus(`https://${DIRECTUS_URL}`);
-
 const table = 'forms';
-// const fields = ['*', 'university.country', 'university.name'];
 
 exports.handler = async function(event, context) {
     try {
-        const data = await directus.items(table).readByQuery({ meta: 'total_count', sort: "name" });
-
-        //fields('university.name')
-
-        console.log("successful!");
+        let data = await directus.items(table).readByQuery({ meta: 'total_count', sort: "name" });
 
         return {
             statusCode: 200,
-            message: "All good in the hood",
+            message: "Successful",
             body: JSON.stringify({
                 items: data.data,
                 total: data.meta.total_count,
@@ -23,10 +17,10 @@ exports.handler = async function(event, context) {
         }
 
     } catch (err) {
-        console.log(JSON.stringify({ msg: err.message }));
         return {
             statusCode: 500,
-            message: JSON.stringify({ msg: err.message }), // Could be a custom message or object i.e. JSON.stringify(err)
+            message: "Failed",
+            body: JSON.stringify({ msg: err.message })
         }
     }
 }
