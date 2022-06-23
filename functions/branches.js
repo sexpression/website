@@ -3,10 +3,12 @@ const { Directus } = require('@directus/sdk');
 const directus = new Directus(`https://${DIRECTUS_URL}`);
 
 const table = 'branches';
-const fields = ['*', 'branches.country', 'university.name'];
+const fields = ['*', 'branches .country', 'university.name'];
 const filter = { "status": { "_eq": "published" } };
 
-function queryFormatter(string) {
+function queryFormatterCaps(string) {
+    // WAlEs
+    // Wales
     string.replace('-', / /g);
     let splitStr = string.toLowerCase().split(' ');
     for (let i = 0; i < splitStr.length; i++) {
@@ -15,11 +17,24 @@ function queryFormatter(string) {
     return splitStr.join(' ');
 }
 
+function queryFormatterNoCaps(string) {
+    // ARChIVeD
+    // archived
+    string.replace('-', / /g);
+    let splitStr = string.toLowerCase().split(' ');
+    for (let i = 0; i < splitStr.length; i++) {
+        splitStr[i] = splitStr[i].charAt(0) + splitStr[i].substring(1);
+    }
+    return splitStr.join(' ');
+}
+
 function updateFilterStatus(string) {
+    console.log(string)
     filter.status = { "_eq": string };
 }
 
 function updateFilterCountry(string) {
+    console.log(string)
     let country = {
         "university": {
             "country": {
@@ -32,20 +47,19 @@ function updateFilterCountry(string) {
 
 exports.handler = async function(event, context) {
 
-    let queryStatus = event.queryStringParameters.status;
-    let queryCountry = event.queryStringParameters.country;
-
-    if (queryStatus) {
-        updateFilterStatus(queryFormatter(queryStatus));
-    }
-
-    if (queryCountry) {
-        updateFilterCountry(queryFormatter(queryCountry))
-    }
-
-    console.log(filter);
-
     try {
+        let queryStatus = event.queryStringParameters.status;
+        let queryCountry = event.queryStringParameters.country;
+
+        if (queryStatus) {
+            updateFilterStatus(queryFormatterNoCaps(queryStatus));
+        }
+
+        if (queryCountry) {
+            updateFilterCountry(queryFormatterCaps(queryCountry))
+        }
+
+        console.log(filter);
         const data = await directus.items(table).readByQuery({ meta: 'total_count', fields: fields, filter: filter });
 
         console.log("successful!");
