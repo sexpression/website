@@ -7,7 +7,7 @@
 [[redirects]]
     from = "/api/*"
     status = 200
-    to = "/.netlify/functions/:splat"
+    to = "/.netlify/builders/:splat"
 
 [functions."build"]
 schedule = "@daily"
