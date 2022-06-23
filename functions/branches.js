@@ -6,7 +6,9 @@ const table = 'branches';
 const fields = ['*', 'branches .country', 'university.name'];
 const filter = { "status": { "_eq": "published" } };
 
-function queryFormatter(string) {
+function queryFormatterCaps(string) {
+    // WAlEs
+    // Wales
     string.replace('-', / /g);
     let splitStr = string.toLowerCase().split(' ');
     for (let i = 0; i < splitStr.length; i++) {
@@ -15,11 +17,24 @@ function queryFormatter(string) {
     return splitStr.join(' ');
 }
 
+function queryFormatterNoCaps(string) {
+    // ARChIVeD
+    // archived
+    string.replace('-', / /g);
+    let splitStr = string.toLowerCase().split(' ');
+    for (let i = 0; i < splitStr.length; i++) {
+        splitStr[i] = splitStr[i].charAt(0) + splitStr[i].substring(1);
+    }
+    return splitStr.join(' ');
+}
+
 function updateFilterStatus(string) {
+    console.log(string)
     filter.status = { "_eq": string };
 }
 
 function updateFilterCountry(string) {
+    console.log(string)
     let country = {
         "university": {
             "country": {
@@ -37,11 +52,11 @@ exports.handler = async function(event, context) {
         let queryCountry = event.queryStringParameters.country;
 
         if (queryStatus) {
-            updateFilterStatus(queryFormatter(queryStatus));
+            updateFilterStatus(queryFormatterNoCaps(queryStatus));
         }
 
         if (queryCountry) {
-            updateFilterCountry(queryFormatter(queryCountry))
+            updateFilterCountry(queryFormatterCaps(queryCountry))
         }
 
         console.log(filter);
