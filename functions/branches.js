@@ -3,51 +3,52 @@ const { Directus } = require('@directus/sdk');
 const directus = new Directus(`https://${DIRECTUS_URL}`);
 
 const table = 'branches';
-const fields = ['*', 'branches .country', 'university.name'];
-const filter = { "status": { "_eq": "published" } };
-
-function queryFormatterCaps(string) {
-    // WAlEs
-    // Wales
-    string.replace('-', / /g);
-    let splitStr = string.toLowerCase().split(' ');
-    for (let i = 0; i < splitStr.length; i++) {
-        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
-    }
-    return splitStr.join(' ');
-}
-
-function queryFormatterNoCaps(string) {
-    // ARChIVeD
-    // archived
-    string.replace('-', / /g);
-    let splitStr = string.toLowerCase().split(' ');
-    for (let i = 0; i < splitStr.length; i++) {
-        splitStr[i] = splitStr[i].charAt(0) + splitStr[i].substring(1);
-    }
-    return splitStr.join(' ');
-}
-
-function updateFilterStatus(string) {
-    console.log(string)
-    filter.status = { "_eq": string };
-}
-
-function updateFilterCountry(string) {
-    console.log(string)
-    let country = {
-        "university": {
-            "country": {
-                "_eq": string
-            }
-        }
-    }
-    Object.assign(filter, country);
-}
 
 exports.handler = async function(event, context) {
-
     try {
+
+        let fields = ['*', 'branches.country', 'university.name'];
+        let filter = { "status": { "_eq": "published" } };
+
+        function queryFormatterCaps(string) {
+            // WAlEs
+            // Wales
+            string.replace('-', / /g);
+            let splitStr = string.toLowerCase().split(' ');
+            for (let i = 0; i < splitStr.length; i++) {
+                splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+            }
+            return splitStr.join(' ');
+        }
+
+        function queryFormatterNoCaps(string) {
+            // ARChIVeD
+            // archived
+            string.replace('-', / /g);
+            let splitStr = string.toLowerCase().split(' ');
+            for (let i = 0; i < splitStr.length; i++) {
+                splitStr[i] = splitStr[i].charAt(0) + splitStr[i].substring(1);
+            }
+            return splitStr.join(' ');
+        }
+
+        function updateFilterStatus(string) {
+            console.log(string)
+            filter.status = { "_eq": string };
+        }
+
+        function updateFilterCountry(string) {
+            console.log(string)
+            let country = {
+                "university": {
+                    "country": {
+                        "_eq": string
+                    }
+                }
+            }
+            Object.assign(filter, country);
+        }
+
         let queryStatus = event.queryStringParameters.status;
         let queryCountry = event.queryStringParameters.country;
 
@@ -60,7 +61,7 @@ exports.handler = async function(event, context) {
         }
 
         console.log(filter);
-        const data = await directus.items(table).readByQuery({ meta: 'total_count', fields: fields, filter: filter });
+        let data = await directus.items(table).readByQuery({ meta: 'total_count', fields: fields, filter: filter });
 
         console.log("successful!");
 
