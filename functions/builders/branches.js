@@ -1,10 +1,10 @@
 const { DIRECTUS_URL } = process.env;
 const { Directus } = require('@directus/sdk');
 const directus = new Directus(`https://${DIRECTUS_URL}`);
-
 const table = 'branches';
+const { builder } = require("@netlify/functions")
 
-exports.handler = async function(event, context) {
+async function handler(event, context) {
     try {
         let fields = ['*', 'branches.country', 'university.name'];
         let filter = { "status": { "_eq": "published" } };
@@ -72,3 +72,5 @@ exports.handler = async function(event, context) {
         }
     }
 }
+
+exports.handler = builder(handler);
