@@ -1,11 +1,12 @@
 <div class="field">
-    <label class="label is-uppercase">Sexpression:UK Branch</label>
+    <label class="label is-uppercase">Sexpression:UK Branches</label>
     <div class="control">
         <div class="select">
             <select name="branch" required="required">
                 {% for branch in branches %}
                     <option value="{{ branch.email }},{{ branch.name }}">{{ branch.name }}</option>
                 {% endfor %}
+                    <option value="">Other</option>
             </select>
         </div>
     </div>
