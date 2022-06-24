@@ -10,24 +10,23 @@
         <script src="https://kit.fontawesome.com/4a8cf76ed6.js" crossorigin="anonymous"></script>
         <script type="module" src="/js/app.js"></script>
         <!-- Primary Meta Tags -->
-        <title>{{ title }} | {{ site.title }}</title>
-        <meta name="title" content="{{ title }} | {{ site.title }}">
+        <title>{{ home.title }} | {{ home.hero_title }}</title>
+        <meta name="title" content="{{ home.title }} | {{ home.hero_title }}">
         <meta
-        name="description" content="{{ description }}">
+        name="description" content="{{ home.hero_description }}">
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
-        <meta property="og:url" content="{{ url }}">
-        <meta property="og:title" content="{{ title }} | {{ site.title }}">
-        <meta property="og:description" content="{{ description }}">
+        <meta property="og:url" content="https://sexpression.org.uk">
+        <meta property="og:title" content="{{ home.title }} | {{ home.hero_title }}">
+        <meta property="og:description" content="{{ home.hero_description }}">
         <meta
-        property="og:image" content="{{ image_url }}">
+        property="og:image" content="https://sexpression.directus.app/assets/5fd315b1-9bbb-4715-b133-11e584c5dfde">
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image">
-        <meta property="twitter:url" content="{{ image_url }}">
-        <meta property="twitter:title" content="{{ title }} | {{ site.title }}">
-        <meta property="twitter:description" content="{{ description }}">
-        <meta property="twitter:image" content="{{ image_url }}">
-        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+        <meta property="twitter:url" content="https://sexpression.directus.app/assets/5fd315b1-9bbb-4715-b133-11e584c5dfde">
+        <meta property="twitter:title" content="{{ home.title }} | {{ home.hero_title }}">
+        <meta property="twitter:description" content="{{ home.hero_description }}">
+        <meta property="twitter:image" content="https://sexpression.directus.app/assets/5fd315b1-9bbb-4715-b133-11e584c5dfde">
     </head>
     <body>
         <div class="container pt-4">
@@ -38,7 +37,7 @@
                             <a class="navbar-item is-size-3 is-uppercase poppins" href="/">
                                 {% from 'macros/svgTwo.njk' import svgTwo %}
                                 {{ svgTwo(size="3rem") }}
-                                <p>Sexpression:UK</p>
+                                <p>{{ home.title }}</p>
                             </a>
                         </div>
                         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">

@@ -1,45 +1,5 @@
 ---
 layout: headerfooter.njk
-"visionandvalues": [
-        {
-            "icon": "fas fa-star",
-            "value": "Empowering",
-            "vision": "Young people's individual beliefs are respected, and our teaching helps young people to act on them. We also encourage young people to respect the beliefs of others."
-        },
-        {
-            "icon": "fas fa-chalkboard-teacher",
-            "value": "Near-peer",
-            "vision": "Because university students are closer in age to the young people than their teachers and parents our near-peer teaching encourages young people to participate."
-        },
-        {
-            "icon": "fas fa-comments",
-            "value": "Informal",
-            "vision": "Young people learn best and are more likely to make informed decisions about sex and relationships if they participate in discussions rather than being lectured."
-        },
-        {
-            "icon": "fas fa-search",
-            "value": "Comprehensive",
-            "vision": "Young people should be informed about all aspects of their sexual and reproductive health."
-        }
-    ]
-"stats": [
-    {
-        "percentage": "87%",
-        "description": "of people agreed or strongly agreed that they had learnt something"
-    },
-        {
-        "percentage": "93%",
-        "description": "of young people said that they agreed or strongly agreed that the session was delivered well"
-    },
-        {
-        "percentage": "85%",
-        "description": "of people said they agreed or strongly agreed that the session had made them feel better prepared for the topic in question"
-    },
-        {
-        "percentage": "83%",
-        "description": "reported they would like future sessions from Sexpression:UK"
-    }
-]
 ---
 
 <section class="hero is-medium container py-5">
@@ -62,15 +22,17 @@ layout: headerfooter.njk
 </section>
 
 <section class="section container has-text-centered">
-    <h2 class="subtitle"><b>
+    <h2 class="subtitle">
+        <b>
             Our Partners, Sponsors, Friends and Donors
-        </b></h2>
+        </b>
+    </h2>
     <div class="columns is-multiline is-mobile is-vcentered">
         {% for partner in partners %}
             <div class="column is-one-quarter-mobile">
                 <a href="{{ partner.website }}" target="_blank">
                     <img src="https://sexpression.directus.app/assets/{{ partner.logo }}" alt="{{ partner.name }}">
-                    </a>
+                </a>
             </div>
             {% endfor%}
         </div>
@@ -87,37 +49,66 @@ layout: headerfooter.njk
         <div class="container py-4">
             <h2 class="title has-text-centered mb-6">{{ home.our_vision_and_values_title }}</h2>
             <div class="columns">
-                {% for vv in visionandvalues %}
-                    <div class="column is-3 is-flex is-flex-direction-column" style="gap: 2rem;">
-                        <i class="{{ vv.icon }} is-size-1 primary"></i>
-                        <div>
-                        <h4 class="title is-4 gradient primary">{{ vv.value }}</h4>
-                        <p class="subtitle is-6">{{ vv.vision }}</p>
-                        </div>
+                <div class="column is-3 is-flex is-flex-direction-column" style="gap: 2rem;">
+                    <i class="fas fa-{{ home.our_vision_and_values_item_1_icon }} is-size-1 primary"></i>
+                    <div>
+                        <h4 class="title is-4 gradient primary">{{ home.our_vision_and_values_item_1_title }}</h4>
+                        <p class="subtitle is-6">{{ home.our_vision_and_values_item_1_description }}</p>
                     </div>
-                    {% endfor%}
+                </div>
+                <div class="column is-3 is-flex is-flex-direction-column" style="gap: 2rem;">
+                    <i class="fas fa-{{ home.our_vision_and_values_item_2_icon }} is-size-1 primary"></i>
+                    <div>
+                        <h4 class="title is-4 gradient primary">{{ home.our_vision_and_values_item_2_title }}</h4>
+                        <p class="subtitle is-6">{{ home.our_vision_and_values_item_2_description }}</p>
+                    </div>
+                </div>
+                <div class="column is-3 is-flex is-flex-direction-column" style="gap: 2rem;">
+                    <i class="fas fa-{{ home.our_vision_and_values_item_3_icon }} is-size-1 primary"></i>
+                    <div>
+                        <h4 class="title is-4 gradient primary">{{ home.our_vision_and_values_item_3_title }}</h4>
+                        <p class="subtitle is-6">{{ home.our_vision_and_values_item_3_description }}</p>
+                    </div>
+                </div>
+                <div class="column is-3 is-flex is-flex-direction-column" style="gap: 2rem;">
+                    <i class="fas fa-{{ home.our_vision_and_values_item_4_icon }} is-size-1 primary"></i>
+                    <div>
+                        <h4 class="title is-4 gradient primary">{{ home.our_vision_and_values_item_4_title }}</h4>
+                        <p class="subtitle is-6">{{ home.our_vision_and_values_item_4_description }}</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <div class="columns is-mobile mb-5 is-gapless">
-        <div class="column is-4"><img src="img/photo1.jpg" alt=""></div>
-        <div class="column is-4"><img src="img/photo2.jpg" alt=""></div>
-        <div class="column is-4"><img src="img/photo3.jpg" alt=""></div>
     </div>
+</section>
 
-    <section class="section">
-        <div class="container has-text-centered py-4">
-            <h2 class="title">{{ home.statistics_title }}</h2>
-            <p class="subtitle mb-6">{{ home.statistics_description }}</p>
-            <div class="columns">
-                {% for stat in stats %}
+<div class="columns is-mobile mb-5 is-gapless">
+    <div class="column is-4"><img src="https://sexpression.directus.app/assets/{{ home.photo_1 }}" alt=""></div>
+    <div class="column is-4"><img src="https://sexpression.directus.app/assets/{{ home.photo_2 }}" alt=""></div>
+    <div class="column is-4"><img src="https://sexpression.directus.app/assets/{{ home.photo_3 }}" alt=""></div>
+</div>
+
+<section class="section">
+    <div class="container has-text-centered py-4">
+        <h2 class="title">{{ home.statistics_title }}</h2>
+        <p class="subtitle mb-6">{{ home.statistics_description }}</p>
+        <div class="columns">
                 <div class="column">
-                    <p class="title is-size-1 primary">{{ stat.percentage }}</p>
-                    <p class="heading">{{ stat.description }}</p>
+                    <p class="title is-size-1 primary">{{ home.statistics_item_1_percentage }}</p>
+                    <p class="heading">{{ home.statistics_item_1_statement | upper }}</p>
                 </div>
-                {% endfor%}
+                <div class="column">
+                    <p class="title is-size-1 primary">{{ home.statistics_item_2_percentage }}</p>
+                    <p class="heading">{{ home.statistics_item_2_statement | upper }}</p>
+                </div>
+                <div class="column">
+                    <p class="title is-size-1 primary">{{ home.statistics_item_3_percentage }}</p>
+                    <p class="heading">{{ home.statistics_item_3_statement | upper }}</p>
+                </div>
+                <div class="column">
+                    <p class="title is-size-1 primary">{{ home.statistics_item_4_percentage }}</p>
+                    <p class="heading">{{ home.statistics_item_4_statement | upper }}</p>
+                </div>
             </div>
         </div>
     </section>
