@@ -7,26 +7,26 @@ pagination:
     alias: form
 permalink: "form/{{ form.title | slug }}/"
 ---
-<div class="container">
-    <div class="column my-6">
-        <h2>{{ form.title }}</h2>
-        <div>
-            {{ form.body | safe }}
+<div class="container" width="768px" style="margin: 5rem auto;">
+    <div class="columns">
+        <div class="column my-4">
+            <div class="content">
+                <h1>{{ form.title }}</h1>
+                {{ form.body | safe }}
+            </div>
         </div>
-    </div>
-    <div class="column my-6">
-        <form name="{{ form.title }}" method="POST" data-netlify-recaptcha="true" data-netlify="true">
-            <section class="section">
+        <div class="column my-8">
+            <form name="{{ form.title }}" method="POST" data-netlify-recaptcha="true" data-netlify="true">
 
-                {% include "forms/" + form.template + ".njk" %}
+                    {% include "forms/" + form.template + ".njk" %}
 
-                <div data-netlify-recaptcha="true"></div>
-                <div class="field">
-                    <div class="control">
-                        <button type="submit" class="button is-link">Send</button>
+                    <div data-netlify-recaptcha="true"></div>
+                    <div class="field">
+                        <div class="control">
+                            <button type="submit" class="button is-link">Send</button>
+                        </div>
                     </div>
-                </div>
-            </section>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
