@@ -1,133 +1,101 @@
-const client = require('@sendgrid/mail');
-
+const sgMail = require('@sendgrid/mail');
+const { DIRECTUS_URL } = process.env;
+const { Directus } = require('@directus/sdk');
+const directus = new Directus(`https://${DIRECTUS_URL}`);
 const {
     SENDGRID_API_KEY,
     SENDGRID_FROM_EMAIL,
 } = process.env;
 
-exports.handler = async function (event, context, callback) {
-    const payload = JSON.parse(event.body).payload.data;
+sgMail.setApiKey(SENDGRID_API_KEY);
 
-    console.log(payload.referrer);
-    const referrer = new URL(payload.referrer);
-    console.log(payload.pathname);
-
-    if (referrer.pathname === "/contact/join/") {
-
-        const volunteerEmail = payload.email;
-        const volunteerName = payload.fullname;
-        let volunteerPronouns = payload.genderpronouns;
-
-        console.log(`Pre: ${volunteerPronouns} - ${typeof volunteerPronouns}`);
-
-        if (volunteerPronouns == null | volunteerPronouns == "") {
-            volunteerPronouns = 'They/Them/Their'
-        }
-
-        console.log(`Post: ${volunteerPronouns} -  ${typeof volunteerPronouns}`);
-
-        const branchArr = payload.branch.split(",");
-        const branchEmail = branchArr[0];
-        const branchName = branchArr[1];
-
-        client.setApiKey(SENDGRID_API_KEY);
-
-        const msgToBranch = {
-            to: `${branchEmail}`,
-            from: SENDGRID_FROM_EMAIL,
-            subject: `New volunteer - ${volunteerName} 🎉`,
-            text: `${volunteerName} (${volunteerPronouns}) wants to join your branch.`,
+function messageContructor(to, from, subject, text, html = undefined) {
+    try {
+        return {
+            to: to,
+            from: from,
+            subject: subject,
+            text: text,
+            html: html
         };
+    } catch (error) {
+        console.error(error);
+    }
+}
 
-        const msgToVolunteer = {
-            to: `${volunteerEmail}`,
-            from: SENDGRID_FROM_EMAIL,
-            subject: `Thank you - Sexpression:${branchName} 💖`,
-            text: `Sexpression:${branchName} will reach out to you shortly.`,
-        };
-
-        let response1 = await client.send(msgToBranch);
-        let response2 = await client.send(msgToVolunteer);
-
+function messageSender(msg) {
+    try {
+        let response = await sgMail.send(msg);
         return {
             statusCode: 200,
-            body: JSON.stringify(
-                {
-                    msg: {
-                        branch: response1,
-                        volunteer: response2
-                    }
-                }
-            ),
+            body: response.body,
+        };
+    } catch (error) {
+        console.error(error);
+        return {
+            statusCode: error.code,
+            body: JSON.stringify({ msg: error.message }),
         };
     }
-    
-    if (referrer.pathname === "/contact/session/") {
+}
 
-        // teacher
+exports.handler = async function(event, context, callback) {
 
-        const teacherEmail = payload.email;
-        const teacherName = payload.fullname;
-        let teacherPronouns = payload.genderpronouns;
+    let payload = JSON.parse(event.body).payload.data;
 
-        if (teacherPronouns == null | teacherPronouns == "") {
-            teacherPronouns = 'They/Them/Their'
+    console.log(payload);
+    // let referrer = new URL(payload.referrer);
+
+    // EMAIL 1 - SENDER //////////////////////////////////////////////////
+    try {
+
+        let senderEmail = payload.email;
+        let senderName = payload.fullname;
+        let senderResponse = payload.response;
+
+        messageContructor(senderEmail, SENDGRID_FROM_EMAIL, `Thank you ${senderName}`, senderResponse)
+        messageSender();
+        console.log("sender success");
+    } catch (error) {
+        console.error(error);
+    }
+
+    // EMAIL 2 - MEMBER //////////////////////////////////////////////////
+    try {
+        let form = event.path;
+        let one = await directus.items("forms").readByQuery({ meta: 'total_count', filter: { "template": { "_eq": form } } });
+        let dog = await one.items.recipient.members_id;
+        let two = await directus.items("members").readOne(dog);
+        let memberEmail = two.items.email;
+        let memberName = two.items.full_name;
+
+        messageContructor(senderEmail, SENDGRID_FROM_EMAIL, `New response | ${form}`, "")
+        messageSender();
+        console.log("member success");
+    } catch (error) {
+        console.error(error);
+    }
+
+    // EMAIL 3 - BRANCH //////////////////////////////////////////////////
+    if (form === "join-a-branch" || "request-a-session") {
+        try {
+            let branchArr = payload.branch.split(",");
+            let branchEmail = branchArr[0];
+            let branchName = branchArr[1];
+
+            messageContructor(branchEmail, SENDGRID_FROM_EMAIL, "", "", "")
+            messageSender();
+            console.log("branch success");
+        } catch (error) {
+            console.error(error);
         }
 
-        const teacherPosition = payload.position;
-
-        // institution
-
-        const institutionName = payload.institutionName;
-        const institutionType = payload.institutionType;
-
-        // institution address
-
-        const institutionBuildingStreet = payload.institutionBuildingStreet;
-        const institutionTownCity = payload.institutionTownCity;
-        const institutionCounty = payload.institutionCounty;
-        const institutionCountry = payload.institutionCountry;
-        const institutionPostcode = payload.institutionPostcode;
-
-        // session
-
-        const branchArr = payload.branch.split(",");
-        const branchEmail = branchArr[0];
-        const branchName = branchArr[1];
-        const sessionWeek = payload.week;
-        const sessionSubjects = payload.subjects;
-        const sessionAgeRange = payload.agerange;
-        const sessionMessage = payload.message;
-
-        client.setApiKey(SENDGRID_API_KEY);
-
-        const msgToBranch = {
-            to: `${branchEmail}`,
-            from: SENDGRID_FROM_EMAIL,
-            subject: `📌 New session - ${institutionName} (${institutionType})`,
-            text: `${institutionName} (${institutionType} is requesting a session for ${sessionWeek}. ${sessionSubjects}. ${sessionAgeRange}. ${sessionMessage}`,
-        };
-
-        const msgToTeacher = {
-            to: `${teacherEmail}`,
-            from: SENDGRID_FROM_EMAIL,
-            subject: `👋 Thank you - Sexpression:${branchName}`,
-            text: `Sexpression:${branchName} will reach out to you shortly about your session request.`,
-        };
-
-        let response1 = await client.send(msgToBranch);
-        let response2 = await client.send(msgToTeacher);
-
-        return {
-            statusCode: 200,
-            body: JSON.stringify(
-                {
-                    msg: {
-                        branch: response1,
-                        volunteer: response2
-                    }
-                }
-            ),
-        };
+    } else {
+        console.log("branch skipped");
     }
+
+    return {
+        statusCode: 200,
+        body: "successful mate",
+    };
 }
