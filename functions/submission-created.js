@@ -23,7 +23,7 @@ function messageContructor(to, from, subject, text, html = undefined) {
     }
 }
 
-function messageSender(msg) {
+async function messageSender(msg) {
     try {
         let response = await sgMail.send(msg);
         return {
@@ -53,8 +53,8 @@ exports.handler = async function(event, context, callback) {
         let senderName = payload.fullname;
         let senderResponse = payload.response;
 
-        messageContructor(senderEmail, SENDGRID_FROM_EMAIL, `Thank you ${senderName}`, senderResponse)
-        messageSender();
+        let msg = messageContructor(senderEmail, SENDGRID_FROM_EMAIL, `Thank you ${senderName}`, senderResponse)
+        messageSender(msg);
         console.log("sender success");
     } catch (error) {
         console.error(error);
@@ -69,8 +69,8 @@ exports.handler = async function(event, context, callback) {
         let memberEmail = two.items.email;
         let memberName = two.items.full_name;
 
-        messageContructor(senderEmail, SENDGRID_FROM_EMAIL, `New response | ${form}`, "")
-        messageSender();
+        let msg = messageContructor(senderEmail, SENDGRID_FROM_EMAIL, `New response | ${form}`, "")
+        messageSender(msg);
         console.log("member success");
     } catch (error) {
         console.error(error);
@@ -83,8 +83,8 @@ exports.handler = async function(event, context, callback) {
             let branchEmail = branchArr[0];
             let branchName = branchArr[1];
 
-            messageContructor(branchEmail, SENDGRID_FROM_EMAIL, "", "", "")
-            messageSender();
+            let msg = messageContructor(branchEmail, SENDGRID_FROM_EMAIL, "", "", "")
+            messageSender(msg);
             console.log("branch success");
         } catch (error) {
             console.error(error);
