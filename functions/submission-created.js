@@ -54,7 +54,7 @@ exports.handler = async function(event, context, callback) {
         let senderResponse = payload.response;
 
         let msg = messageContructor(senderEmail, SENDGRID_FROM_EMAIL, `Thank you ${senderName}`, senderResponse)
-        messageSender(msg);
+        await messageSender(msg);
         console.log("sender success");
     } catch (error) {
         console.error(error);
@@ -70,7 +70,7 @@ exports.handler = async function(event, context, callback) {
         let memberName = two.items.full_name;
 
         let msg = messageContructor(senderEmail, SENDGRID_FROM_EMAIL, `New response | ${form}`, "")
-        messageSender(msg);
+        await messageSender(msg);
         console.log("member success");
     } catch (error) {
         console.error(error);
@@ -84,7 +84,7 @@ exports.handler = async function(event, context, callback) {
             let branchName = branchArr[1];
 
             let msg = messageContructor(branchEmail, SENDGRID_FROM_EMAIL, "", "", "")
-            messageSender(msg);
+            await messageSender(msg);
             console.log("branch success");
         } catch (error) {
             console.error(error);
