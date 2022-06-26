@@ -2,6 +2,8 @@ const sgMail = require('@sendgrid/mail');
 const { DIRECTUS_URL } = process.env;
 const { Directus } = require('@directus/sdk');
 const directus = new Directus(`https://${DIRECTUS_URL}`);
+const htmlCreator = require('html-creator');
+
 const {
     SENDGRID_API_KEY,
     SENDGRID_FROM_EMAIL,
@@ -45,16 +47,40 @@ exports.handler = async function(event, context, callback) {
     let payload = JSON.parse(event.body).payload.data;
     let path = event.path.slice(0, -1).substring(event.path.slice(0, -1).lastIndexOf('/') + 1)
 
-    console.log(payload);
-    // let referrer = new URL(payload.referrer);
+    let branchArr = payload.branch.split(",");
+
+    payload.branch = branchArr[1];
+    payload['branchEmail'] = branchArr[0];
+
+    delete payload.ip;
+    delete payload.user_agent;
+    delete payload.referrer;
+
+    let items = [];
+
+    for (let prop in payload) {
+        if (Object.prototype.hasOwnProperty.call(payload, prop)) {
+            console.log(prop + " : " + payload[prop]);
+            items.push({ type: 'p', content: `${prop} : ${payload[prop]}` })
+        }
+    }
+
+    let htmlObject = new htmlCreator([{
+        type: 'body',
+        content: [{
+            type: 'div',
+            content: items
+        }],
+    }, ]);
+
+    let html = htmlObject.renderHTML();
 
     // EMAIL 1 - SENDER //////////////////////////////////////////////////
     try {
         let senderEmail = payload.email;
         let senderName = payload.fullname;
-        let senderResponse = payload.response;
 
-        let msg = messageContructor(senderEmail, SENDGRID_FROM_EMAIL, `Thank you ${senderName}`, "senderResponse")
+        let msg = messageContructor(senderEmail, SENDGRID_FROM_EMAIL, `Thank you ${senderName}`, "senderResponse", html)
         await messageSender(msg);
     } catch (error) {
         console.error(error);
@@ -66,7 +92,7 @@ exports.handler = async function(event, context, callback) {
 
         for (let x of one.data[0].recipient) {
             let member = await directus.items("members").readByQuery({ meta: 'total_count', filter: { "id": { "_eq": x.members_id } } });
-            let msg = messageContructor(member.data[0].email, SENDGRID_FROM_EMAIL, `New response | ${path}`, "this has whole response");
+            let msg = messageContructor(member.data[0].email, SENDGRID_FROM_EMAIL, `New response | ${path}`, "this has whole response", html);
             await messageSender(msg);
         }
     } catch (error) {
@@ -77,11 +103,7 @@ exports.handler = async function(event, context, callback) {
     if (path === "join-a-branch" || "request-a-session") {
         try {
 
-            let branchArr = payload.branch.split(",");
-            let branchEmail = branchArr[0];
-            let branchName = branchArr[1];
-
-            let msg = messageContructor(branchEmail, SENDGRID_FROM_EMAIL, "You are a branch", "testing")
+            let msg = messageContructor(payload.branchEmail, SENDGRID_FROM_EMAIL, "You are a branch", "testing", html)
             await messageSender(msg);
         } catch (error) {
             console.error(error);
