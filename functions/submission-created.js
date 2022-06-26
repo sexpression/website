@@ -42,52 +42,53 @@ async function messageSender(msg) {
 exports.handler = async function(event, context, callback) {
 
     let payload = JSON.parse(event.body).payload.data;
+    let path = event.path.slice(0, -1).substring(event.path.slice(0, -1).lastIndexOf('/') + 1)
 
     console.log(payload);
     // let referrer = new URL(payload.referrer);
 
     // EMAIL 1 - SENDER //////////////////////////////////////////////////
     try {
-
+        console.log("SENDER");
         let senderEmail = payload.email;
         let senderName = payload.fullname;
         let senderResponse = payload.response;
 
         let msg = messageContructor(senderEmail, SENDGRID_FROM_EMAIL, `Thank you ${senderName}`, senderResponse)
         await messageSender(msg);
-        console.log("sender success");
+        console.log("SENDER success");
     } catch (error) {
         console.error(error);
     }
 
     // EMAIL 2 - MEMBER //////////////////////////////////////////////////
     try {
-        let form = event.path;
-        let one = await directus.items("forms").readByQuery({ meta: 'total_count', filter: { "template": { "_eq": form } } });
-        console.log(one);
-        console.log(one.items);
-        let dog = await one.items.recipient.members_id;
-        let two = await directus.items("members").readOne(dog);
-        let memberEmail = two.items.email;
-        let memberName = two.items.full_name;
+        console.log("MEMBER");
+        let one = await directus.items("forms").readByQuery({ meta: 'total_count', filter: { "template": { "_eq": path } }, fields: ['*', 'recipient.members_id'] });
 
-        let msg = messageContructor(senderEmail, SENDGRID_FROM_EMAIL, `New response | ${form}`, "")
-        await messageSender(msg);
-        console.log("member success");
+        for (let x of one.data[0].recipient) {
+            let member = await directus.items("members").readByQuery({ meta: 'total_count', filter: { "id": { "_eq": x.members_id } } });
+            console.log(member.data[0].email);
+            let msg = messageContructor(member.data[0].email, SENDGRID_FROM_EMAIL, `New response | ${path}`, "this has whole response");
+            await messageSender(msg);
+        }
+
+        console.log("MEMBER success");
     } catch (error) {
         console.error(error);
     }
 
     // EMAIL 3 - BRANCH //////////////////////////////////////////////////
-    if (form === "join-a-branch" || "request-a-session") {
+    if (path === "join-a-branch" || "request-a-session") {
         try {
+            console.log("BRANCH");
             let branchArr = payload.branch.split(",");
             let branchEmail = branchArr[0];
             let branchName = branchArr[1];
 
             let msg = messageContructor(branchEmail, SENDGRID_FROM_EMAIL, "", "", "")
             await messageSender(msg);
-            console.log("branch success");
+            console.log("BRANCH success");
         } catch (error) {
             console.error(error);
         }
