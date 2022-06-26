@@ -6,7 +6,7 @@ const table = 'branches';
 
 exports.handler = async function(event, context) {
     try {
-        let fields = ['*', 'branches.country', 'university.name'];
+        let fields = ['*', 'university.country', 'university.name'];
         let filter = { "status": { "_eq": "published" } };
 
         function queryFormatterCaps(string) {

@@ -5,7 +5,8 @@ const table = 'forms';
 
 exports.handler = async function(event, context) {
     try {
-        let data = await directus.items(table).readByQuery({ meta: 'total_count', sort: "title" });
+        let fields = ['*', 'recipient.members_id']
+        let data = await directus.items(table).readByQuery({ meta: 'total_count', sort: "title", fields: fields });
 
         return {
             statusCode: 200,
