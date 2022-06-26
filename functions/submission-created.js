@@ -64,6 +64,8 @@ exports.handler = async function(event, context, callback) {
     try {
         let form = event.path;
         let one = await directus.items("forms").readByQuery({ meta: 'total_count', filter: { "template": { "_eq": form } } });
+        console.log(one);
+        console.log(one.items);
         let dog = await one.items.recipient.members_id;
         let two = await directus.items("members").readOne(dog);
         let memberEmail = two.items.email;
