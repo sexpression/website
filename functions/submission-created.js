@@ -13,7 +13,6 @@ sgMail.setApiKey(SENDGRID_API_KEY);
 
 function htmlConstructor(data, template) {
     let html = json2html.render(data, template);
-    // console.log(html)
     return html;
 }
 
@@ -50,11 +49,7 @@ async function emailSender(msg) {
 exports.handler = async function(event, context, callback) {
     let payload = JSON.parse(event.body).payload.data;
     let path = event.path.slice(0, -1).substring(event.path.slice(0, -1).lastIndexOf('/') + 1);
-    console.log(DIRECTUS_URL);
-    console.log(payload.template)
     let form = await directus.items("forms").readByQuery({ meta: 'total_count', filter: { "template": { "_eq": payload.template } }, fields: ['*', 'recipient.members_id'] });
-
-    console.log(form);
 
     let branchArr = payload["Branch"].split(",");
 
@@ -102,8 +97,7 @@ exports.handler = async function(event, context, callback) {
         copyData.unshift({ 'key': 'statment', 'value': await form.data[0].response });
         let html = htmlConstructor(copyData, template1);
         let msg = emailConstructor(payload["Email"], SENDGRID_FROM_EMAIL, `Thank you ${payload['Full name']}`, html)
-        console.log(msg);
-        // await emailSender(msg);
+        await emailSender(msg);
     } catch (error) {
         console.error(error);
     }
@@ -114,8 +108,7 @@ exports.handler = async function(event, context, callback) {
             let html = htmlConstructor(data, template2);
             let member = await directus.items("members").readByQuery({ meta: 'total_count', filter: { "id": { "_eq": x.members_id } } });
             let msg = emailConstructor(member.data[0].email, SENDGRID_FROM_EMAIL, `New response | ${path}`, html);
-            console.log(msg);
-            // await emailSender(msg);
+            await emailSender(msg);
         }
     } catch (error) {
         console.error(error);
@@ -126,8 +119,7 @@ exports.handler = async function(event, context, callback) {
         try {
             let html = htmlConstructor(data, template2);
             let msg = emailConstructor(branchArr[0], SENDGRID_FROM_EMAIL, `New response | ${path}`, html)
-            console.log(msg);
-            // await emailSender(msg);
+            await emailSender(msg);
         } catch (error) {
             console.error(error);
         }
