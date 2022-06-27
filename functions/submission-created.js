@@ -2,7 +2,7 @@ const sgMail = require('@sendgrid/mail');
 const { DIRECTUS_URL } = process.env;
 const { Directus } = require('@directus/sdk');
 const directus = new Directus(`https://${DIRECTUS_URL}`);
-const htmlCreator = require('html-creator');
+const json2html = require('node-json2html');
 
 const {
     SENDGRID_API_KEY,
@@ -11,16 +11,10 @@ const {
 
 sgMail.setApiKey(SENDGRID_API_KEY);
 
-function htmlConstructor(items) {
-    let htmlObject = new htmlCreator([{
-        type: 'body',
-        content: [{
-            type: 'div',
-            content: items
-        }],
-    }, ]);
-
-    return htmlObject.renderHTML();
+function htmlConstructor(data, template) {
+    let html = json2html.render(data, template);
+    // console.log(html)
+    return html;
 }
 
 function emailConstructor(to, from, subject, html) {
@@ -66,19 +60,42 @@ exports.handler = async function(event, context, callback) {
     delete payload.referrer;
     delete payload.ip;
 
-    let items = [];
+    let template1 = {
+        '<>': 'div',
+        'html': [
+            { '<>': 'p', 'text': '${statement}' },
+            {
+                '<>': 'ul',
+                'html': [
+                    { '<>': 'li', 'text': '${key}: ${value}' },
+                ]
+            }
+        ]
+    };
+
+    let template2 = {
+        '<>': 'div',
+        'html': [{
+            '<>': 'ul',
+            'html': [
+                { '<>': 'li', 'text': '${key}: ${value}' },
+            ]
+        }]
+    };
+
+    let data = [];
 
     for (let prop in payload) {
         if (Object.prototype.hasOwnProperty.call(payload, prop)) {
-            items.push({ type: 'p', content: `${prop}: ${payload[prop]}` })
+            data.push({ 'key': prop, 'value': payload[prop] })
         }
     }
 
     // EMAIL 1 - SENDER //////////////////////////////////////////////////
     try {
-        let copyItems = JSON.parse(JSON.stringify(items));
-        copyItems.unshift({ type: 'p', content: [{ type: 'b', content: `${form.data[0].response}` }] });
-        let html = htmlConstructor(copyItems);
+        let copyData = JSON.parse(JSON.stringify(data));
+        copyData.unshift({ 'key': 'statment', 'value': form.data[0].response });
+        let html = htmlConstructor(copyData, template1);
         let msg = emailConstructor(payload["Email"], SENDGRID_FROM_EMAIL, `Thank you ${payload['Full name']}`, html)
         await emailSender(msg);
     } catch (error) {
@@ -88,7 +105,7 @@ exports.handler = async function(event, context, callback) {
     // EMAIL 2 - MEMBER //////////////////////////////////////////////////
     try {
         for (let x of form.data[0].recipient) {
-            let html = htmlConstructor(items);
+            let html = htmlConstructor(data, template2);
             let member = await directus.items("members").readByQuery({ meta: 'total_count', filter: { "id": { "_eq": x.members_id } } });
             let msg = emailConstructor(member.data[0].email, SENDGRID_FROM_EMAIL, `New response | ${path}`, html);
             await emailSender(msg);
@@ -100,7 +117,7 @@ exports.handler = async function(event, context, callback) {
     // EMAIL 3 - BRANCH //////////////////////////////////////////////////
     if (path === "join-a-branch" || "request-a-session") {
         try {
-            let html = htmlConstructor(items);
+            let html = htmlConstructor(data, template2);
             let msg = emailConstructor(branchArr[0], SENDGRID_FROM_EMAIL, `New response | ${path}`, html)
             await emailSender(msg);
         } catch (error) {
