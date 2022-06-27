@@ -49,11 +49,10 @@ async function emailSender(msg) {
 
 exports.handler = async function(event, context, callback) {
     let payload = JSON.parse(event.body).payload.data;
-    console.log(payload)
     let path = event.path.slice(0, -1).substring(event.path.slice(0, -1).lastIndexOf('/') + 1);
     console.log(DIRECTUS_URL);
-    console.log(path);
-    let form = await directus.items("forms").readByQuery({ meta: 'total_count', filter: { "template": { "_eq": path } }, fields: ['*', 'recipient.members_id'] });
+    console.log(payload.template)
+    let form = await directus.items("forms").readByQuery({ meta: 'total_count', filter: { "template": { "_eq": payload.template } }, fields: ['*', 'recipient.members_id'] });
 
     console.log(form);
 
@@ -64,6 +63,7 @@ exports.handler = async function(event, context, callback) {
     delete payload.user_agent;
     delete payload.referrer;
     delete payload.ip;
+    delete payload.template;
 
     let template1 = {
         '<>': 'div',
