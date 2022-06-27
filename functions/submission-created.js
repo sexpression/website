@@ -94,21 +94,23 @@ exports.handler = async function(event, context, callback) {
     // EMAIL 1 - SENDER //////////////////////////////////////////////////
     try {
         let copyData = JSON.parse(JSON.stringify(data));
-        copyData.unshift({ 'key': 'statment', 'value': form.data[0].response });
+        copyData.unshift({ 'key': 'statment', 'value': await form.data[0].response });
         let html = htmlConstructor(copyData, template1);
         let msg = emailConstructor(payload["Email"], SENDGRID_FROM_EMAIL, `Thank you ${payload['Full name']}`, html)
-        await emailSender(msg);
+        console.log(msg);
+        // await emailSender(msg);
     } catch (error) {
         console.error(error);
     }
 
     // EMAIL 2 - MEMBER //////////////////////////////////////////////////
     try {
-        for (let x of form.data[0].recipient) {
+        for (let x of await form.data[0].recipient) {
             let html = htmlConstructor(data, template2);
             let member = await directus.items("members").readByQuery({ meta: 'total_count', filter: { "id": { "_eq": x.members_id } } });
             let msg = emailConstructor(member.data[0].email, SENDGRID_FROM_EMAIL, `New response | ${path}`, html);
-            await emailSender(msg);
+            console.log(msg);
+            // await emailSender(msg);
         }
     } catch (error) {
         console.error(error);
@@ -119,7 +121,8 @@ exports.handler = async function(event, context, callback) {
         try {
             let html = htmlConstructor(data, template2);
             let msg = emailConstructor(branchArr[0], SENDGRID_FROM_EMAIL, `New response | ${path}`, html)
-            await emailSender(msg);
+            console.log(msg);
+            // await emailSender(msg);
         } catch (error) {
             console.error(error);
         }
