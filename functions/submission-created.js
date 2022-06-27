@@ -1,8 +1,8 @@
 const sgMail = require('@sendgrid/mail');
 const { DIRECTUS_URL } = process.env;
 const { Directus } = require('@directus/sdk');
-const directus = new Directus(`https://${DIRECTUS_URL}`);
 const json2html = require('node-json2html');
+let directus = new Directus(`https://${DIRECTUS_URL}`);
 
 const {
     SENDGRID_API_KEY,
@@ -51,6 +51,7 @@ exports.handler = async function(event, context, callback) {
     let payload = JSON.parse(event.body).payload.data;
     console.log(payload)
     let path = event.path.slice(0, -1).substring(event.path.slice(0, -1).lastIndexOf('/') + 1);
+    console.log(DIRECTUS_URL);
     console.log(path);
     let form = await directus.items("forms").readByQuery({ meta: 'total_count', filter: { "template": { "_eq": path } }, fields: ['*', 'recipient.members_id'] });
 
