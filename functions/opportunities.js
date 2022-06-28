@@ -5,7 +5,7 @@ const table = 'opportunities';
 
 exports.handler = async function(event, context) {
     try {
-        let data = await directus.items(table).readByQuery({ meta: 'total_count', sort: "title" });
+        let data = await directus.items(table).readByQuery({ meta: 'total_count', sort: "title", filter: { "status": { "_eq": "published" } } });
 
         return {
             statusCode: 200,
