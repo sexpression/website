@@ -25,7 +25,7 @@ exports.handler = async function(event, context) {
                 })
             }
         } else {
-            const data = await directus.items(table).readByQuery({ meta: 'total_count', sort: "name" });
+            const data = await directus.items(table).readByQuery({ meta: 'total_count', sort: "name", filter: { "status": { "_eq": "published" } } });
             console.log("no tags!");
             console.log("successful!");
 
