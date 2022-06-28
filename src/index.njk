@@ -31,7 +31,7 @@ layout: headerfooter.njk
         {% for partner in partners %}
             <div class="column is-one-quarter-mobile">
                 <a href="{{ partner.website }}" target="_blank">
-                    <img src="https://sexpression.directus.app/assets/{{ partner.logo }}" alt="{{ partner.name }}">
+                    <img src="https://sexpression.directus.app/assets/{{ partner.logo }}" alt="{{ partner.name }} logo">
                 </a>
             </div>
             {% endfor%}
@@ -39,7 +39,7 @@ layout: headerfooter.njk
     </section>
 
     <section class="section">
-        <div class="container has-text-centered py-4">
+        <div class="container has-text-centered is-max-desktop is-flex is-flex-direction-column" style="gap:1rem">
             <h2 class="title">{{ home.about_us_title }}</h2>
             <p class="subtitle mb-6">{{ home.about_us_description }}</p>
         </div>
@@ -81,11 +81,12 @@ layout: headerfooter.njk
         </div>
     </div>
 </section>
-
-<div class="columns is-mobile mb-5 is-gapless">
-    <div class="column is-4"><img src="https://sexpression.directus.app/assets/{{ home.photo_1 }}" alt=""></div>
-    <div class="column is-4"><img src="https://sexpression.directus.app/assets/{{ home.photo_2 }}" alt=""></div>
-    <div class="column is-4"><img src="https://sexpression.directus.app/assets/{{ home.photo_3 }}" alt=""></div>
+<div class="is-flex is-align-items-center is-justify-content-center">
+    <div class="container columns is-gapless">
+        <div class="column"><img src="https://sexpression.directus.app/assets/{{ home.photo_1 }}" alt=""></div>
+        <div class="column"><img src="https://sexpression.directus.app/assets/{{ home.photo_2 }}" alt=""></div>
+        <div class="column"><img src="https://sexpression.directus.app/assets/{{ home.photo_3 }}" alt=""></div>
+    </div>
 </div>
 
 <section class="section">
@@ -93,22 +94,22 @@ layout: headerfooter.njk
         <h2 class="title">{{ home.statistics_title }}</h2>
         <p class="subtitle mb-6">{{ home.statistics_description }}</p>
         <div class="columns">
-                <div class="column">
-                    <p class="title is-size-1 primary text-gradient">{{ home.statistics_item_1_percentage }}</p>
-                    <p class="heading">{{ home.statistics_item_1_statement | upper }}</p>
-                </div>
-                <div class="column">
-                    <p class="title is-size-1 primary text-gradient">{{ home.statistics_item_2_percentage }}</p>
-                    <p class="heading">{{ home.statistics_item_2_statement | upper }}</p>
-                </div>
-                <div class="column">
-                    <p class="title is-size-1 primary text-gradient">{{ home.statistics_item_3_percentage }}</p>
-                    <p class="heading">{{ home.statistics_item_3_statement | upper }}</p>
-                </div>
-                <div class="column">
-                    <p class="title is-size-1 primary text-gradient">{{ home.statistics_item_4_percentage }}</p>
-                    <p class="heading">{{ home.statistics_item_4_statement | upper }}</p>
-                </div>
+            <div class="column">
+                <p class="title is-size-1 primary text-gradient">{{ home.statistics_item_1_percentage }}</p>
+                <p class="heading">{{ home.statistics_item_1_statement | upper }}</p>
+            </div>
+            <div class="column">
+                <p class="title is-size-1 primary text-gradient">{{ home.statistics_item_2_percentage }}</p>
+                <p class="heading">{{ home.statistics_item_2_statement | upper }}</p>
+            </div>
+            <div class="column">
+                <p class="title is-size-1 primary text-gradient">{{ home.statistics_item_3_percentage }}</p>
+                <p class="heading">{{ home.statistics_item_3_statement | upper }}</p>
+            </div>
+            <div class="column">
+                <p class="title is-size-1 primary text-gradient">{{ home.statistics_item_4_percentage }}</p>
+                <p class="heading">{{ home.statistics_item_4_statement | upper }}</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
