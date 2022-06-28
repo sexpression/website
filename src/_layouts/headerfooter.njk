@@ -34,157 +34,161 @@
                 <div class="navbar-brand">
                     <div class="is-flex">
                         <a class="navbar-item is-size-3 is-uppercase poppins" href="/">
-                            <a class="navbar-item is-size-3 is-uppercase poppins" href="/">
-                                {% from 'macros/svgTwo.njk' import svgTwo %}
-                                {{ svgTwo(size="3rem") }}
-                                <p>{{ home.title }}</p>
-                            </a>
+                        <div style="display:flex; gap:0.4rem; align-items: center">
+                            {# {% from 'macros/svgTwo.njk' import svgTwo %}
+                            {{ svgTwo(one = "#7C4DFF", two = "#7C4DFF", size="2.2rem") }} #}
+                            <img src="/img/logo.png" alt="">
+                            <p class="is-size-4 text-gradient">{{ home.title }}</p>
                         </div>
-                        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                            <span aria-hidden="true"></span>
-                            <span aria-hidden="true"></span>
-                            <span aria-hidden="true"></span>
                         </a>
                     </div>
-                    <div id="navbarBasicExample" class="navbar-menu">
-                        <div class="navbar-end">
-                            <a class="navbar-item" href="/programme/core-offer">
-                                <i class="fas mr-2 fa-bookmark"></i>
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div id="navbarBasicExample" class="navbar-menu">
+                    <div class="navbar-end">
+                        <a class="navbar-item" href="/programme/core-offer">
+                            <i class="fas mr-2 fa-bookmark"></i>
                         Programme
                     </a>
-                            <a class="navbar-item" href="/resources">
-                                <i class="fas mr-2 fa-paperclip"></i>
+                        <a class="navbar-item" href="/resources">
+                            <i class="fas mr-2 fa-paperclip"></i>
                         Resources
                     </a>
-                            <a class="navbar-item" href="/branches">
-                                <i class="fas mr-2 fa-code-branch"></i>
+                        <a class="navbar-item" href="/branches">
+                            <i class="fas mr-2 fa-code-branch"></i>
                         Branches
                     </a>
-                            <a class="navbar-item" href="/teams">
-                                <i class="fas mr-2 fa-users"></i>
+                        <a class="navbar-item" href="/teams">
+                            <i class="fas mr-2 fa-users"></i>
                         Meet the team
                     </a>
-                    {# <a class="navbar-item" href="/teams">
+                        {# <a class="navbar-item" href="/teams">
                                 <i class="fas mr-2 fa-shirt"></i>
                         Merch
                     </a> #}
-                                                <div class="navbar-item">
-                                <div class="buttons">
-                                    <a href="https://sexpression.teemill.com/" class="action-button primary hvr-grow button is-light">
-                                        <i class="fas mr-2 fa-shirt"></i> <strong>Merch</strong>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="navbar-item">
-                                <div class="buttons">
-                                    <a href="https://www.justgiving.com/campaign/sexpressionuk" class="action-button primary hvr-grow button is-light">
-                                        <i class="fas mr-2 fa-heart"></i> <strong>Donate</strong>
-                                    </a>
-                                </div>
+                        <div class="navbar-item">
+                            <div class="buttons">
+                                <a href="https://sexpression.teemill.com/" class="action-button primary hvr-grow button is-light">
+                                    <i class="fas mr-2 fa-shirt"></i>
+                                    <strong>Merch</strong>
+                                </a>
                             </div>
                         </div>
-                    </div>
-                </nav>
-            </div>
-            {{ content | safe }}
-            <footer class="footer">
-                <div class="container">
-                    <div class="columns">
-                        <div class="column menu">
-                            <p class="menu-label">Pages</p>
-                            <ul class="menu-list">
-                                <li>
-                                    <a href="/programme/core-offer">
-                                        <i class="fas mr-2 fa-bookmark"></i>Programme</a>
-                                </li>
-                                <li>
-                                    <a href="/resources">
-                                        <i class="fas mr-2 fa-paperclip"></i>Resources</a>
-                                </li>
-                                <li>
-                                    <a href="/branches">
-                                        <i class="fas mr-2 fa-code-branch"></i>Branches</a>
-                                </li>
-                                <li>
-                                    <a href="/teams">
-                                        <i class="fas mr-2 fa-users"></i>Meet the team</a>
-                                </li>
-                                <li>
-                                    <a href="/opportunities">
-                                        <i class="fas mr-2 fa-briefcase"></i>Opportunities</a>
-                                </li>
-                                <li>
-                                    <a href="https://sexpressionuk.notion.site/Sexpression-UK-Policies-4383c90bcc9a4085af3ba9d6c6c41bd4" target="_blank">
-                                        <i class="fas mr-2 fa-scroll"></i>Policies</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="column menu">
-                            <p class="menu-label">Connect with us</p>
-                            <ul class="menu-list">
-                                    {% for link in links %}
-                                <li>
-                                    <a href="{{ link.url }}" target="_blank">{{ link.name }}</a>
-                                </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        <div class="column menu">
-                            <p class="menu-label">Contact us</p>
-                            <ul class="menu-list">
-                                <li>
-                                    <a href="/form/request-a-session">Request a session</a>
-                                </li>
-                                <li>
-                                    <a href="/form/join-a-branch">Join a branch</a>
-                                </li>
-                                <li>
-                                    <a href="/form/create-a-branch">Create a branch</a>
-                                </li>
-                                <li>
-                                    <a href="/form/fundraise">Fundraise</a>
-                                </li>
-                                <li>
-                                    <a href="/form/media-enquiry">Media enquiry</a>
-                                </li>
-                                <li>
-                                    <a href="/form/leave-a-legacy">Leave a legacy</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="column menu">
-                            <form action="https://sexpression.us20.list-manage.com/subscribe/post?u=a12713abc0ae4f1b1d0841fcd&id=d08e375582" method="post">
-                                <div class="field">
-                                    <p class="menu-label">Subscribe to our newsletter</p>
-                                    <p>Get the latest news on a monthly basis.</p>
-                                    <input class="input" type="text" placeholder="Enter your email">
-                                    <p>Our <a href="https://sexpressionuk.notion.site/Sexpression-UK-Policies-4383c90bcc9a4085af3ba9d6c6c41bd4" target="_blank">Privacy Policy</a>
-                                    </p>
-                                </div>
-                                <div class="field">
-                                    <div class="control">
-                                        <button class="action-button hvr-grow button is-light">Subscribe</button>
-                                    </div>
-                                </div>
-                            </form>
+                        <div class="navbar-item">
+                            <div class="buttons">
+                                <a href="https://www.justgiving.com/campaign/sexpressionuk" class="action-button primary hvr-grow button is-light">
+                                    <i class="fas mr-2 fa-heart"></i>
+                                    <strong>Donate</strong>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </footer>
-            <script>
-                if (window.netlifyIdentity) {
-                    window
-                        .netlifyIdentity
-                        .on("init", user => {
-                            if (!user) {
-                                window
-                                    .netlifyIdentity
-                                    .on("login", () => {
-                                        document.location.href = "/admin/";
-                                    });
-                            }
-                        });
-                }
-            </script>
-        </body>
-    </html>
+            </nav>
+        </div>
+        {{ content | safe }}
+        <footer class="footer">
+            <div class="container">
+                <div class="columns">
+                    <div class="column menu">
+                        <p class="menu-label">Pages</p>
+                        <ul class="menu-list">
+                            <li>
+                                <a href="/programme/core-offer">
+                                    <i class="fas mr-2 fa-bookmark"></i>Programme</a>
+                            </li>
+                            <li>
+                                <a href="/resources">
+                                    <i class="fas mr-2 fa-paperclip"></i>Resources</a>
+                            </li>
+                            <li>
+                                <a href="/branches">
+                                    <i class="fas mr-2 fa-code-branch"></i>Branches</a>
+                            </li>
+                            <li>
+                                <a href="/teams">
+                                    <i class="fas mr-2 fa-users"></i>Meet the team</a>
+                            </li>
+                            <li>
+                                <a href="/opportunities">
+                                    <i class="fas mr-2 fa-briefcase"></i>Opportunities</a>
+                            </li>
+                            <li>
+                                <a href="https://sexpressionuk.notion.site/Sexpression-UK-Policies-4383c90bcc9a4085af3ba9d6c6c41bd4" target="_blank">
+                                    <i class="fas mr-2 fa-scroll"></i>Policies</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column menu">
+                        <p class="menu-label">Connect with us</p>
+                        <ul class="menu-list">
+                            {% for link in links %}
+                                <li>
+                                    <a href="{{ link.url }}" target="_blank">{{ link.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="column menu">
+                        <p class="menu-label">Contact us</p>
+                        <ul class="menu-list">
+                            <li>
+                                <a href="/form/request-a-session">Request a session</a>
+                            </li>
+                            <li>
+                                <a href="/form/join-a-branch">Join a branch</a>
+                            </li>
+                            <li>
+                                <a href="/form/create-a-branch">Create a branch</a>
+                            </li>
+                            <li>
+                                <a href="/form/fundraise">Fundraise</a>
+                            </li>
+                            <li>
+                                <a href="/form/media-enquiry">Media enquiry</a>
+                            </li>
+                            <li>
+                                <a href="/form/leave-a-legacy">Leave a legacy</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column menu">
+                        <form action="https://sexpression.us20.list-manage.com/subscribe/post?u=a12713abc0ae4f1b1d0841fcd&id=d08e375582" method="post">
+                            <div class="field">
+                                <p class="menu-label">Subscribe to our newsletter</p>
+                                <p>Get the latest news on a monthly basis.</p>
+                                <input class="input" type="text" placeholder="Enter your email">
+                                <p>Our <a href="https://sexpressionuk.notion.site/Sexpression-UK-Policies-4383c90bcc9a4085af3ba9d6c6c41bd4" target="_blank">Privacy Policy</a>
+                                </p>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <button class="action-button hvr-grow button is-light">Subscribe</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script>
+            if (window.netlifyIdentity) {
+                window
+                    .netlifyIdentity
+                    .on("init", user => {
+                        if (!user) {
+                            window
+                                .netlifyIdentity
+                                .on("login", () => {
+                                    document.location.href = "/admin/";
+                                });
+                        }
+                    });
+            }
+        </script>
+    </body>
+</html>

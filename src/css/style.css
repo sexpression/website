@@ -12027,6 +12027,12 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   border-radius: 1rem;
 }
 
+.text-gradient {
+  background: -webkit-linear-gradient(274deg, #9c02ff, #3da4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* Grow */
 /* .hvr-grow {
     display: inline-block;

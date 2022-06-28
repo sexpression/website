@@ -31,6 +31,12 @@ $title-family: theme.$family-primary;
     border-radius: 1rem;
 }
 
+.text-gradient {
+    background: -webkit-linear-gradient(274deg, #9c02ff, #3da4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 // .action-button {
 //     color: #363636 !important;
 //     padding: 25px;
