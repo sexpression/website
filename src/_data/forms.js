@@ -1,16 +1,21 @@
-const fetch = require("node-fetch");
-const markdown = require("markdown").markdown;
+const { Directus } = require('@directus/sdk');
 
-const domain = "https://sexpression.org.uk";
-const path = "/.netlify/functions/forms";
-
-const url = new URL(path, domain);
+const { DIRECTUS_URL } = process.env;
+const directus = new Directus(`https://${DIRECTUS_URL}`);
 
 module.exports = async function() {
-    const response = await fetch(url);
-    const jsonResponse = await response.json();
-    jsonResponse.items.forEach(element => {
-        element.body = markdown.toHTML(element.body);
-    });
-    return jsonResponse.items;
+    try {
+        let table = 'forms';
+        let filter = { "status": { "_eq": "published" } };
+        let fields = ['*', 'recipient.members_id'];
+        let sort = "title";
+        let meta = 'total_count';
+
+        let response = await directus.items(table).readByQuery({ meta: meta, sort: sort, fields: fields, filter: filter });
+
+        return response.data
+
+    } catch (err) {
+        console.log(err)
+    }
 };

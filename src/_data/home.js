@@ -1,12 +1,17 @@
-const fetch = require("node-fetch");
+const { Directus } = require('@directus/sdk');
 
-const domain = "https://sexpression.org.uk";
-const path = "/.netlify/functions/home";
-
-const url = new URL(path, domain);
+const { DIRECTUS_URL } = process.env;
+const directus = new Directus(`https://${DIRECTUS_URL}`);
 
 module.exports = async function() {
-    const response = await fetch(url);
-    const jsonResponse = await response.json();
-    return jsonResponse.items;
+    try {
+        let table = 'home';
+
+        let response = await directus.items(table).readByQuery();
+
+        return response.data
+
+    } catch (err) {
+        console.log(err)
+    }
 };
