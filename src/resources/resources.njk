@@ -1,0 +1,84 @@
+---
+layout: container.njk
+title: Resources
+pagination:
+    data: resource_tag
+    size: 1
+    alias: tag
+permalink: "resources/{{ tag.text | slug }}/"
+---
+
+<h1 class="mb-6 has-text-centered">
+    <i class="fas mr-2 fa-paperclip"></i> {{ title }}
+</h1>
+<div class="tabs">
+    <ul class="m-0">
+        {% for taggy in resource_tag %}
+            <li {% if tag.text == taggy.text %} class="is-active" {% endif %}>
+                <a href="/resources/{{ taggy.text | slug }}">{{ taggy.text }}</a>
+            </li>
+            {# <p>{{ tag.text }}</p> #}
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="columns is-multiline is-mobile">
+    {% for resource in resources %}
+        {% if tag.text == resource.Tag %}
+            {% if resource.file.type == 'JPEG' or resource.files.type == 'PNG' %}
+                <div class="column is-half-mobile is-half-touch is-one-quarter-tablet is-one-quarter-desktop is-one-quarter-widescreen is-one-quarter-fullhd">
+                    <div class="card border-radius-2" style="height: 100%;">
+                        <figure class="image is-2by3 m-0">
+                            <img src="https://sexpression.directus.app/assets/{{ resource.file.id }}?fit=cover&width=200&quality=50" alt="">
+                        </figure>
+                        <div class="card-content py-5 px-5 is-flex is-flex-direction-column" style="gap: 1rem">
+                            <div>
+                                <span class="tag is-warning mb-3">{{ resource.file.type }}</span>
+                                <p class="m-0">{{ resource.Tag }}</p>
+                                <p class="is-size-7 is-size-7-tablet is-size-5-desktop mb-0">
+                                    <b>{{ resource.name | truncate(20, true, '...') }}</b>
+                                </p>
+                                <p class="is-size-7 is-size-7-tablet is-size-6-desktop">{{ resource.tag |  truncate(22, true, '...') }}</p>
+                            </div>
+                            <a class="button is-link is-light is-small" href="https://sexpression.directus.app/assets/{{ resource.file.id }}?download"  target="_blank" download="{{ resource.name }}">Download</a>
+                            <div>
+                                <p class="is-size-7-mobile is-size-7-touch is-size-6-tablet has-text-grey-light mb-0">
+                                    <time datetime="">{{ resource.date_updated }}</time>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% elif resource.file.type == 'PDF' %}
+                <div class="column is-full-mobile is-full-touch is-half-tablet is-two-fifths-desktop is-two-fifths-widescreen is-two-fifths-fullhd">
+                    <div class="card border-radius-2" style="height: 100%;">
+
+                        <div class="card-content py-5 px-5 is-flex is-flex-direction-column" style="gap: 1rem;">
+                            <div>
+                                <span class="tag is-danger mb-3">{{ resource.file.type }}</span>
+                                <p class="m-0">{{ resource.Tag }}</p>
+                                <p class="is-size-7 is-size-7-tablet is-size-5-desktop mb-0">
+                                    <b>{{ resource.name | truncate(40, true, '...') }}</b>
+                                </p>
+                                <p class="is-size-7 is-size-7-tablet is-size-6-desktop">{{ resource.tag |  truncate(22, true, '...') }}</p>
+
+                            </div>
+                            <div class="is-flex is-align-items-stretch" style="gap:0.6rem;">
+                                <a class="button is-primary is-light is-small" href="https://sexpression.directus.app/assets/{{ resource.file.id }}.pdf" >Open</a>
+                                <a class="button is-link is-light is-small" href="https://sexpression.directus.app/assets/{{ resource.file.id }}.pdf?download" target="_blank" download="{{ resource.name | slug }}">Download</a>
+                            </div>
+                            <div>
+                                <p class="is-size-7-mobile is-size-7-touch is-size-6-tablet has-text-grey-light mb-0">
+                                    <time datetime="">{{ resource.date_updated }}</time>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+    {% else %}
+        Could not get resources.
+    {% endfor %}
+</div>

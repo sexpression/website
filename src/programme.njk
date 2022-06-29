@@ -1,0 +1,17 @@
+---
+layout: container.njk
+title: Programme
+---
+<h1 class="mb-6 has-text-centered">
+    <i class="fas mr-2 fa-bookmark"></i> {{ title }}
+</h1>
+
+<div class="tabs">
+    <ul class="m-0">
+        {% for section in programme %}
+            <li>
+                <a href="/programme/{{ section.title | slug }}">{{ section.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

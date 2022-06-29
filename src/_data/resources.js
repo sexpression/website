@@ -7,13 +7,23 @@ const directus = new Directus(`https://${DIRECTUS_URL}`);
 function prettyDate(data) {
     for (let element in data) {
         let stat;
-        if (element.date_updated) {
-            stat = element.date_updated;
+        if (data[element].date_updated) {
+            stat = data[element].date_updated;
         } else {
-            stat = element.date_created;
+            stat = data[element].date_created;
         }
         let datetime = moment(stat).format("MMMM Do YYYY, h:mma");
         data[element].date_updated = datetime;
+    };
+
+    return data;
+}
+
+function prettyFile(data) {
+    for (let element in data) {
+        let mime = data[element].file.type;
+        let file = mime.split("/");
+        data[element].file.type = file[1].toUpperCase();
     };
 
     return data;
@@ -29,6 +39,7 @@ module.exports = async function() {
 
         let response = await directus.items(table).readByQuery({ meta: meta, sort: sort, filter: filter, fields: fields });
         response.data = prettyDate(response.data);
+        response.data = prettyFile(response.data);
 
         return response.data
 

@@ -2,66 +2,18 @@
 layout: container.njk
 title: Resources
 ---
-<h1 class="is-size-5-mobile">{{ title }}</h1>
 
-{# <div class="tabs">
-    <ul>
-        <li {% if title == "Resources" %} class="is-active" {% endif %}>
-            <a href="/resources">All Resources</a>
-        </li>
-        {% for tag in resourcestag %}
-            <li {% if title == tag.name %} class="is-active" {% endif %}>
-                <a href="/resources/{{ tag.name | slug }}">{{ tag.name }}</a>
+<h1 class="mb-6 has-text-centered">
+    <i class="fas mr-2 fa-paperclip"></i> {{ title }}
+</h1>
+
+<div class="tabs">
+    <ul class="m-0">
+        {% for taggy in resource_tag %}
+            <li>
+                <a href="/resources/{{ taggy.text | slug }}">{{ taggy.text }}</a>
             </li>
+            {# <p>{{ tag.text }}</p> #}
         {% endfor %}
     </ul>
-</div> #}
-
-<div class="columns is-multiline is-mobile">
-    {% for resource in resources %}
-        <div class="column is-half-mobile is-half-touch is-one-quarter-tablet is-one-quarter-desktop is-one-quarter-widescreen is-one-quarter-fullhd">
-            <div class="card border-radius-2" style="height: 100%;">
-                {% if resource.file.type == 'image/jpeg' or resource.files.type == 'image/png' %}
-                    <figure class="image is-2by3 m-0">
-                        <img src="https://sexpression.directus.app/assets/{{ resource.file.id }}?fit=cover&width=200&quality=50" alt="">
-                    </figure>
-                    <div class="card-content py-5 px-5 is-flex is-flex-direction-column" style="gap: 1rem">
-                        <div>
-                            <p class="is-size-7 is-size-7-tablet is-size-5-desktop mb-0">
-                                <b>{{ resource.name | truncate(20, true, '...') }}</b>
-                            </p>
-                            <p class="is-size-7 is-size-7-tablet is-size-6-desktop">{{ resource.tag |  truncate(22, true, '...') }}</p>
-                        </div>
-                        <a class="button is-link is-light is-small" href="https://sexpression.directus.app/assets/{{ resource.file.id }}?download"  target="_blank" download="{{ resource.name }}">Download</a>
-                        <div>
-                            <p class="is-size-7-mobile is-size-7-touch is-size-6-tablet has-text-grey-light mb-0">
-                                <time datetime="">{{ resource.date_updated }}</time>
-                            </p>
-                        </div>
-                    </div>
-                {% elif resource.file.type == 'application/pdf' %}
-
-                    <div class="card-content py-5 px-5 is-flex is-flex-direction-column" style="gap: 1rem;">
-                        <div>
-                            <p class="is-size-7 is-size-7-tablet is-size-5-desktop mb-0">
-                                <b>{{ resource.name }}</b>
-                            </p>
-                            <p class="is-size-7 is-size-7-tablet is-size-6-desktop">{{ resource.tag |  truncate(22, true, '...') }}</p>
-                        </div>
-                        <div>
-                            <a class="button is-link is-light is-small" href="https://sexpression.directus.app/assets/{{ resource.file.id }}?download"  target="_blank" download="{{ resource.name }}">Download</a>
-                            <div>
-                                <p class="is-size-7-mobile is-size-7-touch is-size-6-tablet has-text-grey-light mb-0">
-                                    <time datetime="">{{ resource.date_updated }}</time>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                {% endif %}
-            </div>
-        </div>
-    {% else %}
-        Could not get resources.
-    {% endfor %}
 </div>
