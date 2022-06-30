@@ -51,9 +51,6 @@ exports.handler = async function(event, context, callback) {
     let path = event.path.slice(0, -1).substring(event.path.slice(0, -1).lastIndexOf('/') + 1);
     let form = await directus.items("forms").readByQuery({ meta: 'total_count', filter: { "template": { "_eq": payload.template } }, fields: ['*', 'recipient.members_id'] });
 
-    let branchArr = payload["Branch"].split(",");
-
-    payload["Branch"] = branchArr[1];
 
     delete payload.user_agent;
     delete payload.referrer;
@@ -117,8 +114,10 @@ exports.handler = async function(event, context, callback) {
     }
 
     // EMAIL 3 - BRANCH //////////////////////////////////////////////////
-    if (path === "join-a-branch" || "request-a-session") {
+    if (path === "join-a-branch" || path === "request-a-session") {
         try {
+            let branchArr = payload["Branch"].split(",");
+            payload["Branch"] = branchArr[1];
             let html = htmlConstructor(data, template2);
             let msg = emailConstructor(branchArr[0], SENDGRID_FROM_EMAIL, `New response | ${path}`, html)
             console.log(msg)
