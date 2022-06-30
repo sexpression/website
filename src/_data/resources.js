@@ -32,7 +32,7 @@ function prettyFile(data) {
 module.exports = async function() {
     try {
         let table = 'resources';
-        let fields = ['file.type', 'file.id', '*'];
+        let fields = ['file.type', 'file.id', '*', 'tags.name'];
         let filter = { "status": { "_eq": "published" } };
         let sort = "name";
         let meta = 'total_count';

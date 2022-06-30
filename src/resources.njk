@@ -9,9 +9,9 @@ title: Resources
 
 <div class="tabs">
     <ul class="m-0">
-        {% for taggy in resource_tag %}
+        {% for tag in tags %}
             <li>
-                <a href="/resources/{{ taggy.text | slug }}">{{ taggy.text }}</a>
+                <a href="/resources/{{ tag.name | slug }}">{{ tag.name }}</a>
             </li>
             {# <p>{{ tag.text }}</p> #}
         {% endfor %}

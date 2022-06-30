@@ -2,10 +2,10 @@
 layout: container.njk
 title: Resources
 pagination:
-    data: resource_tag
+    data: tags
     size: 1
     alias: tag
-permalink: "resources/{{ tag.text | slug }}/"
+permalink: "resources/{{ tag.name | slug }}/"
 ---
 
 <h1 class="mb-6 has-text-centered">
@@ -13,9 +13,10 @@ permalink: "resources/{{ tag.text | slug }}/"
 </h1>
 <div class="tabs">
     <ul class="m-0">
-        {% for taggy in resource_tag %}
-            <li {% if tag.text == taggy.text %} class="is-active" {% endif %}>
-                <a href="/resources/{{ taggy.text | slug }}">{{ taggy.text }}</a>
+        {% for tag in tags %}
+            {# <li {% if tag.name == resource.tags.name %} class="is-active" {% endif %}> #}
+                <li>
+                <a href="/resources/{{ tag.name | slug }}">{{ tag.name }}</a>
             </li>
             {# <p>{{ tag.text }}</p> #}
         {% endfor %}
@@ -24,7 +25,7 @@ permalink: "resources/{{ tag.text | slug }}/"
 
 <div class="columns is-multiline is-mobile">
     {% for resource in resources %}
-        {% if tag.text == resource.Tag %}
+        {% if tag.name == resource.tags.name %}
             {% if resource.file.type == 'JPEG' or resource.files.type == 'PNG' %}
                 <div class="column is-half-mobile is-half-touch is-one-quarter-tablet is-one-quarter-desktop is-one-quarter-widescreen is-one-quarter-fullhd">
                     <div class="card border-radius-2" style="height: 100%;">
@@ -34,11 +35,11 @@ permalink: "resources/{{ tag.text | slug }}/"
                         <div class="card-content py-5 px-5 is-flex is-flex-direction-column" style="gap: 1rem">
                             <div>
                                 <span class="tag is-warning mb-3">{{ resource.file.type }}</span>
-                                <p class="m-0">{{ resource.Tag }}</p>
+                                <p class="m-0">{{ resource.tags.name }}</p>
                                 <p class="is-size-7 is-size-7-tablet is-size-5-desktop mb-0">
                                     <b>{{ resource.name | truncate(20, true, '...') }}</b>
                                 </p>
-                                <p class="is-size-7 is-size-7-tablet is-size-6-desktop">{{ resource.tag |  truncate(22, true, '...') }}</p>
+                                {# <p class="is-size-7 is-size-7-tablet is-size-6-desktop">{{ resource.tag |  truncate(22, true, '...') }}</p> #}
                             </div>
                             <a class="button is-link is-light is-small" href="https://sexpression.directus.app/assets/{{ resource.file.id }}?download"  target="_blank" download="{{ resource.name }}">Download</a>
                             <div>
@@ -56,11 +57,11 @@ permalink: "resources/{{ tag.text | slug }}/"
                         <div class="card-content py-5 px-5 is-flex is-flex-direction-column" style="gap: 1rem;">
                             <div>
                                 <span class="tag is-danger mb-3">{{ resource.file.type }}</span>
-                                <p class="m-0">{{ resource.Tag }}</p>
+                                <p class="m-0">{{ resource.tags.name }}</p>
                                 <p class="is-size-7 is-size-7-tablet is-size-5-desktop mb-0">
                                     <b>{{ resource.name | truncate(40, true, '...') }}</b>
                                 </p>
-                                <p class="is-size-7 is-size-7-tablet is-size-6-desktop">{{ resource.tag |  truncate(22, true, '...') }}</p>
+                                {# <p class="is-size-7 is-size-7-tablet is-size-6-desktop">{{ resource.tags.name |  truncate(22, true, '...') }}</p> #}
 
                             </div>
                             <div class="is-flex is-align-items-stretch" style="gap:0.6rem;">
