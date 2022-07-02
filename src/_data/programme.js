@@ -1,6 +1,7 @@
 const markdown = require("markdown").markdown;
 const moment = require('moment');
 const { Directus } = require('@directus/sdk');
+const slugify = require('slugify');
 
 const { DIRECTUS_URL } = process.env;
 const directus = new Directus(`https://${DIRECTUS_URL}`);
@@ -16,6 +17,15 @@ function prettyDate(data) {
         let datetime = moment(stat).format("MMMM Do YYYY, h:mma");
         data[element].date_updated = datetime;
     };
+
+    return data;
+}
+
+function sluggy(data) {
+    for (let element in data) {
+        let slug = slugify(data[element].title, { lower: true });
+        data[element].slug = slug;
+    }
 
     return data;
 }
@@ -38,7 +48,7 @@ module.exports = async function() {
         let response = await directus.items(table).readByQuery({ meta: meta, sort: sort, filter: filter });
 
         response.data = prettyDate(response.data)
-
+        response.data = sluggy(response.data);
         response.data = prettyMarkdown(response.data)
 
         return response.data

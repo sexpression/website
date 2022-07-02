@@ -45,6 +45,7 @@
         "node-json2html": "^2.2.2",
         "npm-run-all": "^4.1.5",
         "sass": "^1.32.13",
+        "slugify": "^1.6.5",
         "terser": "^5.5.1"
     }
 }
