@@ -39,7 +39,6 @@
                             {{ svgTwo(one = "#7C4DFF", two = "#7C4DFF", size="2.2rem") }} #}
                             <img src="/img/logo.png" style="height: 1.5rem" alt="">
                             <img src="/img/text-logo.png" style="height: 1.2rem" alt="">
-                            {# <p class="is-size-4 text-gradient">{{ home.title }}</p> #}
                         </div>
                         </a>
                     </div>
@@ -51,11 +50,11 @@
                 </div>
                 <div id="navbarBasicExample" class="navbar-menu">
                     <div class="navbar-end">
-                        <a class="navbar-item" href="/programme">
+                        <a class="navbar-item" href="/programme/">
                             <i class="fas mr-2 fa-bookmark"></i>
                         Programme
                     </a>
-                        <a class="navbar-item" href="/resources">
+                        <a class="navbar-item" href="/resources/">
                             <i class="fas mr-2 fa-paperclip"></i>
                         Resources
                     </a>
@@ -67,10 +66,6 @@
                             <i class="fas mr-2 fa-users"></i>
                         Meet the team
                     </a>
-                        {# <a class="navbar-item" href="/teams">
-                                <i class="fas mr-2 fa-shirt"></i>
-                        Merch
-                    </a> #}
                         <div class="navbar-item">
                             <div class="buttons">
                                 <a href="https://sexpression.teemill.com/" target="_blank" class="action-button primary hvr-grow button is-light">
@@ -125,7 +120,7 @@
                         </ul>
                     </div>
                     <div class="column menu">
-                        <p class="menu-label">Connect with us</p>
+                        <p class="menu-label">Links</p>
                         <ul class="menu-list">
                             {% for link in links %}
                                 <li>
@@ -137,24 +132,11 @@
                     <div class="column menu">
                         <p class="menu-label">Contact us</p>
                         <ul class="menu-list">
+                            {% for form in forms %}
                             <li>
-                                <a href="/form/request-a-session">Request a session</a>
-                            </li>
-                            <li>
-                                <a href="/form/join-a-branch">Join a branch</a>
-                            </li>
-                            <li>
-                                <a href="/form/create-a-branch">Create a branch</a>
-                            </li>
-                            <li>
-                                <a href="/form/fundraise">Fundraise</a>
-                            </li>
-                            <li>
-                                <a href="/form/media-enquiry">Media enquiry</a>
-                            </li>
-                            <li>
-                                <a href="/form/leave-a-legacy">Leave a legacy</a>
-                            </li>
+                                <a href="/form/{{ form.template }}">{{ form.title }}</a>
+                            </li>   
+                            {% endfor %}
                         </ul>
                     </div>
                     <div class="column menu">
@@ -176,20 +158,5 @@
                 </div>
             </div>
         </footer>
-        <script>
-            if (window.netlifyIdentity) {
-                window
-                    .netlifyIdentity
-                    .on("init", user => {
-                        if (!user) {
-                            window
-                                .netlifyIdentity
-                                .on("login", () => {
-                                    document.location.href = "/admin/";
-                                });
-                        }
-                    });
-            }
-        </script>
     </body>
 </html>

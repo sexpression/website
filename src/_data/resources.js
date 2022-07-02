@@ -34,7 +34,7 @@ module.exports = async function() {
         let table = 'resources';
         let fields = ['file.type', 'file.id', '*', 'tags.name'];
         let filter = { "status": { "_eq": "published" } };
-        let sort = "name";
+        let sort = "sort";
         let meta = 'total_count';
 
         let response = await directus.items(table).readByQuery({ meta: meta, sort: sort, filter: filter, fields: fields });

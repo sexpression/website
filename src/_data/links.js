@@ -7,7 +7,7 @@ module.exports = async function() {
     try {
         let table = 'links';
         let filter = { "status": { "_eq": "published" } };
-        let sort = "name";
+        let sort = "sort";
         let meta = 'total_count';
 
         let response = await directus.items(table).readByQuery({ meta: meta, sort: sort, filter: filter });
