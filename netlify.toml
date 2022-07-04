@@ -1,6 +1,6 @@
 [build]
     command = "npm run build"
-    environment = {SENDGRID_API_KEY = "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",SENDGRID_FROM_EMAIL = "website@sexpression.org.uk", HOOK_REBUILD_TOKEN = "629b494abf1f716c3e72259c", DIRECTUS_URL = "sexpression.directus.app"}
+    environment = {SENDGRID_API_KEY = "",SENDGRID_FROM_EMAIL = "", HOOK_REBUILD_TOKEN = "", DIRECTUS_URL = ""}
     functions = "functions/"
     publish = "dist/"
 
