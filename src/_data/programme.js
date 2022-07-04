@@ -2,9 +2,7 @@ const markdown = require("markdown").markdown;
 const moment = require('moment');
 const { Directus } = require('@directus/sdk');
 const slugify = require('slugify');
-
-const { DIRECTUS_URL } = process.env;
-const directus = new Directus(`https://${DIRECTUS_URL}`);
+const directus = new Directus(`https://sexpression.directus.app`);
 
 function prettyDate(data) {
     for (let element in data) {

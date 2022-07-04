@@ -1,6 +1,5 @@
-const { DIRECTUS_URL } = process.env;
 const { Directus } = require('@directus/sdk');
-const directus = new Directus(`https://${DIRECTUS_URL}`);
+const directus = new Directus(`https://sexpression.directus.app`);
 
 const table = 'universities';
 

@@ -34,12 +34,12 @@
                 <div class="navbar-brand">
                     <div class="is-flex">
                         <a class="navbar-item is-size-3 is-uppercase poppins" href="/">
-                        <div style="display:flex; gap:0.8rem; align-items: center">
-                            {# {% from 'macros/svgTwo.njk' import svgTwo %}
+                            <div style="display:flex; gap:0.8rem; align-items: center">
+                                {# {% from 'macros/svgTwo.njk' import svgTwo %}
                             {{ svgTwo(one = "#7C4DFF", two = "#7C4DFF", size="2.2rem") }} #}
-                            <img src="/img/logo.png" style="height: 1.5rem" alt="">
-                            <img src="/img/text-logo.png" style="height: 1.2rem" alt="">
-                        </div>
+                                <img src="/img/logo.png" style="height: 1.5rem" alt="">
+                                <img src="/img/text-logo.png" style="height: 1.2rem" alt="">
+                            </div>
                         </a>
                     </div>
                     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -133,13 +133,19 @@
                         <p class="menu-label">Contact us</p>
                         <ul class="menu-list">
                             {% for form in forms %}
-                            <li>
-                                <a href="/form/{{ form.template }}">{{ form.title }}</a>
-                            </li>   
+                                <li>
+                                    <a href="/form/{{ form.template }}">{{ form.title }}</a>
+                                </li>
                             {% endfor %}
                         </ul>
                     </div>
                     <div class="column menu">
+                        <div>
+                            <p class="menu-label">England / Wales Charity Number</p>
+                            <p>1166559</p>
+                            <p class="menu-label">Scotland Charity Number</p>
+                            <p>SC047637</p>
+                        </div>
                         <form action="https://sexpression.us20.list-manage.com/subscribe/post?u=a12713abc0ae4f1b1d0841fcd&id=d08e375582" method="post">
                             <div class="field">
                                 <p class="menu-label">Subscribe to our newsletter</p>

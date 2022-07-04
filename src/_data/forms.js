@@ -1,8 +1,6 @@
 const markdown = require("markdown").markdown;
 const { Directus } = require('@directus/sdk');
-
-const { DIRECTUS_URL } = process.env;
-const directus = new Directus(`https://${DIRECTUS_URL}`);
+const directus = new Directus(`https://sexpression.directus.app`);
 
 
 function prettyMarkdown(data) {

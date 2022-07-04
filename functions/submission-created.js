@@ -1,8 +1,7 @@
 const sgMail = require('@sendgrid/mail');
-const { DIRECTUS_URL } = process.env;
 const { Directus } = require('@directus/sdk');
 const json2html = require('node-json2html');
-let directus = new Directus(`https://${DIRECTUS_URL}`);
+let directus = new Directus(`https://sexpression.directus.app`);
 
 const {
     SENDGRID_API_KEY,

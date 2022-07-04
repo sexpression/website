@@ -13,10 +13,10 @@ permalink: "resources/{{ tag.name | slug }}/"
 </h1>
 <div class="tabs">
     <ul class="m-0">
-        {% for tag in tags %}
-            {# <li {% if tag.name == resource.tags.name %} class="is-active" {% endif %}> #}
-                <li>
-                <a href="/resources/{{ tag.name | slug }}">{{ tag.name }}</a>
+        {% for raggy in tags %}
+        {# <p>{{ raggy.name }} - {{ tag.name }}</p> #}
+            <li {% if raggy.name == tag.name %} class="is-active" {% endif %}>
+                <a href="/resources/{{ raggy.name | slug }}">{{ raggy.name }}</a>
             </li>
             {# <p>{{ tag.text }}</p> #}
         {% endfor %}

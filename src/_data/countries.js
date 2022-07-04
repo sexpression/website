@@ -1,5 +1,4 @@
 const axios = require('axios').default;
-const { DIRECTUS_URL } = process.env;
 
 module.exports = async function() {
     try {
