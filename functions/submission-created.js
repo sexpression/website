@@ -1,12 +1,9 @@
 const sgMail = require('@sendgrid/mail');
 const { Directus } = require('@directus/sdk');
 const json2html = require('node-json2html');
-let directus = new Directus(`https://sexpression.directus.app`);
-
-const {
-    SENDGRID_API_KEY,
-    SENDGRID_FROM_EMAIL,
-} = process.env;
+const directus = new Directus(`https://sexpression.directus.app`);
+const email = "website@sexpression.org.uk";
+const { SENDGRID_API_KEY } = process.env;
 
 sgMail.setApiKey(SENDGRID_API_KEY);
 
@@ -92,7 +89,7 @@ exports.handler = async function(event, context, callback) {
         let copyData = JSON.parse(JSON.stringify(data));
         copyData.unshift({ 'key': 'Statment', 'value': await form.data[0].response });
         let html = htmlConstructor(copyData, template1);
-        let msg = emailConstructor(payload["Email"], SENDGRID_FROM_EMAIL, `Thank you ${payload['Full name']}`, html)
+        let msg = emailConstructor(payload["Email"], email, `Thank you ${payload['Full name']}`, html)
         console.log(msg)
         await emailSender(msg);
     } catch (error) {
@@ -104,7 +101,7 @@ exports.handler = async function(event, context, callback) {
         for (let x of await form.data[0].recipient) {
             let html = htmlConstructor(data, template2);
             let member = await directus.items("members").readByQuery({ meta: 'total_count', filter: { "id": { "_eq": x.members_id } } });
-            let msg = emailConstructor(member.data[0].email, SENDGRID_FROM_EMAIL, `New response | ${path}`, html);
+            let msg = emailConstructor(member.data[0].email, email, `New response | ${path}`, html);
             console.log(msg)
             await emailSender(msg);
         }
@@ -118,7 +115,7 @@ exports.handler = async function(event, context, callback) {
             let branchArr = payload["Branch"].split(",");
             payload["Branch"] = branchArr[1];
             let html = htmlConstructor(data, template2);
-            let msg = emailConstructor(branchArr[0], SENDGRID_FROM_EMAIL, `New response | ${path}`, html)
+            let msg = emailConstructor(branchArr[0], email, `New response | ${path}`, html)
             console.log(msg)
             await emailSender(msg);
         } catch (error) {

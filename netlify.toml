@@ -1,6 +1,6 @@
 [build]
     command = "npm run build"
-    environment = {SENDGRID_API_KEY = "",SENDGRID_FROM_EMAIL = "", HOOK_REBUILD_TOKEN = "", DIRECTUS_URL = ""}
+    environment = {SENDGRID_API_KEY = "", HOOK_REBUILD_TOKEN = ""}
     functions = "functions/"
     publish = "dist/"
 

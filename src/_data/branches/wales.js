@@ -1,17 +1,19 @@
-const fetch = require("node-fetch");
-
-const domain = "https://sexpression.org.uk";
-const path = "/.netlify/functions/branches?country=wales";
-
-// Wales wales
-// England england
-// Scotland scotland
-// Nothern Ireland nothern-ireland
-
-const url = new URL(path, domain);
+const { Directus } = require('@directus/sdk');
+const directus = new Directus(`https://sexpression.directus.app`);
+const table = 'branches';
 
 module.exports = async function() {
-    const response = await fetch(url);
-    const jsonResponse = await response.json();
-    return jsonResponse.items;
+
+    try {
+        let fields = ['*', 'university.country', 'university.name'];
+        let filter = { "status": { "_eq": "published" }, "university": { "country": { "_eq": "Wales" } } };
+        let sort = "name";
+        let meta = "total_count";
+
+        let response = await directus.items(table).readByQuery({ meta: meta, fields: fields, filter: filter, sort: sort });
+
+        return response.data;
+    } catch (err) {
+        console.log(err);
+    }
 };

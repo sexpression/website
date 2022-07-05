@@ -1,4 +1,5 @@
-const markdown = require("markdown").markdown;
+const MarkdownIt = require("markdown-it");
+md = new MarkdownIt();
 const moment = require('moment');
 const { Directus } = require('@directus/sdk');
 const slugify = require('slugify');
@@ -30,7 +31,7 @@ function sluggy(data) {
 
 function prettyMarkdown(data) {
     for (let element in data) {
-        data[element].body = markdown.toHTML(data[element].body);
+        data[element].body = md.render(data[element].body);
     };
 
     return data;
