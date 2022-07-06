@@ -20,7 +20,7 @@ module.exports = async function() {
                 {
                     "role": {
                         "teams": {
-                            "_eq": "Trustees"
+                            "_eq": "National Committee"
                         }
                     }
                 }
@@ -31,7 +31,6 @@ module.exports = async function() {
         let meta = 'total_count';
 
         let response = await directus.items(table).readByQuery({ meta: meta, sort: sort, filter: filter, fields: fields });
-
         return response.data
 
     } catch (err) {

@@ -45,9 +45,12 @@ async function emailSender(msg) {
 exports.handler = async function(event, context, callback) {
     let payload = JSON.parse(event.body).payload.data;
     let path = event.path.slice(0, -1).substring(event.path.slice(0, -1).lastIndexOf('/') + 1);
-    let form = await directus.items("forms").readByQuery({ meta: 'total_count', filter: { "template": { "_eq": payload.template } }, fields: ['*', 'recipient.members_id'] });
 
 
+    let meta = 'total_count';
+    let filter = { "template": { "_eq": payload.template } };
+    let fields = ['*', 'recipient.*'];
+    let form = await directus.items("forms").readByQuery({ meta: meta, filter: filter, fields: fields });
     delete payload.user_agent;
     delete payload.referrer;
     delete payload.ip;
@@ -100,8 +103,8 @@ exports.handler = async function(event, context, callback) {
     try {
         for (let x of await form.data[0].recipient) {
             let html = htmlConstructor(data, template2);
-            let member = await directus.items("members").readByQuery({ meta: 'total_count', filter: { "id": { "_eq": x.members_id } } });
-            let msg = emailConstructor(member.data[0].email, email, `New response | ${path}`, html);
+            let member = await directus.items("members").readByQuery({ meta: 'total_count', filter: { "id": { "_eq": x.members_id } }, fields: ['*', 'role.*'] });
+            let msg = emailConstructor(member.data[0].role.email, email, `New response | ${path}`, html);
             console.log(msg)
             await emailSender(msg);
         }
