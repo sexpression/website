@@ -15,7 +15,7 @@ permalink: "resources/{{ tag.name | slug }}/"
     <ul class="m-0">
         {% for raggy in tags %}
         {# <p>{{ raggy.name }} - {{ tag.name }}</p> #}
-            <li {% if raggy.name == tag.name %} class="is-active" {% endif %}>
+            <li {% if raggy.name === tag.name %} class="is-active" {% endif %}>
                 <a href="/resources/{{ raggy.name | slug }}">{{ raggy.name }}</a>
             </li>
             {# <p>{{ tag.text }}</p> #}
@@ -25,8 +25,8 @@ permalink: "resources/{{ tag.name | slug }}/"
 
 <div class="columns is-multiline is-mobile">
     {% for resource in resources %}
-        {% if tag.name == resource.tags.name %}
-            {% if resource.file.type == 'JPEG' or resource.files.type == 'PNG' %}
+        {% if tag.name === resource.tags.name %}
+            {% if resource.file.type === 'JPEG' or resource.files.type === 'PNG' %}
                 <div class="column is-half-mobile is-half-touch is-one-quarter-tablet is-one-quarter-desktop is-one-quarter-widescreen is-one-quarter-fullhd">
                     <div class="card border-radius-2" style="height: 100%;">
                         <figure class="image is-2by3 m-0">
@@ -50,7 +50,7 @@ permalink: "resources/{{ tag.name | slug }}/"
                         </div>
                     </div>
                 </div>
-            {% elif resource.file.type == 'PDF' %}
+            {% elif resource.file.type === 'PDF' %}
                 <div class="column is-full-mobile is-full-touch is-half-tablet is-two-fifths-desktop is-two-fifths-widescreen is-two-fifths-fullhd">
                     <div class="card border-radius-2" style="height: 100%;">
 
