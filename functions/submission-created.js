@@ -29,6 +29,7 @@ function emailConstructor(to, from, subject, html) {
 async function emailSender(msg) {
     try {
         let response = await sgMail.send(msg);
+        console.log({ message: msg, response: response[0].statusCode })
         return {
             statusCode: response.statusCode,
             body: response.body,
@@ -93,7 +94,6 @@ exports.handler = async function(event, context, callback) {
         copyData.unshift({ 'key': 'Statment', 'value': await form.data[0].response });
         let html = htmlConstructor(copyData, template1);
         let msg = emailConstructor(payload["Email"], email, `Thank you ${payload['Full name']}`, html)
-        console.log(msg)
         await emailSender(msg);
     } catch (error) {
         console.error(error);
@@ -105,7 +105,6 @@ exports.handler = async function(event, context, callback) {
             let html = htmlConstructor(data, template2);
             let member = await directus.items("members").readByQuery({ meta: 'total_count', filter: { "id": { "_eq": x.members_id } }, fields: ['*', 'role.*'] });
             let msg = emailConstructor(member.data[0].role.email, email, `New response | ${path}`, html);
-            console.log(msg)
             await emailSender(msg);
         }
     } catch (error) {
@@ -119,7 +118,6 @@ exports.handler = async function(event, context, callback) {
             payload["Branch"] = branchArr[1];
             let html = htmlConstructor(data, template2);
             let msg = emailConstructor(branchArr[0], email, `New response | ${path}`, html)
-            console.log(msg)
             await emailSender(msg);
         } catch (error) {
             console.error(error);
