@@ -1,0 +1,8 @@
+[build]
+    command = "npm start"
+    environment = {SENDGRID_API_KEY = "", HOOK_REBUILD_TOKEN = ""}
+    functions = "functions"
+    publish = "dist"
+
+[functions."build"]
+schedule = "@daily"

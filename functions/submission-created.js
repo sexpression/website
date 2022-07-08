@@ -131,45 +131,4 @@ exports.handler = async function(event, context, callback) {
     } catch (error) {
         console.error(error);
     }
-
-    // EMAIL 1 - SENDER //////////////////////////////////////////////////
-    try {
-        let copyData = JSON.parse(JSON.stringify(data));
-        copyData.unshift({ 'key': 'statment', 'value': await form.data[0].response });
-        let html = htmlConstructor(copyData, template1);
-        let msg = emailConstructor(payload["Email"], SENDGRID_FROM_EMAIL, `Thank you ${payload['Full name']}`, html)
-        await emailSender(msg);
-    } catch (error) {
-        console.error(error);
-    }
-
-    // EMAIL 2 - MEMBER //////////////////////////////////////////////////
-    try {
-        for (let x of await form.data[0].recipient) {
-            let html = htmlConstructor(data, template2);
-            let member = await directus.items("members").readByQuery({ meta: 'total_count', filter: { "id": { "_eq": x.members_id } } });
-            let msg = emailConstructor(member.data[0].email, SENDGRID_FROM_EMAIL, `New response | ${path}`, html);
-            await emailSender(msg);
-        }
-    } catch (error) {
-        console.error(error);
-    }
-
-    // EMAIL 3 - BRANCH //////////////////////////////////////////////////
-    if (path === "join-a-branch" || "request-a-session") {
-        try {
-            let html = htmlConstructor(data, template2);
-            let msg = emailConstructor(branchArr[0], SENDGRID_FROM_EMAIL, `New response | ${path}`, html)
-            await emailSender(msg);
-        } catch (error) {
-            console.error(error);
-        }
-    } else {
-        console.log("branch skipped");
-    }
-
-    return {
-        statusCode: 200,
-        body: "successful mate",
-    };
 }
