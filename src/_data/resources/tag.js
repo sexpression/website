@@ -1,12 +1,19 @@
-const fetch = require("node-fetch");
-
-const domain = "https://sexpression.org.uk";
-const path = "/.netlify/functions/resources?tags=true&sort=sort";
-
-const url = new URL(path, domain);
+const { Directus } = require('@directus/sdk');
+const directus = new Directus(`https://sexpression.directus.app`);
+const table = 'tags';
 
 module.exports = async function() {
-    const response = await fetch(url);
-    const jsonResponse = await response.json();
-    return jsonResponse.records;
+
+    try {
+        let fields = ['*', 'university.country', 'university.name'];
+        let filter = { "status": { "_eq": "published" } };
+        let sort = "name";
+        let meta = "total_count";
+
+        let response = await directus.items(table).readByQuery({ meta: meta, fields: fields, filter: filter, sort: sort });
+
+        return response.data;
+    } catch (err) {
+        console.log(err);
+    }
 };
