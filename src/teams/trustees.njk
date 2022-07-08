@@ -1,0 +1,47 @@
+---
+layout: container.njk
+title: Meet the team
+---
+
+<h1 class="mb-6 has-text-centered">
+    <i class="fas mr-2 fa-users"></i> {{ title }}
+</h1>
+
+<div class="tabs">
+    <ul class="m-0">
+        <li class="">
+            <a href="/teams">National Committee</a>
+        </li>
+        <li class="is-active">
+            <a href="/teams/trustees">Trustees</a>
+        </li>
+    </ul>
+</div>
+
+<div class="columns is-multiline m-5" style="gap:2rem;">
+    {% for member in trustees %}
+
+        <div class="column is-full card border-radius-2 columns p-6">
+            <div class="column is-full-mobile is-one-quarter-desktop is-flex is-flex-direction-column is-align-items-center is-justify-content-center" style="gap: 1rem;">
+                <figure class="image is-128x128 m-0">
+                    <img class="is-rounded" src="https://sexpression.directus.app/assets/{{ member.image }}" alt="{{ member.description }}">
+                </figure>
+                <div class="card-content p-0">
+                    <p class="title is-size-6 pb-0 mb-1">{{ member.role.title }}</p>
+                    <p class="is-size-6 mb-0">{{ member.full_name }}</p>
+                    {% for pronouns in member.gender_pronouns %}
+                        <p class="is-size-7">{{ pronouns }}</p>
+                    {% endfor %}
+                    <a class="color-black has-text-link is-size-7" href="mailto:{{ member.role.email }}">{{ member.role.email }}</a>
+                </div>
+            </div>
+            <div class="column is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
+                <div class="content">
+                    <blockquote>
+                        {{ member.description }}
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

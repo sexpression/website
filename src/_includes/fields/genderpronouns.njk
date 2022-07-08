@@ -1,0 +1,30 @@
+<div class="field">
+    <label class="label is-uppercase">Gender pronouns</label>
+    <div class="field-body">
+        <div class="field">
+            <div class="control">
+                <input name="Gender pronouns" id="genderpronouns" class="input is-rounded" type="text" required="required">
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <label class="checkbox">
+                    <input type="checkbox" onchange="genderPronouns()">
+                    Prefer not to answer. Default to gender-neutral <i>they/them/their</i> pronouns.
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function genderPronouns() {
+        let elem = document.getElementById("genderpronouns");
+        if (elem.disabled) {
+            elem.disabled = false;
+        } else {
+            elem.value = "";
+            elem.disabled = true;
+        }
+    }
+    </script>

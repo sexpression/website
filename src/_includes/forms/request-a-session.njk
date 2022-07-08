@@ -1,0 +1,25 @@
+<section>
+        <h2 class="title">Who are you?</h1>
+        {% include 'fields/fullname.njk' %}
+        {% include 'fields/genderpronouns.njk' %}
+        {% include 'fields/email.njk' %}
+        {% include 'fields/positionatinstitution.njk' %}
+</section>
+
+<section>
+        <h2 class="title">What is your institution?</h1>
+        {% include 'fields/institutionname.njk' %}
+        {% include 'fields/institutiontype.njk' %}
+</section>
+
+<section>
+        <h2 class="title">Where is your Institution?</h1>
+        {% include 'fields/address.njk' %}
+</section>
+
+<section>
+        <h2 class="title">Your session</h1>
+        {% include 'fields/session.njk' %}
+        {% include 'fields/message.njk' %}
+</section>
+{% include 'fields/template.njk' %}

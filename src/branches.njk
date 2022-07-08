@@ -1,350 +1,66 @@
 ---
-layout: headerfooter.njk
+layout: container.njk
 title: Branches
 ---
 
-<div class="nav-block"></div>
-<main class="main">
-    <div class="container-2 w-container">
-        <h1 class="h1-centered">{{ title }} <span class="ec ec-house-with-garden"></span></h1>
-        <div class="w-row">
-            <div class="w-col">
-                <p class="p">Each of our Sexpression:UK branches facilitate RSHE workshops in their local communities
-                    across the UK. Branch contact details are provided below for interested volunteers and local
-                    organisations. If you are an organisation interested in working with more than one branch then
-                    please contact <a href="mailto:externals@sexpression.org.uk">externals@sexpression.org.uk</a>.</p>
+<h1 class="mb-6 has-text-centered">
+    <i class="fas mr-2 fa-code-branch"></i> {{ title }}
+</h1>
+
+<div class="tabs">
+    <ul class="m-0">
+        <li class="is-active">
+            <a href="/branches">All Branches</a>
+        </li>
+        <li>
+            <a href="/branches/england">England</a>
+        </li>
+        <li>
+            <a href="/branches/nothern-ireland">Northern Ireland</a>
+        </li>
+        <li>
+            <a href="/branches/scotland">Scotland</a>
+        </li>
+        <li>
+            <a href="/branches/wales">Wales</a>
+        </li>
+    </ul>
+</div>
+
+<div class="columns is-multiline">
+    {% from 'macros/svgOne.njk' import svgOne %}
+    {% for branch in branches %}
+        <div class="column is-half-tablet is-half-desktop is-one-quarter-widescreen is-one-quarter-fullhd">
+            <div class="card border-radius-2 p-5 is-flex is-flex-direction-column p-2" style="gap: 0.75rem;">
+                    {{ svgOne (one=branch.primary_colour, two=branch.secondary_colour, size="96px") }}
+                <div class="card-content p-0">
+                    <p class="title is-size-6 pb-1">{{ branch.name }}</p>
+                    <p class="subtitle is-size-7">{{ branch.university.name }},
+                    {{ branch.university.country }}</p>
+                    <p>
+                        <a class="color-black has-text-link is-size-7" href="mailto:{{ branch.email }}">
+                            {{ branch.email }}
+                        </a>
+                    </p>
+                    <div>
+                        {% if branch.instagram %}
+                            <a class="color-black has-text-link" target="_blank" href="{{ branch.instagram }}">
+                                <i class="fab mr-2 fa-instagram"></i>
+                            </a>
+                        {% endif %}
+                        {% if branch.twitter %}
+                            <a class="color-black has-text-link" target="_blank" href="{{ branch.twitter }}">
+                                <i class="fab mr-2 fa-twitter"></i>
+                            </a>
+                        {% endif %}
+                        {% if branch.facebook %}
+                            <a class="color-black has-text-link" target="_blank" href="{{ branch.facebook }}">
+                                <i class="fab mr-2 fa-facebook"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
-        <h2 class="h2">England <i class="em em-flag-england"></i>󠁧󠁢󠁥󠁮󠁧󠁿</h2>
-
-        <div class="branch-column w-row">
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/birmingham.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of Birmingham" class="service-icon">
-                <h3 class="h3-noheader">Birmingham</h3>
-                <p class="p-capital">University of Birmingham</p>
-                <p class="p-small-capital">
-                    <a href="mailto:birmingham@sexpression.org.uk" class="link-styled">birmingham@sexpression.org.uk</a>
-                </p>
-            </div>
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/brighton.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of Brighton" class="service-icon">
-                <h3 class="h3-noheader">Brighton</h3>
-                <p class="p-capital">University of brighton</p>
-                <p class="p-small-capital">
-                    <a href="mailto:brighton@sexpression.org.uk" class="link-styled">brighton@sexpression.org.uk</a>
-                </p>
-            </div>
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/bristol.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of Bristol" class="service-icon">
-                <h3 class="h3-noheader">Bristol</h3>
-                <p class="p-capital">University of Bristol</p>
-                <p class="p-small-capital">
-                    <a href="mailto:bristol@sexpression.org.uk" class="link-styled">bristol@sexpression.org.uk</a>
-                </p>
-            </div>
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/uwe.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of the West of England" class="service-icon">
-                <h3 class="h3-noheader">Bristol</h3>
-                <p class="p-capital">University of the West of England</p>
-                <p class="p-small-capital">
-                    <a href="mailto:uwe@sexpression.org.uk" class="link-styled">uwe@sexpression.org.uk</a>
-                </p>
-            </div>
-
-        </div>
-
-
-        <div class="branch-column w-row">
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/cambridge.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of Cambridge" class="service-icon">
-                <h3 class="h3-noheader">Cambridge</h3>
-                <p class="p-capital">University of Cambridge</p>
-                <p class="p-small-capital">
-                    <a href="mailto:cambridge@sexpression.org.uk" class="link-styled">cambridge@sexpression.org.uk</a>
-                </p>
-            </div>
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/warwick.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of Warwick" class="service-icon">
-                <h3 class="h3-noheader">Coventry</h3>
-                <p class="p-capital">University of Warwick</p>
-                <p class="p-small-capital">
-                    <a href="mailto:warwick@sexpression.org.uk" class="link-styled">warwick@sexpression.org.uk</a>
-                </p>
-                <!-- <p class="p-small-capital">
-                        <a href="https://warwicksexpression.wixsite.com/studentcompanion/" target="_blank"
-                            class="link-styled">Student Companion</a>
-                    </p> -->
-            </div>
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/durham.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of Durham" class="service-icon">
-                <h3 class="h3-noheader">Durham</h3>
-                <p class="p-capital">University of Durham</p>
-                <p class="p-small-capital">
-                    <a href="mailto:durham@sexpression.org.uk" class="link-styled">durham@sexpression.org.uk</a>
-                </p>
-            </div>
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/exeter.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of Exeter" class="service-icon">
-                <h3 class="h3-noheader">Exeter</h3>
-                <p class="p-capital">University of Exeter</p>
-                <p class="p-small-capital">
-                    <a href="mailto:exeter@sexpression.org.uk" class="link-styled">exeter@sexpression.org.uk</a>
-                </p>
-            </div>
-
-        </div>
-
-
-        <div class="branch-column w-row">
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/lancaster.png" width="50"
-                    alt="Sexpression:UK branch logo for the Lancaster University" class="service-icon">
-                <h3 class="h3-noheader">Lancaster</h3>
-                <p class="p-capital">Lancaster University</p>
-                <p class="p-small-capital">
-                    <a href="mailto:lancaster@sexpression.org.uk" class="link-styled">lancaster@sexpression.org.uk</a>
-                </p>
-            </div>
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/leeds.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of Leeds" class="service-icon">
-                <h3 class="h3-noheader">Leeds</h3>
-                <p class="p-capital">University of Leeds</p>
-                <p class="p-small-capital">
-                    <a href="mailto:leeds@sexpression.org.uk" class="link-styled">leeds@sexpression.org.uk</a>
-                </p>
-            </div>
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/leicester.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of Leicester" class="service-icon">
-                <h3 class="h3-noheader">Leicester</h3>
-                <p class="p-capital">University of Leicester</p>
-                <p class="p-small-capital">
-                    <a href="mailto:leicester@sexpression.org.uk" class="link-styled">leicester@sexpression.org.uk</a>
-                </p>
-            </div>
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/imperial.png" width="50"
-                    alt="Sexpression:UK branch logo for the Imperial College London" class="service-icon">
-                <h3 class="h3-noheader">London</h3>
-                <p class="p-capital">Imperial College London</p>
-                <p class="p-small-capital">
-                    <a href="mailto:imperial@sexpression.org.uk" class="link-styled">imperial@sexpression.org.uk</a>
-                </p>
-            </div>
-
-        </div>
-
-        <div class="branch-column w-row">
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/kcl.png" width="50"
-                    alt="Sexpression:UK branch logo for King&#x27;s College London" class="service-icon">
-                <h3 class="h3-noheader">London</h3>
-                <p class="p-capital">King&#x27;s College London (KCL)</p>
-                <p class="p-small-capital">
-                    <a href="mailto:kcl@sexpression.org.uk" class="link-styled">kcl@sexpression.org.uk</a>
-                </p>
-            </div>
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/ucl.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of York" class="service-icon">
-                <h3 class="h3-noheader">London</h3>
-                <p class="p-capital">University College London (UCL)</p>
-                <p class="p-small-capital">
-                    <a href="mailto:ucl@sexpression.org.uk" class="link-styled">ucl@sexpression.org.uk</a>
-                </p>
-            </div>
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/loughborough.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of Loughborough" class="service-icon">
-                <h3 class="h3-noheader">Loughborough</h3>
-                <p class="p-capital">University of Loughborough</p>
-                <p class="p-small-capital">
-                    <a href="mailto:loughborough@sexpression.org.uk"
-                        class="link-styled">loughborough@sexpression.org.uk</a>
-                </p>
-            </div>
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/manchester.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of Manchester" class="service-icon">
-                <h3 class="h3-noheader">Manchester</h3>
-                <p class="p-capital">University of Manchester</p>
-                <p class="p-small-capital">
-                    <a href="mailto:manchester@sexpression.org.uk" class="link-styled">manchester@sexpression.org.uk</a>
-                </p>
-            </div>
-
-        </div>
-
-        <div class="branch-column w-row">
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/newcastle.png" width="50"
-                    alt="Sexpression:UK branch logo for the Newcastle University" class="service-icon">
-                <h3 class="h3-noheader">Newcastle</h3>
-                <p class="p-capital">Newcastle University</p>
-                <p class="p-small-capital">
-                    <a href="mailto:newcastle@sexpression.org.uk" class="link-styled">newcastle@sexpression.org.uk</a>
-                </p>
-            </div>
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/northumbria.png" width="50"
-                    alt="Sexpression:UK branch logo for the Northumbria University" class="service-icon">
-                <h3 class="h3-noheader">Northumbria</h3>
-                <p class="p-capital">Northumbria University</p>
-                <p class="p-small-capital">
-                    <a href="mailto:northumbria@sexpression.org.uk"
-                        class="link-styled">northumbria@sexpression.org.uk</a>
-                </p>
-            </div>
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/nottingham.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of Nottingham" class="service-icon">
-                <h3 class="h3-noheader">Nottingham</h3>
-                <p class="p-capital">University of Nottingham</p>
-                <p class="p-small-capital">
-                    <a href="mailto:nottingham@sexpression.org.uk" class="link-styled">nottingham@sexpression.org.uk</a>
-                </p>
-            </div>
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/oxford.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of Oxford" class="service-icon">
-                <h3 class="h3-noheader">Oxford</h3>
-                <p class="p-capital">University of Oxford</p>
-                <p class="p-small-capital">
-                    <a href="mailto:oxford@sexpression.org.uk" class="link-styled">oxford@sexpression.org.uk</a>
-                </p>
-            </div>
-
-        </div>
-
-        <div class="branch-column w-row">
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/sheffield.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of Sheffield" class="service-icon">
-                <h3 class="h3-noheader">Sheffield</h3>
-                <p class="p-capital">University of Sheffield</p>
-                <p class="p-small-capital">
-                    <a href="mailto:sheffield@sexpression.org.uk" class="link-styled">sheffield@sexpression.org.uk</a>
-                </p>
-            </div>
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/southampton.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of Southampton" class="service-icon">
-                <h3 class="h3-noheader">Southampton</h3>
-                <p class="p-capital">University of Southampton</p>
-                <p class="p-small-capital">
-                    <a href="mailto:southampton@sexpression.org.uk"
-                        class="link-styled">southampton@sexpression.org.uk</a>
-                </p>
-            </div>
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/england/york.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of York" class="service-icon">
-                <h3 class="h3-noheader">York</h3>
-                <p class="p-capital">University of York</p>
-                <p class="p-small-capital">
-                    <a href="mailto:york@sexpression.org.uk" class="link-styled">york@sexpression.org.uk</a>
-                </p>
-            </div>
-        </div>
-
-        <h2 class="h2">Scotland <i class="em em-flag-scotland"></i>󠁧󠁢󠁳󠁣󠁴󠁿</h2>
-        <div class="branch-column w-row">
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/scotland/aberdeen.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of Aberdeen" class="service-icon">
-                <h3 class="h3-noheader">Aberdeen</h3>
-                <p class="p-capital">University of Aberdeen</p>
-                <p class="p-small-capital">
-                    <a href="mailto:aberdeen@sexpression.org.uk" class="link-styled">aberdeen@sexpression.org.uk</a>
-                </p>
-            </div>
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/scotland/edinburgh.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of Edinburgh" class="service-icon">
-                <h3 class="h3-noheader">Edinburgh</h3>
-                <p class="p-capital">University of Edinburgh</p>
-                <p class="p-small-capital">
-                    <a href="mailto:edinburgh@sexpression.org.uk" class="link-styled">edinburgh@sexpression.org.uk</a>
-                </p>
-            </div>
-
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/scotland/glasgow.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of Glasgow" class="service-icon">
-                <h3 class="h3-noheader">Glasgow</h3>
-                <p class="p-capital">University of Glasgow</p>
-                <p class="p-small-capital">
-                    <a href="mailto:glasgow@sexpression.org.uk" class="link-styled">glasgow@sexpression.org.uk</a>
-                </p>
-            </div>
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/scotland/st_andrews.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of St. Andrews" class="service-icon">
-                <h3 class="h3-noheader">St. Andrews</h3>
-                <p class="p-capital">University of St. Andrews</p>
-                <p class="p-small-capital">
-                    <a href="mailto:standrews@sexpression.org.uk" class="link-styled">standrews@sexpression.org.uk</a>
-                </p>
-            </div>
-        </div>
-
-        <div class="branch-column w-row">
-            <div class="branch-block w-col w-col-3 w-col-medium-6">
-                <img src="/images/branches/scotland/dundee.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of St. Andrews" class="service-icon">
-                <h3 class="h3-noheader">Dundee</h3>
-                <p class="p-capital">University of Dundee</p>
-                <p class="p-small-capital">
-                    <a href="mailto:dundee@sexpression.org.uk" class="link-styled">dundee@sexpression.org.uk</a>
-                </p>
-            </div>
-        </div>
-
-        <h2 class="h2">Wales <i class="em em-flag-wales"></i>󠁧󠁢󠁷󠁬󠁳󠁿</h2>
-        <div class="branch-column w-row">
-            <div class="branch-block w-col w-col-3 w-col-medium-6 w-col-small-small-stack w-col-tiny-tiny-stack">
-                <img src="/images/branches/wales/cardiff.png" width="50"
-                    alt="Sexpression:UK branch logo for the University of Cardiff" class="service-icon">
-                <h3 class="h3-noheader">Cardiff</h3>
-                <p class="p-capital">Cardiff University</p>
-                <p class="p-small-capital">
-                    <a href="mailto:cardiff@sexpression.org.uk" class="link-styled">cardiff@sexpression.org.uk</a>
-                </p>
-            </div>
-            <div class="w-col w-col-3 w-col-medium-6 w-col-small-small-stack w-col-tiny-tiny-stack"></div>
-        </div>
-    </div>
-</main>
+    {% endfor %}
+</div>

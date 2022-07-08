@@ -1,0 +1,120 @@
+@charset "utf-8";
+@use 'theme';
+@use 'background';
+@use 'primary_button';
+@import "../../node_modules/bulma/bulma.sass";
+$title-family: theme.$family-primary;
+.poppins {
+    font-family: theme.$family-primary;
+    color: theme.$primary;
+}
+
+.primary {
+    color: theme.$primary;
+}
+
+.transparent-background {
+    background-color: transparent;
+}
+
+.color-black {
+    color: black;
+}
+
+.border-radius-2 {
+    border-radius: 2rem;
+}
+
+.navbar {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.text-gradient {
+    background: -webkit-linear-gradient(274deg, #9c02ff, #3da4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+// .action-button {
+//     color: #363636 !important;
+//     padding: 25px;
+//     transition: 0.3s;
+//     background-color: #fafafa;
+//     box-shadow: 0px 0px 20px -1px rgba(197,197,197) !important;
+// }
+// .action-button.primary {     
+//     color: white !important;
+//     background-color: theme.$primary;
+//     box-shadow: 0px 0px 120px -1px rgba(124,77,255,1) !important;
+// }
+// .action-button.secondary {
+//     color: white !important;
+//     background-color: #B47CFF !important;
+//     box-shadow: 0px 0px 120px -1px rgba(124,77,255,1) !important;
+// }
+// .action-button:hover {
+//     box-shadow: 0px 0px 80px -1px rgba(197,197,197,1) !important;
+// }
+// .action-button.primary:hover {
+//     box-shadow: 0px 0px 80px -1px rgba(124,77,255,1) !important;
+// }
+// .action-button.secondary:hover {
+//     box-shadow: 0px 0px 80px -1px rgba(124,77,255,1) !important;
+// }
+// .purple {
+//     color: theme.$primary;
+// }
+
+/* Grow */
+
+
+/* .hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.1);
+} */
+
+// .card-join {
+//     border-radius: 1rem;
+//     background: #f9f9f9;
+// }
+// .label {
+//     letter-spacing: 0.20rem;
+// }
+// .navbar {
+//     padding: 20px 0 20px 0;
+//     background-color: #fff0;
+// }
+// .gradient {
+//     background: -webkit-linear-gradient(#7C4DFF, #B47CFF);
+//     -webkit-background-clip: text;
+//     -webkit-text-fill-color: transparent;
+// }
+// .notification {
+//     margin-bottom: 0px;
+// }
+// .button.is-primary {
+//     background-color: #d600ff;
+// }
+// .button.is-primary.is-light {
+//     color: #000403;
+// }
+// .menu-label {
+//     color: #737373;
+// }
+.colour-background {
+    background: linear-gradient(0deg, rgba(61, 164, 255, 1) 0%, rgba(156, 0, 255, 1) 100%);
+}

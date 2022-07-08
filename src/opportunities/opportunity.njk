@@ -1,0 +1,36 @@
+---
+layout: headerfooter.njk
+tags: opportunity
+pagination:
+    data: opportunities
+    size: 1
+    alias: opportunity
+permalink: "opportunities/{{ opportunity.title | slug }}/"
+---
+<div class="container">
+    <div class="columns">
+        <div class="column is-two-fifths card p-6 my-6">
+            <p class="title">{{ opportunity.title }}</p>
+            <p class="subtitle">{{ opportunity.description }}</p>
+            <div class="is-flex is-flex-direction-column" style="gap: 0.5rem;">
+                <div class="is-flex is-align-items-center" style="gap: 0.5rem;">
+                    <i class="fa-solid fa-person"></i>
+                    <p class="">{{ opportunity.positions }} positions</p>
+                </div>
+
+                <div class="is-flex is-align-items-center" style="gap: 0.5rem;">
+                    <i class="fa-solid fa-clock"></i>
+                    <p>Deadline: {{ opportunity.deadline }}</p>
+                </div>
+
+                <div class="is-flex is-align-items-center" style="gap: 0.5rem;">
+                    <i class="fa-solid fa-link"></i>
+                    <a href="{{ link }}" target="_blank">Charity Jobs</a>
+                </div>
+            </div>
+        </div>
+        <div class="column my-6 content">
+            {{ opportunity.body | safe }}
+        </div>
+    </div>
+</div>

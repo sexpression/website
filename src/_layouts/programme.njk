@@ -1,0 +1,18 @@
+---
+layout: headerfooter.njk
+---
+<section class="section">
+    <div class="container content is-max-desktop">
+        {% for section in programme %}
+        <section class="hero">
+            <div class="hero-body">
+                <p class="title">{{ section.title }}</p>
+                <p class="subtitle">{{ section.date_created }}</p>
+            </div>
+        </section>
+        <section class="p-6">
+            {{ content | safe }}
+        </section>
+        {% endfor %}
+    </div>
+</section>

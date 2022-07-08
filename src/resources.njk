@@ -1,0 +1,19 @@
+---
+layout: container.njk
+title: Resources
+---
+
+<h1 class="mb-6 has-text-centered">
+    <i class="fas mr-2 fa-paperclip"></i> {{ title }}
+</h1>
+
+<div class="tabs">
+    <ul class="m-0">
+        {% for tag in tags %}
+            <li>
+                <a href="/resources/{{ tag.name | slug }}">{{ tag.name }}</a>
+            </li>
+            {# <p>{{ tag.text }}</p> #}
+        {% endfor %}
+    </ul>
+</div>

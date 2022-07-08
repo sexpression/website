@@ -1,0 +1,67 @@
+---
+layout: container.njk
+title: Branches
+---
+
+<h1 class="mb-6 has-text-centered">
+    <i class="fas mr-2 fa-code-branch"></i> {{ title }}
+</h1>
+
+
+<div class="tabs">
+    <ul class="m-0">
+        <li>
+            <a href="/branches">All Branches</a>
+        </li>
+        <li>
+            <a href="/branches/england">England</a>
+        </li>
+        <li>
+            <a href="/branches/nothern-ireland">Northern Ireland</a>
+        </li>
+        <li class="is-active">
+            <a href="/branches/scotland">Scotland</a>
+        </li>
+        <li>
+            <a href="/branches/wales">Wales</a>
+        </li>
+    </ul>
+</div>
+
+<div class="columns is-multiline">
+    {% from 'macros/svgOne.njk' import svgOne %}
+    {% for branch in branches.scotland %}
+        <div class="column is-half-tablet is-half-desktop is-one-quarter-widescreen is-one-quarter-fullhd">
+            <div class="card border-radius-2 p-5 is-flex is-flex-direction-column p-2" style="gap: 0.75rem;">
+                {{ svgOne (one=branch.primary_colour, two=branch.secondary_colour, size="96px") }}
+                <div class="card-content p-0">
+                    <p class="title is-size-6 pb-1">{{ branch.name }}</p>
+                    <p class="subtitle is-size-7">{{ branch.university.name }},
+                    {{ branch.university.country }}</p>
+                    <p>
+                        <a class="color-black has-text-link is-size-7" href="mailto:{{ branch.email }}">
+                            {{ branch.email }}
+                        </a>
+                    </p>
+                    <div>
+                        {% if branch.instagram %}
+                            <a class="color-black has-text-link" href="{{ branch.instagram }}">
+                                <i class="fab mr-2 fa-instagram"></i>
+                            </a>
+                        {% endif %}
+                        {% if branch.twitter %}
+                            <a class="color-black has-text-link" href="{{ branch.twitter }}">
+                                <i class="fab mr-2 fa-twitter"></i>
+                            </a>
+                        {% endif %}
+                        {% if branch.facebook %}
+                            <a class="color-black has-text-link" href="{{ branch.facebook }}">
+                                <i class="fab mr-2 fa-facebook"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

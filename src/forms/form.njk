@@ -1,0 +1,32 @@
+---
+layout: headerfooter.njk
+tags: form
+pagination:
+    data: forms
+    size: 1
+    alias: form
+permalink: "form/{{ form.template }}/"
+---
+<div class="container" width="768px" style="margin: 5rem auto;">
+    <div class="columns">
+        <div class="column my-4">
+            <div class="content">
+                <h1>{{ form.title }}</h1>
+                {{ form.body | safe }}
+            </div>
+        </div>
+        <div class="column my-8">
+            <form name="{{ form.title }}" method="POST" data-netlify-recaptcha="true" data-netlify="true">
+
+                    {% include "forms/" + form.template + ".njk" %}
+
+                    <div data-netlify-recaptcha="true"></div>
+                    <div class="field">
+                        <div class="control">
+                            <button type="submit" class="button is-link">Send</button>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>

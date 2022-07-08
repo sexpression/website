@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 2025 175" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-3349.34,-3334.01)">
+        <g transform="matrix(0.726827,0,0,0.80643,7122.99,4495.2)">
+            <g id="title-colour" transform="matrix(3.46469,0,0,3.12269,-5904.18,-2542.48)">
+                <text x="201.537px" y="421.431px" style="font-family:'Poppins-Bold', 'Poppins';font-weight:700;font-size:96px;fill:url(#_Linear1);">SEXPRESSION</text>
+                <text x="849.633px" y="421.431px" style="font-family:'Poppins-Bold', 'Poppins';font-weight:700;font-size:96px;fill:url(#_Linear2);">:UK</text>
+            </g>
+        </g>
+    </g>
+    <defs>
+        <linearGradient id="_Linear1" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(635.589,0,0,635.589,202.321,314.334)"><stop offset="0" style="stop-color:rgb(252,0,255);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(174,0,255);stop-opacity:1"/></linearGradient>
+        <linearGradient id="_Linear2" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(158.764,0,0,158.764,841.549,319.356)"><stop offset="0" style="stop-color:rgb(0,173,239);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(0,88,255);stop-opacity:1"/></linearGradient>
+    </defs>
+</svg>

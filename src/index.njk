@@ -1,258 +1,115 @@
 ---
 layout: headerfooter.njk
-title: Home
 ---
 
-<div class="nav-block"></div>
-<header class="header-1">
-    <div class="container-3 w-container">
-        <h1 class="h1-white">Relationships &amp; Sex Education </h1>
-        <div class="columns w-row">
-            <div class="column-13 w-col w-col-7">
-                <p class="p-white">Sexpression:UK is a near-peer independent UK charity with the goal of empowering
-                    young people to make decisions about relationships and sex by running informal and comprehensive
-                    RSHE in the community.</p>
-                <p class="p-white"><span class="ec ec-hibiscus"></span> We are a not for profit
-                    <strong>charity</strong><br><span class="ec ec-honeybee"></span> We are
-                    <strong>volunteers</strong>, passionate about RSHE<br><span class="ec ec-mortar-board"></span> We
-                    are <strong>near-peer</strong><br><span class="ec ec-rainbow"></span> We are completely
-                    <strong>free</strong>. RSHE is a right
-                </p>
-            </div>
-            <div class="column-12 w-col w-col-5">
-                <div class="div-block-12"><img src="/images/icons/logo-white.png" width="634"
-                        alt="The Sexpression:UK logo in white"
-                        srcset="images/icons/logo-white-p-500.png 500w, images/icons/logo-white-p-800.png 800w, images/icons/logo-white-p-1080.png 1080w, images/icons/logo-white-p-1600.png 1600w, images/icons/logo-white.png 2000w"
-                        sizes="(max-width: 479px) 90vw, (max-width: 767px) 84vw, (max-width: 991px) 268.328125px, 380px"
-                        class="image-10"></div>
+<section class="hero is-medium container py-5">
+    <div class="hero-body colour-background box">
+        <div class="content has-text-centered">
+            <h1 class="title is-size-2 has-text-white">
+                {{ home.hero_title }}
+            </h1>
+            <p class="subtitle column is-three-fifths is-offset-one-fifth has-text-white">
+                {{ home.hero_description }}
+            </p>
+            <div>
+                <a href="{{ home.button_1_link }}" class="action-button primary hvr-grow button is-light">{{ home.button_1_name }}<i class="fas ml-2 fa-{{ home.button_1_icon }}"></i>
+                </a>
+                <a href="{{ home.button_2_link }}" class="action-button primary hvr-grow button is-light">{{ home.button_2_name }}<i class="fas ml-2 fa-{{ home.button_2_icon }}"></i>
+                </a>
             </div>
         </div>
-        <div class="div-block-13"><a href="/teachers" class="button-2 w-button">Book us for your school <span
-                    class="ec ec-apple"></span></a></div>
     </div>
-</header>
-<main class="main">
+</section>
 
-    <div class="w-container">
+<section class="section container has-text-centered">
+    <h2 class="subtitle">
+        <b>
+            Our Partners, Sponsors, Friends and Donors
+        </b>
+    </h2>
+    <div class="columns is-multiline is-mobile is-vcentered">
+        {% for partner in partners %}
+            <div class="column is-one-quarter-mobile">
+                <a href="{{ partner.website }}" target="_blank">
+                    <img src="https://sexpression.directus.app/assets/{{ partner.logo }}" alt="{{ partner.name }} logo">
+                </a>
+            </div>
+            {% endfor%}
+        </div>
+    </section>
 
+    <section class="section">
+        <div class="container has-text-centered is-max-desktop is-flex is-flex-direction-column" style="gap:1rem">
+            <h2 class="title">{{ home.about_us_title }}</h2>
+            <p class="subtitle mb-6">{{ home.about_us_description }}</p>
+        </div>
+    </section>
 
-        <div id="our-vision-and-values" class="div-block">
-            <h2 class="h2">Our vision and values <span class="ec ec-rocket"></span></h2>
-            <p class="p">Sexpression:UK aims for a society in which young people are able to access reliable
-                information about relationships, sex and sexuality; where youth are free from STIs, and unwanted
-                pregnancy; and where they are empowered to make individual, informed decisions regarding their
-                bodies and their health.</p>
-            <div class="body-columns w-row">
-                <div class="column-2 w-col w-col-3 w-col-medium-6">
-                    <div class="card"><img src="/images/icons/nearpeer.png" width="40" alt="School building"
-                            class="card-icon">
-                        <h3 class="h3-centered-noheader-bold">Near-peer</h3>
-                        <p class="p-small ie-fix">Because university students are closer in age to the young people
-                            than
-                            their teachers and parents our near-peer teaching encourages young people to
-                            participate.</p>
+    <section class="section">
+        <div class="container py-4">
+            <h2 class="title has-text-centered mb-6">{{ home.our_vision_and_values_title }}</h2>
+            <div class="columns">
+                <div class="column is-3 is-flex is-flex-direction-column" style="gap: 2rem;">
+                    <i class="fas fa-{{ home.our_vision_and_values_item_1_icon }} is-size-1 primary text-gradient"></i>
+                    <div>
+                        <h4 class="title is-4 gradient primary text-gradient">{{ home.our_vision_and_values_item_1_title }}</h4>
+                        <p class="subtitle is-6">{{ home.our_vision_and_values_item_1_description }}</p>
                     </div>
                 </div>
-                <div class="column-2 w-col w-col-3 w-col-medium-6">
-                    <div class="card"><img src="/images/icons/empower.png" width="40" alt="Star" class="card-icon">
-                        <h3 class="h3-centered-noheader-bold">Empowering</h3>
-                        <p class="p-small ie-fix">Young people&#x27;s individual beliefs are respected, and our
-                            teaching
-                            helps young people to act on them. We also encourage young people to respect the beliefs
-                            of others.</p>
+                <div class="column is-3 is-flex is-flex-direction-column" style="gap: 2rem;">
+                    <i class="fas fa-{{ home.our_vision_and_values_item_2_icon }} is-size-1 primary text-gradient"></i>
+                    <div>
+                        <h4 class="title is-4 gradient primary text-gradient">{{ home.our_vision_and_values_item_2_title }}</h4>
+                        <p class="subtitle is-6">{{ home.our_vision_and_values_item_2_description }}</p>
                     </div>
                 </div>
-                <div class="column-2 w-col w-col-3 w-col-medium-6">
-                    <div class="card"><img src="/images/icons/informal.png" width="40" alt="Rocketship"
-                            class="card-icon">
-                        <h3 class="h3-centered-noheader-bold">Informal</h3>
-                        <p class="p-small ie-fix">Young people learn best and are more likely to make informed
-                            decisions
-                            about sex and relationships if they participate in discussions rather than being
-                            lectured.</p>
+                <div class="column is-3 is-flex is-flex-direction-column" style="gap: 2rem;">
+                    <i class="fas fa-{{ home.our_vision_and_values_item_3_icon }} is-size-1 primary text-gradient"></i>
+                    <div>
+                        <h4 class="title is-4 gradient primary text-gradient">{{ home.our_vision_and_values_item_3_title }}</h4>
+                        <p class="subtitle is-6">{{ home.our_vision_and_values_item_3_description }}</p>
                     </div>
                 </div>
-                <div class="column-2 w-col w-col-3 w-col-medium-6">
-                    <div class="card"><img src="/images/icons/comprehensive.png" width="40" alt="Books"
-                            class="card-icon">
-                        <h3 class="h3-centered-noheader-bold">Comprehensive</h3>
-                        <p class="p-small ie-fix">Young people should be informed about all aspects of their sexual
-                            and
-                            reproductive health.</p>
+                <div class="column is-3 is-flex is-flex-direction-column" style="gap: 2rem;">
+                    <i class="fas fa-{{ home.our_vision_and_values_item_4_icon }} is-size-1 primary text-gradient"></i>
+                    <div>
+                        <h4 class="title is-4 gradient primary text-gradient">{{ home.our_vision_and_values_item_4_title }}</h4>
+                        <p class="subtitle is-6">{{ home.our_vision_and_values_item_4_description }}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</section>
+<div class="is-flex is-align-items-center is-justify-content-center">
+    <div class="container columns is-gapless">
+        <div class="column"><img src="https://sexpression.directus.app/assets/{{ home.photo_1 }}" alt=""></div>
+        <div class="column"><img src="https://sexpression.directus.app/assets/{{ home.photo_2 }}" alt=""></div>
+        <div class="column"><img src="https://sexpression.directus.app/assets/{{ home.photo_3 }}" alt=""></div>
     </div>
+</div>
 
-
-
-    <div class="grid-container">
-        <div class="grid-item"><img src="/images/photos/cardiff-ga/cardiff-ga - 7.jpeg" alt=""></div>
-        <div class="grid-item"><img src="/images/photos/cardiff-ga/cardiff-ga - 8.jpeg" alt=""></div>
-        <div class="grid-item"><img src="/images/photos/cardiff-ga/cardiff-ga - 9.jpeg" alt=""></div>
+<section class="section">
+    <div class="container has-text-centered py-4">
+        <h2 class="title">{{ home.statistics_title }}</h2>
+        <p class="subtitle mb-6">{{ home.statistics_description }}</p>
+        <div class="columns">
+            <div class="column">
+                <p class="title is-size-1 primary text-gradient">{{ home.statistics_item_1_percentage }}</p>
+                <p class="heading">{{ home.statistics_item_1_statement | upper }}</p>
+            </div>
+            <div class="column">
+                <p class="title is-size-1 primary text-gradient">{{ home.statistics_item_2_percentage }}</p>
+                <p class="heading">{{ home.statistics_item_2_statement | upper }}</p>
+            </div>
+            <div class="column">
+                <p class="title is-size-1 primary text-gradient">{{ home.statistics_item_3_percentage }}</p>
+                <p class="heading">{{ home.statistics_item_3_statement | upper }}</p>
+            </div>
+            <div class="column">
+                <p class="title is-size-1 primary text-gradient">{{ home.statistics_item_4_percentage }}</p>
+                <p class="heading">{{ home.statistics_item_4_statement | upper }}</p>
+            </div>
+        </div>
     </div>
-
-    <main class="main">
-        <div class="container-2 w-container">
-            <h2 class="h2">Statistics from 2018-2019 academic year <span class="ec ec-memo"></span></i></h2>
-            <p class="p-small">Rated agreement as 3/5-5/5 in post-session feedback forms. Preliminary data from 5287
-                feedback forms provided by 10 out of 28 operating branches.</p>
-            <div class="body-columns w-row">
-                <div class="column-2 w-col w-col-3 w-col-medium-6">
-                    <div>
-                        <div class="stat-div">
-                            <div class="stat-1">93</div>
-                            <div class="stat-1-sign">%</div>
-                        </div>
-                        <p class="p-centered-small">of young people said that they agreed or strongly agreed that
-                            the session was delivered well</p>
-                    </div>
-                </div>
-                <div class="column-2 w-col w-col-3 w-col-medium-6">
-                    <div class="stat-div">
-                        <div class="stat-3">87</div>
-                        <div class="stat-3-sign">%</div>
-                    </div>
-                    <div>
-                        <p class="p-centered-small">of people agreed or strongly agreed that they had learnt
-                            something</p>
-                    </div>
-                </div>
-                <div class="column-2 w-col w-col-3 w-col-medium-6">
-                    <div>
-                        <div class="stat-div">
-                            <div class="stat-2">85</div>
-                            <div class="stat-2-sign">%</div>
-                        </div>
-                        <p class="p-centered-small">of people said they agreed or strongly agreed that the session
-                            had made them feel better prepared for the topic in question</p>
-                    </div>
-                </div>
-                <div class="column-2 w-col w-col-3 w-col-medium-6">
-                    <div class="stat-div">
-                        <div class="stat-4">83</div>
-                        <div class="stat-4-sign">%</div>
-                    </div>
-                    <div>
-                        <p class="p-centered-small">reported they would like future sessions from Sexpression:UK</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <header class="header-2">
-        <div class="container-3 w-container">
-            <div class="columns w-row">
-                <div class="column-12 w-col w-col-5">
-                    <img id="gif" src="/images/team/celebrate.gif" style="margin-top: 25px;"
-                        alt="This will display an animated GIF" />
-                </div>
-                <div class="column-13 w-col w-col-7" style="padding-bottom: 0px;">
-                    <h1 class="h1-white-gif">20 Years of better RSHE</h1>
-                    <p class="p-white">In November 2000, University College London held an ‘exploratory' sex
-                        education workshop for medical students. This led to the original idea of Sexpression:UK and
-                        the formation of a committee along with a branch in Edinburgh. Since then Sexpression:UK has
-                        grown to more than twenty branches in universities across country in the United Kingdom.</p>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <main class="main">
-        <div class="w-container">
-            <div id="twitter" class="div-block">
-                <div class="twitter">
-                    <div class="html-embed w-embed w-script"><a class="twitter-timeline" data-tweet-limit="3"
-                            href="https://twitter.com/Sexpression?ref_src=twsrc%5Etfw">Tweets by Sexpression</a>
-                        <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                    </div>
-                </div>
-            </div>
-            <div id="newsletter" class="div-block">
-                <h2 class="h2">Our Newsletter <span class="ec ec-newspaper-roll"></span></h2>
-                <form class="form"
-                    action="https://sexpression.us20.list-manage.com/subscribe/post?u=a12713abc0ae4f1b1d0841fcd&amp;id=d08e375582"
-                    method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
-                    <div class="sub-box">
-                        <div class="sub-text">
-                            <p class=""><span class="ec ec-checkered-flag"></span> Be the first to hear updates and news
-                            </p>
-                        </div>
-                        <div class="sub-text">
-                            <p class=""><span class="ec ec-balloon"></span> Exclusive updates from your national
-                                committee</p>
-                        </div>
-                    </div>
-                    <div class="sub-box">
-                        <div class="sub-text">
-                            <p class=""><span class="ec ec-bar-chart"></span> Keep in the loop with all the amazing work
-                                our branches do</p>
-                        </div>
-                        <div class="sub-text">
-                            <p class=""><span class="ec ec-wave"></span> You can unsubscribe at any time</p>
-                        </div>
-                    </div>
-                    <div class="sub-box">
-                        <div class="sub-text" style="flex:auto;">
-                            <input type="email" placeholder="Enter your email here" class="text-field-2 w-input"
-                                maxlength="256" value="" name="EMAIL" />
-                            <input type="checkbox" id="gdpr_42467" name="gdpr[42467]" value="Y" class="av-checkbox gdpr"
-                                hidden />
-                        </div>
-                        <div class="sub-text" style="flex:initial;">
-                            <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"
-                                class="button w-button subscribe-button">
-                        </div>
-                    </div>
-                    <div class="sub-box">
-                        <p class="disclaimer">By clicking below to subscribe, you acknowledge that your information will
-                            be transferred to Mailchimp for processing.</p>
-                    </div>
-                    <!--------------------->
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                        <input type="text" name="b_a12713abc0ae4f1b1d0841fcd_d08e375582" tabindex="-1" value="" />
-                    </div>
-                    <!--------------------->
-                </form>
-            </div>
-            <div id="contact-us" class="div-block">
-                <h2 class="h2">Contact us <span class="ec ec-love-letter"></span></h2>
-                <form id="email-form" class="form" data-name="Email Form" name="Contact form" method="POST"
-                    action="sent" data-netlify="true" data-netlify-recaptcha="true">
-                    <div class="w-row">
-                        <div class="column-6 w-col w-col-6">
-                            <label for="Name-3" for="name" class="p">Name</label>
-                            <input type="text" class="text-field w-input" maxlength="256" name="Name" data-name="Name"
-                                id="Name-3" required="">
-                            <label for="Role" for="role" class="p">Role</label>
-                            <select id="Role" name="Role" required="" data-name="Role" class="select-field w-select">
-                                <option value="Other">Other</option>
-                                <option value="Student">Student</option>
-                                <option value="Teacher">Teacher</option>
-                            </select>
-                            <label for="Email-3" for="email" class="p">Email</label>
-                            <input type="email" class="text-field-2 w-input" maxlength="256" name="Email"
-                                data-name="Email" id="Email-3" required="">
-                        </div>
-                        <div class="column-6 w-col w-col-6">
-                            <label for="message" for="message" class="p">Your message</label>
-                            <textarea placeholder="Enter your message" maxlength="5000" id="message" name="message"
-                                data-name="message" required="" class="textarea w-input"></textarea>
-                        </div>
-                    </div>
-                    <div class="w-row">
-                        <div class="form-spacing-buttons w-col w-col-6">
-                            <div data-netlify-recaptcha="true">
-                            </div>
-                        </div>
-                        <div class="form-spacing-buttons w-col w-col-6">
-                            <button class="button w-button" type="submit">Send message</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </main>
+</section>

@@ -1,0 +1,29 @@
+---
+layout: container.njk
+title: Programme
+pagination:
+    data: programme
+    size: 1
+    alias: chapter
+permalink: "programme/{{ chapter.title | slug }}/"
+---
+
+<h1 class="mb-6 has-text-centered">
+    <i class="fas mr-2 fa-bookmark"></i> {{ title }}
+</h1>
+
+<div class="tabs">
+    <ul class="m-0">
+        {% for section in programme %}
+            <li {% if section.title === chapter.title %} class="is-active" {% endif %}>
+                <a href="/programme/{{ section.title | slug }}">{{ section.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<section class="" style="margin: 5rem auto 5rem auto; max-width: 640px;">
+    {# <p><b>Last updated</b><br>{{ chapter.date_updated }}</p> #}
+    <h1>{{ chapter.title }}</h1>
+    {{ chapter.body | safe }}
+</section>
