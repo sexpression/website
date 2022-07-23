@@ -48,12 +48,13 @@ exports.handler = async function(event, context, callback) {
         let payload = JSON.parse(event.body).payload.data;
         let meta = 'total_count';
         let filter = { "template": { "_eq": payload.template } };
-        let fields = ['*', 'recipient.*'];
+        let fields = ['*', 'roles.*'];
         let form = await directus.items("forms").readByQuery({ meta: meta, filter: filter, fields: fields });
         delete payload.user_agent;
         delete payload.referrer;
         delete payload.ip;
         delete payload.template;
+
 
         let template1 = {
             '<>': 'div',
@@ -91,24 +92,29 @@ exports.handler = async function(event, context, callback) {
             let copyData = JSON.parse(JSON.stringify(data));
             copyData.unshift({ 'key': 'Statment', 'value': await form.data[0].response });
             let html = htmlConstructor(copyData, template1);
-            let msg = emailConstructor(payload["Email"], email, `Thank you ${payload['Full name']}`, html)
+            let msg = emailConstructor(payload["Email"], email, `Thank you ${payload['Full name']}`, html);
+            console.log(msg)
             await emailSender(msg);
         } catch (error) {
             console.error(error);
         }
 
-        // EMAIL 2 - MEMBER //////////////////////////////////////////////////
-        try {
-            for (let x of await form.data[0].recipient) {
-                let html = htmlConstructor(data, template2);
-                let member = await directus.items("members").readByQuery({ meta: 'total_count', filter: { "id": { "_eq": x.members_id } }, fields: ['*', 'role.*'] });
-                let msg = emailConstructor(member.data[0].role.email, email, `New response | ${form.data[0].title}`, html);
-                await emailSender(msg);
+        // EMAIL 2 - ROLES //////////////////////////////////////////////////
+        if (form.data[0].roles.length > 0) {
+            try {
+                for (let x of form.data[0].roles) {
+                    let meta = 'total_count';
+                    let rolefilter = { "id": { "_eq": x.roles_id } };
+                    let role = await directus.items("roles").readByQuery({ meta: meta, filter: rolefilter });
+                    let html = htmlConstructor(data, template2);
+                    let msg = emailConstructor(role.data[0].email, email, `New response | ${form.data[0].title}`, html);
+                    console.log(msg)
+                    await emailSender(msg);
+                }
+            } catch (error) {
+                console.error(error);
             }
-        } catch (error) {
-            console.error(error);
         }
-
         // EMAIL 3 - BRANCH //////////////////////////////////////////////////
         if (payload["Branch"]) {
             try {
@@ -116,6 +122,7 @@ exports.handler = async function(event, context, callback) {
                 payload["Branch"] = branchArr[1];
                 let html = htmlConstructor(data, template2);
                 let msg = emailConstructor(branchArr[0], email, `New response | ${form.data[0].title}`, html)
+                console.log(msg)
                 await emailSender(msg);
             } catch (error) {
                 console.error(error);

@@ -1,15 +1,21 @@
 const { schedule } = require('@netlify/functions');
+const axios = require('axios').default;
+
 const { HOOK_REBUILD_TOKEN } = process.env;
 
 const handler = async function(event, context) {
     console.log("Received event:", event)
-    fetch(`https://api.netlify.com/build_hooks/${HOOK_REBUILD_TOKEN}`, {
-        method: 'POST'
-    });
+
+    let reqOptions = {
+        url: `https://api.netlify.com/build_hooks/${HOOK_REBUILD_TOKEN}`,
+        method: "POST"
+    }
+
+    let response = await axios.request(reqOptions);
 
     return {
-        statusCode: 200,
+        statusCode: response.status,
     };
 };
 
-module.exports.handler = handler;
+module.exports.handler = schedule("@daily", handler);
