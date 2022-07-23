@@ -43,6 +43,48 @@ async function emailSender(msg) {
     }
 }
 
+async function sendtoSender(data, formResponse, template1, payloadEmail, payloadFullName) {
+    try {
+        let copyData = JSON.parse(JSON.stringify(data));
+        copyData.unshift({ 'key': 'Statment', 'value': await formResponse });
+        let html = htmlConstructor(copyData, template1);
+        let msg = emailConstructor(payloadEmail, email, `Thank you ${payloadFullName}`, html);
+        console.log(msg)
+        await emailSender(msg);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function sendtoRoles(form, data, template2) {
+    try {
+        for (let x of form.roles) {
+            let meta = 'total_count';
+            let rolefilter = { "id": { "_eq": x.roles_id } };
+            let role = await directus.items("roles").readByQuery({ meta: meta, filter: rolefilter });
+            let html = htmlConstructor(data, template2);
+            let msg = emailConstructor(role.data[0].email, email, `New response | ${form.title}`, html);
+            console.log(msg)
+            await emailSender(msg);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function sendtoBranches(branch, form, data, template2) {
+    try {
+        let branchArr = branch.split(",");
+        branch = branchArr[1];
+        let html = htmlConstructor(data, template2);
+        let msg = emailConstructor(branchArr[0], email, `New response | ${form.title}`, html)
+        console.log(msg)
+        await emailSender(msg);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 exports.handler = async function(event, context, callback) {
     try {
         let payload = JSON.parse(event.body).payload.data;
@@ -87,54 +129,25 @@ exports.handler = async function(event, context, callback) {
             }
         }
 
-        // EMAIL 1 - SENDER //////////////////////////////////////////////////
-        try {
-            let copyData = JSON.parse(JSON.stringify(data));
-            copyData.unshift({ 'key': 'Statment', 'value': await form.data[0].response });
-            let html = htmlConstructor(copyData, template1);
-            let msg = emailConstructor(payload["Email"], email, `Thank you ${payload['Full name']}`, html);
-            console.log(msg)
-            await emailSender(msg);
-        } catch (error) {
-            console.error(error);
+        await sendtoSender(data, form.data[0].roles, template1, payload["Email"], payload['Full name']);
+
+        if (form.data[0].roles.length > 0) {
+            await sendtoRoles(form.data[0], data, template2);
+        } else {
+            console.log("Roles skipped");
         }
 
-        // EMAIL 2 - ROLES //////////////////////////////////////////////////
-        if (form.data[0].roles.length > 0) {
-            try {
-                for (let x of form.data[0].roles) {
-                    let meta = 'total_count';
-                    let rolefilter = { "id": { "_eq": x.roles_id } };
-                    let role = await directus.items("roles").readByQuery({ meta: meta, filter: rolefilter });
-                    let html = htmlConstructor(data, template2);
-                    let msg = emailConstructor(role.data[0].email, email, `New response | ${form.data[0].title}`, html);
-                    console.log(msg)
-                    await emailSender(msg);
-                }
-            } catch (error) {
-                console.error(error);
-            }
-        }
-        // EMAIL 3 - BRANCH //////////////////////////////////////////////////
         if (payload["Branch"]) {
-            try {
-                let branchArr = payload["Branch"].split(",");
-                payload["Branch"] = branchArr[1];
-                let html = htmlConstructor(data, template2);
-                let msg = emailConstructor(branchArr[0], email, `New response | ${form.data[0].title}`, html)
-                console.log(msg)
-                await emailSender(msg);
-            } catch (error) {
-                console.error(error);
-            }
+            await sendtoBranches(payload["Branch"], form.data[0], data, template2);
         } else {
-            console.log("Branch email skipped");
+            console.log("Branch skipped");
         }
 
         return {
             statusCode: 200,
             body: "successful mate",
         };
+
     } catch (error) {
         console.error(error);
     }
