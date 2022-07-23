@@ -10,8 +10,6 @@ function eleventy(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/js");
     eleventyConfig.addPassthroughCopy("src/img");
     eleventyConfig.addPassthroughCopy("src/svg");
-    eleventyConfig.addPassthroughCopy("src/sitemap.xml");
-    eleventyConfig.addPassthroughCopy("src/robots.txt");
     eleventyConfig.addPassthroughCopy({ "src/css": "/" });
     eleventyConfig.addPassthroughCopy({
         "./src/admin/config.yml": "./admin/config.yml",
