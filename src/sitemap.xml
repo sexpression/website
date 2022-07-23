@@ -4,34 +4,119 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-    <url>
-        <loc>https://sexpression.org.uk</loc>
-        <lastmod>2019-08-04T08:58:57+00:00</lastmod>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://sexpression.org.uk/about</loc>
-        <lastmod>2019-08-04T08:58:57+00:00</lastmod>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://sexpression.org.uk/cirriculum</loc>
-        <lastmod>2019-08-04T08:58:57+00:00</lastmod>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://sexpression.org.uk/branches</loc>
-        <lastmod>2019-08-04T08:58:57+00:00</lastmod>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://sexpression.org.uk/teachers</loc>
-        <lastmod>2019-08-04T08:58:57+00:00</lastmod>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://sexpression.org.uk/students</loc>
-        <lastmod>2019-08-04T08:58:57+00:00</lastmod>
-        <priority>0.80</priority>
-    </url>
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://sexpression.org.uk/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/programme/core-offer/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/resources/dictionary/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/branches/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/teams/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/form/request-a-session/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/form/join-a-branch/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/programme/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/resources/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/opportunities/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/form/open-a-branch/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/form/media-enquiry/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/form/fundraise/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/programme/for-uni-students/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/programme/for-teachers/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/resources/lockdown-worksheets/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/resources/lgbt+-figure-posters/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/branches/england/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/branches/nothern-ireland/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/branches/scotland/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/branches/wales/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sexpression.org.uk/teams/trustees/</loc>
+  <lastmod>2022-07-23T11:01:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
 </urlset>
