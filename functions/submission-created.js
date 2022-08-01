@@ -1,32 +1,158 @@
 const sgMail = require('@sendgrid/mail');
 const { Directus } = require('@directus/sdk');
 const json2html = require('node-json2html');
-const directus = new Directus(`https://sexpression.directus.app`);
+const { SENDGRID_API_KEY, DIRECTUS_TOKEN } = process.env;
+const slugify = require('slugify')
 const email = "website@sexpression.org.uk";
-const { SENDGRID_API_KEY } = process.env;
-
-sgMail.setApiKey(SENDGRID_API_KEY);
-
-function htmlConstructor(data, template) {
-    let html = json2html.render(data, template);
-    return html;
+const branchTemplate = {
+    '<>': 'div',
+    'html': [{
+        '<>': 'ul',
+        'html': [
+            { '<>': 'li', 'text': '${key}: ${value}' },
+        ]
+    }]
+};
+const confirmationTemplate = {
+    '<>': 'div',
+    'html': [
+        { '<>': 'p', 'text': '${statement}' },
+        {
+            '<>': 'ul',
+            'html': [
+                { '<>': 'li', 'text': '${key}: ${value}' },
+            ]
+        }
+    ]
+};
+const slugifyPreferences = {
+    replacement: '_',
+    lower: true,
+    strict: true,
 }
 
-function emailConstructor(to, from, subject, html) {
+sgMail.setApiKey(SENDGRID_API_KEY);
+const directus = new Directus(`https://sexpression.directus.app`);
+
+exports.handler = async function (event, context, callback) {
     try {
+        let { payload, form_id, branch_id } = cleanPayload(JSON.parse(event.body).payload.data);
+        let cleanData = dataCleaner(payload);
+        let form = await directusGetRecord('forms', form_id);
+        let branch = await directusGetRecord('branches', branch_id);
+
+        // send them email
+        let emailStatus = false;
+        if (form) {
+        emailStatus = await prepareEmail(cleanData, confirmationTemplate, cleanData.email, "Thank you", form.title);
+        } else {
+            console.log("Sender email skipped");
+        }
+
+        // send branch email
+        let branchStatus = false;
+        if (branch) {
+            branchStatus = await prepareEmail(cleanData, branchTemplate, branch.email, "New response", form.title, branch);
+        } else {
+            console.log("Branch email skipped");
+        }
+
+        // add to responese collection
+        await directus.auth.static(DIRECTUS_TOKEN);
+        cleanData.email_sent = emailStatus;
+        cleanData.branch_email_sent = branchStatus;
+        cleanData.branch= branch_id;
+
+        console.log(cleanData);
+        let id = await directusPostRecord(slugify(form.title, slugifyPreferences), cleanData);
+
+        // create a notification with collection name, record id and directus_user id
+        // it can support sending multiple notifications
+        // and boilerplate text which includes a link to the new response record
+
+        // [{
+        //     "collection": "{{ collection }}",
+        //     "recipient": "{{ directus-user-id }}",
+        //     "message": `Hi there! There is a new Join a Branch response: https://sexpression.directus.app/admin/content/${ collection | slugify }/${ record-id }`
+        // },
+        // {
+        //     "collection": "articles",
+        //     "recipient": "410b5772-e63f-4ae6-9ea2-39c3a31bd6ca",
+        //     "message": "Hi there! You should check out these articles"
+        // }]
+
+
         return {
-            to: to,
-            from: from,
-            subject: subject,
-            text: "New Sexpression:UK mail",
-            html: html
+            statusCode: 200,
+            body: "successful mate",
         };
+
     } catch (error) {
         console.error(error);
     }
 }
 
-async function emailSender(msg) {
+function cleanPayload(payload) {
+    const form_id = payload.id;
+    let branch_id = false;
+    if (payload.Branch) {
+        branch_id = payload.Branch;
+    }
+    delete payload.user_agent;
+    delete payload.referrer;
+    delete payload.ip;
+    delete payload.id;
+    return { payload, form_id, branch_id }
+}
+
+function dataCleaner(payload) {
+    let newbie = {};
+
+    for (const [key, value] of Object.entries(payload)) {
+        let newKey = slugify(key, {
+            replacement: '_',
+            lower: true,
+            strict: true,
+        })
+        newbie[newKey] = value;
+    }
+
+    return newbie;
+}
+
+async function prepareEmail(data, template, recipient, message, form_title, branch = false) {
+    try {
+        if(data.branch) {
+            data.branch = branch.name;
+        }
+
+        let newData = [];
+
+        for (let prop in data) {
+            if (Object.prototype.hasOwnProperty.call(data, prop)) {
+                newData.push({ 'key': prop, 'value': data[prop] })
+            }
+        }
+
+        let html = json2html.render(newData, template);
+
+        let msg = {
+            to: recipient,
+            from: email,
+            subject: `${message} | ${form_title}`,
+            text: "New Sexpression:UK mail",
+            html: html
+        };
+        // await sendEmail(msg);
+        console.log(msg);
+        return true;
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
+}
+
+async function sendEmail(msg) {
     try {
         let response = await sgMail.send(msg);
         console.log({ message: msg, response: response[0].statusCode })
@@ -43,112 +169,16 @@ async function emailSender(msg) {
     }
 }
 
-async function sendtoSender(data, formResponse, template1, payloadEmail, payloadFullName) {
-    try {
-        let copyData = JSON.parse(JSON.stringify(data));
-        copyData.unshift({ 'key': 'Statment', 'value': await formResponse });
-        let html = htmlConstructor(copyData, template1);
-        let msg = emailConstructor(payloadEmail, email, `Thank you ${payloadFullName}`, html);
-        console.log(msg)
-        await emailSender(msg);
-    } catch (error) {
-        console.error(error);
-    }
+// DIRECTUS
+async function directusGetRecord(collection, id) {
+    let response = await directus.items(collection).readByQuery({ filter: { "id": { "_eq": id } } });
+    return response.data[0];
 }
 
-async function sendtoRoles(form, data, template2) {
-    try {
-        for (let x of form.roles) {
-            let meta = 'total_count';
-            let rolefilter = { "id": { "_eq": x.roles_id } };
-            let role = await directus.items("roles").readByQuery({ meta: meta, filter: rolefilter });
-            let html = htmlConstructor(data, template2);
-            let msg = emailConstructor(role.data[0].email, email, `New response | ${form.title}`, html);
-            console.log(msg)
-            await emailSender(msg);
-        }
-    } catch (error) {
-        console.error(error);
-    }
-}
+async function directusPostRecord(collection, record) {
+    let chosenCollection = await directus.items(collection);
 
-async function sendtoBranches(branch, form, data, template2) {
-    try {
-        let branchArr = branch.split(",");
-        branch = branchArr[1];
-        let html = htmlConstructor(data, template2);
-        let msg = emailConstructor(branchArr[0], email, `New response | ${form.title}`, html)
-        console.log(msg)
-        await emailSender(msg);
-    } catch (error) {
-        console.error(error);
-    }
-}
+    let response = await chosenCollection.createOne(record);
 
-exports.handler = async function(event, context, callback) {
-    try {
-        let payload = JSON.parse(event.body).payload.data;
-        let meta = 'total_count';
-        let filter = { "template": { "_eq": payload.template } };
-        let fields = ['*', 'roles.*'];
-        let form = await directus.items("forms").readByQuery({ meta: meta, filter: filter, fields: fields });
-        delete payload.user_agent;
-        delete payload.referrer;
-        delete payload.ip;
-        delete payload.template;
-
-
-        let template1 = {
-            '<>': 'div',
-            'html': [
-                { '<>': 'p', 'text': '${statement}' },
-                {
-                    '<>': 'ul',
-                    'html': [
-                        { '<>': 'li', 'text': '${key}: ${value}' },
-                    ]
-                }
-            ]
-        };
-
-        let template2 = {
-            '<>': 'div',
-            'html': [{
-                '<>': 'ul',
-                'html': [
-                    { '<>': 'li', 'text': '${key}: ${value}' },
-                ]
-            }]
-        };
-
-        let data = [];
-
-        for (let prop in payload) {
-            if (Object.prototype.hasOwnProperty.call(payload, prop)) {
-                data.push({ 'key': prop, 'value': payload[prop] })
-            }
-        }
-
-        await sendtoSender(data, form.data[0].roles, template1, payload["Email"], payload['Full name']);
-
-        if (form.data[0].roles.length > 0) {
-            await sendtoRoles(form.data[0], data, template2);
-        } else {
-            console.log("Roles skipped");
-        }
-
-        if (payload["Branch"]) {
-            await sendtoBranches(payload["Branch"], form.data[0], data, template2);
-        } else {
-            console.log("Branch skipped");
-        }
-
-        return {
-            statusCode: 200,
-            body: "successful mate",
-        };
-
-    } catch (error) {
-        console.error(error);
-    }
+    return response.id;
 }
