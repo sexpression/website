@@ -4,32 +4,7 @@ const json2html = require('node-json2html');
 const { SENDGRID_API_KEY, DIRECTUS_TOKEN } = process.env;
 const slugify = require('slugify')
 const email = "website@sexpression.org.uk";
-const branchTemplate = {
-    '<>': 'div',
-    'html': [{
-        '<>': 'ul',
-        'html': [
-            { '<>': 'li', 'text': '${key}: ${value}' },
-        ]
-    }]
-};
-const confirmationTemplate = {
-    '<>': 'div',
-    'html': [
-        { '<>': 'p', 'text': '${statement}' },
-        {
-            '<>': 'ul',
-            'html': [
-                { '<>': 'li', 'text': '${key}: ${value}' },
-            ]
-        }
-    ]
-};
-const slugifyPreferences = {
-    replacement: '_',
-    lower: true,
-    strict: true,
-}
+const slugifyPreferences = { replacement: '_', lower: true, strict: true }
 
 sgMail.setApiKey(SENDGRID_API_KEY);
 const directus = new Directus(`https://sexpression.directus.app`);
@@ -37,33 +12,38 @@ const directus = new Directus(`https://sexpression.directus.app`);
 exports.handler = async function (event, context, callback) {
     try {
         let { payload, form_id, branch_id } = cleanPayload(JSON.parse(event.body).payload.data);
-        let cleanData = dataCleaner(payload);
         let form = await directusGetRecord('forms', form_id);
-        let branch = await directusGetRecord('branches', branch_id);
+        let branch = false;
+        if (branch_id) {
+            branch = await directusGetRecord('branches', branch_id);
+        }
 
         // send them email
+        // Statement not appearing
+        // Branch not appearing
         let emailStatus = false;
         if (form) {
-        emailStatus = await prepareEmail(cleanData, confirmationTemplate, cleanData.email, "Thank you", form.title);
+            emailStatus = await prepareEmail(payload, payload.Email, "Thank you", form, branch, form.response);
         } else {
             console.log("Sender email skipped");
         }
 
         // send branch email
+        // Branch not appearing
         let branchStatus = false;
         if (branch) {
-            branchStatus = await prepareEmail(cleanData, branchTemplate, branch.email, "New response", form.title, branch);
+            branchStatus = await prepareEmail(payload, branch.email, "New response", form, branch);
         } else {
             console.log("Branch email skipped");
         }
 
         // add to responese collection
         await directus.auth.static(DIRECTUS_TOKEN);
+        let cleanData = dataCleaner(payload);
         cleanData.email_sent = emailStatus;
         cleanData.branch_email_sent = branchStatus;
-        cleanData.branch= branch_id;
+        cleanData.branch = branch_id;
 
-        console.log(cleanData);
         let id = await directusPostRecord(slugify(form.title, slugifyPreferences), cleanData);
 
         // create a notification with collection name, record id and directus_user id
@@ -120,26 +100,44 @@ function dataCleaner(payload) {
     return newbie;
 }
 
-async function prepareEmail(data, template, recipient, message, form_title, branch = false) {
+async function prepareEmail(data, recipient, message, form, branch = false, statement = false) {
     try {
-        if(data.branch) {
-            data.branch = branch.name;
+
+        let newData = {
+            fields: []
         }
 
-        let newData = [];
+        if (statement) {
+            newData.statement = statement;
+        }
+
+        if (data.Branch) {
+            data.Branch = branch.name;
+        }
 
         for (let prop in data) {
             if (Object.prototype.hasOwnProperty.call(data, prop)) {
-                newData.push({ 'key': prop, 'value': data[prop] })
+                newData.fields.push({ 'key': prop, 'value': data[prop] })
             }
         }
+
+        json2html.component.add('field', { '<>': 'li', 'text': '${key}: ${value}' });
+
+        let template = [
+            { '<>': 'h1', 'text': '${statement}' },
+            {
+                '<>': 'ul', 'html': [
+                    { '[]': 'field', '{}': function () { return (this.fields); } }
+                ]
+            }
+        ];
 
         let html = json2html.render(newData, template);
 
         let msg = {
             to: recipient,
             from: email,
-            subject: `${message} | ${form_title}`,
+            subject: `${message} | ${form.title}`,
             text: "New Sexpression:UK mail",
             html: html
         };
@@ -169,7 +167,6 @@ async function sendEmail(msg) {
     }
 }
 
-// DIRECTUS
 async function directusGetRecord(collection, id) {
     let response = await directus.items(collection).readByQuery({ filter: { "id": { "_eq": id } } });
     return response.data[0];
