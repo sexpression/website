@@ -4,85 +4,126 @@ const json2html = require('node-json2html');
 const { SENDGRID_API_KEY, DIRECTUS_TOKEN } = process.env;
 const slugify = require('slugify')
 const email = "website@sexpression.org.uk";
-const slugifyPreferences = { replacement: '_', lower: true, strict: true }
+const axios = require('axios').default;
+const url = "https://sexpression.directus.app";
 
 sgMail.setApiKey(SENDGRID_API_KEY);
-const directus = new Directus(`https://sexpression.directus.app`);
+const directus = new Directus(url);
 
 exports.handler = async function (event, context, callback) {
     try {
-        let { payload, form_id, branch_id } = cleanPayload(JSON.parse(event.body).payload.data);
-        let form = await directusGetRecord('forms', form_id);
-        let branch = false;
-        if (branch_id) {
-            branch = await directusGetRecord('branches', branch_id);
-        }
+        let { payload, form } = cleanPayload(JSON.parse(event.body).payload.data);
+        console.log(form.id);
+        form = await getForm(form.id);
 
-        // send them email
-        // Statement not appearing
-        // Branch not appearing
-        let emailStatus = false;
-        if (form) {
-            emailStatus = await prepareEmail(payload, payload.Email, "Thank you", form, branch, form.response);
-        } else {
-            console.log("Sender email skipped");
-        }
+        let { payloadMod, branchItem } = await giyy(payload);
 
-        // send branch email
-        // Branch not appearing
         let branchStatus = false;
-        if (branch) {
-            branchStatus = await prepareEmail(payload, branch.email, "New response", form, branch);
-        } else {
-            console.log("Branch email skipped");
+        if (branchItem) {
+            branchStatus = await prepareEmail(payloadMod, branchItem.email, "Thank you to a branch", form.title);
+            branchStatus ? payload.branch_email_sent = true : payload.branch_email_sent = false;
         }
 
-        // add to responese collection
-        await directus.auth.static(DIRECTUS_TOKEN);
-        let cleanData = dataCleaner(payload);
-        cleanData.email_sent = emailStatus;
-        cleanData.branch_email_sent = branchStatus;
-        cleanData.branch = branch_id;
+        payload.email_sent = await prepareEmail(payloadMod, payload.Email, "Thank you to a person", form.title, form.response);
 
-        let id = await directusPostRecord(slugify(form.title, slugifyPreferences), cleanData);
+        payload = dataCleaner(payload);
 
-        // create a notification with collection name, record id and directus_user id
-        // it can support sending multiple notifications
-        // and boilerplate text which includes a link to the new response record
+        let responseId = await directusPostRecord(form.collection, payload);
 
-        // [{
-        //     "collection": "{{ collection }}",
-        //     "recipient": "{{ directus-user-id }}",
-        //     "message": `Hi there! There is a new Join a Branch response: https://sexpression.directus.app/admin/content/${ collection | slugify }/${ record-id }`
-        // },
-        // {
-        //     "collection": "articles",
-        //     "recipient": "410b5772-e63f-4ae6-9ea2-39c3a31bd6ca",
-        //     "message": "Hi there! You should check out these articles"
-        // }]
+        console.log(form);
 
+        let notifications = [];
 
-        return {
-            statusCode: 200,
-            body: "successful mate",
-        };
+        form.roles.forEach(async (x, i) => {
+            console.log("forms_directus_roles_id", x);
+
+            // get role id
+            let roleId = await directusGetRecord("forms_directus_roles", x);
+
+            console.log("cat");
+            console.log(roleId);
+            // get role using role id
+            let roles = await directusGetRecord("directus_roles", roleId);
+
+            console.log(roles.users);
+
+                roles.users.forEach((v, i) => {
+                notifications.push({
+                    "recipient": v,
+                    "subject": "You have a new response",
+                    "collection": form.collection,
+                    "message": `\n<a href=\"${url}/admin/content/${form.collection}/${responseId}\">Click here to view.</a>\n`,
+                    "item": responseId
+                })
+            })
+
+        });
+
+        let data = JSON.stringify({ notifications });
+
+        console.log(data);
+
+        try {
+            let response = await axios.post(`${url}/notifications`, data);
+            console.log(response);
+            return {
+                statusCode: 200,
+                body: "Complete!",
+            };
+        } catch(e) {
+            console.log(e)
+        }
 
     } catch (error) {
         console.error(error);
     }
 }
 
-function cleanPayload(payload) {
-    const form_id = payload.id;
-    let branch_id = false;
+
+async function giyy(payload) {
+    let payloadMod = { ...payload };
+    let branchItem = false;
     if (payload.Branch) {
-        branch_id = payload.Branch;
+        branchItem = await directusGetRecord('branches', payload.Branch);
+        payloadMod.Branch = branchItem.name;
+    }
+    return { payloadMod, branchItem };
+}
+
+async function branchManager(payload, text, form) {
+
+    let branch = false;
+
+    if (payload.Branch) {
+        branchOb = await directusGetRecord('branches', payload.Branch);
+        console.log({ "payload": payload, "branchOb.email": branchOb.email, "text": text, "form": form, "branchOb": branchOb })
+        branchStatus = await prepareEmail(payload, branchOb.email, text, form.title, branchOb);
+    }
+
+    return { branch };
+}
+
+function notification() {
+    try {
+
+
+        return "done"
+    } catch (e) {
+        // Deal with the fact the chain failed
+        console.log(e)
+        return "fail"
+    }
+}
+
+function cleanPayload(payload) {
+    let form = {
+        id: payload.id
     }
     delete payload.user_agent;
     delete payload.referrer;
     delete payload.ip;
     delete payload.id;
-    return { payload, form_id, branch_id }
+    return { payload, form }
 }
 
 function dataCleaner(payload) {
@@ -100,24 +141,22 @@ function dataCleaner(payload) {
     return newbie;
 }
 
-async function prepareEmail(data, recipient, message, form, branch = false, statement = false) {
+async function prepareEmail(data, recipient, message, formTitle, emailStatement) {
     try {
+
+        let data1 = { ...data }
 
         let newData = {
             fields: []
         }
 
-        if (statement) {
-            newData.statement = statement;
+        if (emailStatement) {
+            newData.statement = emailStatement;
         }
 
-        if (data.Branch) {
-            data.Branch = branch.name;
-        }
-
-        for (let prop in data) {
-            if (Object.prototype.hasOwnProperty.call(data, prop)) {
-                newData.fields.push({ 'key': prop, 'value': data[prop] })
+        for (let prop in data1) {
+            if (Object.prototype.hasOwnProperty.call(data1, prop)) {
+                newData.fields.push({ 'key': prop, 'value': data1[prop] })
             }
         }
 
@@ -137,7 +176,7 @@ async function prepareEmail(data, recipient, message, form, branch = false, stat
         let msg = {
             to: recipient,
             from: email,
-            subject: `${message} | ${form.title}`,
+            subject: `${message} | ${formTitle}`,
             text: "New Sexpression:UK mail",
             html: html
         };
@@ -146,7 +185,6 @@ async function prepareEmail(data, recipient, message, form, branch = false, stat
         return true;
     } catch (error) {
         console.error(error);
-        return false;
     }
 }
 
@@ -167,12 +205,30 @@ async function sendEmail(msg) {
     }
 }
 
-async function directusGetRecord(collection, id) {
-    let response = await directus.items(collection).readByQuery({ filter: { "id": { "_eq": id } } });
+async function directusGetRecord(collection, id, gummy = false) {
+    if (gummy === false) {
+        gummy = "id"
+    }
+
+    query = {}
+    query.filter = {};
+    query.filter[gummy] = { "_eq": id };
+
+    let response = await directus.items(collection).readByQuery(query);
     return response.data[0];
 }
 
+async function getForm(form_id) {
+    try {
+        let form = await directusGetRecord('forms', form_id);
+        return form;
+    } catch (fail) {
+        console.error("no form", fail)
+    }
+}
+
 async function directusPostRecord(collection, record) {
+    await directus.auth.static(DIRECTUS_TOKEN);
     let chosenCollection = await directus.items(collection);
 
     let response = await chosenCollection.createOne(record);
