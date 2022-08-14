@@ -18,7 +18,7 @@ exports.handler = async function (event, context, callback) {
             branchStatus ? payload.branch_email_sent = true : payload.branch_email_sent = false;
         }
 
-        payload.email_sent = await emailUtil.send(payloadMod, payload.Email, "Thank you to a person", form.title, form.response);
+        payload.sender_email_sent = await emailUtil.send(payloadMod, payload.Email, "Thank you to a person", form.title, form.response);
 
         payload = payloadUtil.format(payload);
 
