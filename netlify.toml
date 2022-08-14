@@ -3,3 +3,6 @@
     environment = {SENDGRID_API_KEY = "", HOOK_REBUILD_TOKEN = "", DIRECTUS_TOKEN = ""}
     functions = "functions"
     publish = "dist"
+
+[functions]
+  included_files = ["submission/**"]
