@@ -4,21 +4,33 @@ const axios = require('axios').default;
 const url = "https://sexpression.directus.app";
 const directus = new Directus(url);
 
-async function readRecord(collection, id, gummy = false) {
+async function readRecord(collection, id, filterIdentifier = false, status = false) {
     try {
-        if (gummy === false) {
-            gummy = "id"
+
+        console.log("collection:", collection)
+
+        if (filterIdentifier === false) {
+            filterIdentifier = "id"
         }
 
-        query = {}
-        query.filter = {};
-        query.filter[gummy] = { "_eq": id };
+        let query = {};
+        let idddy = {}
+        
+        idddy[filterIdentifier] = { "_eq": id };
 
+        if (!(status === false || status === undefined)) {
+            query.filter = {"_and": []};
+            query.filter._and.push(idddy);
+            query.filter._and.push({"status": { "_eq": status }});
+        } else {
+            query.filter = idddy;
+        }
+        
         let response = await directus.items(collection).readByQuery(query);
         console.log("directus.readRecord", "Success")
         return response.data[0];
     } catch (e) {
-        console.error("directus.readRecord",e);
+        console.error("directus.readRecord:",e);
     }
 }
 
@@ -31,7 +43,7 @@ async function createRecord(collection, record) {
         console.log("directus.createRecord", "Success")
         return response.id;
     } catch (e) {
-        console.error("directus.createRecord",e);
+        console.error("directus.createRecor:",e);
     }
 }
 

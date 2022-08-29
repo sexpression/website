@@ -12,7 +12,7 @@ function clean(payload) {
         delete payload.id;
         return { payload, form }
     } catch (e) {
-        console.error("payload.clean",e);
+        console.error("payload.clean", e);
     }
 };
 
@@ -31,24 +31,21 @@ function format(payload) {
 
         return newbie;
     } catch (e) {
-        console.error("payload.format",e);
+        console.error("payload.format", e);
     }
 };
 
-async function newPlusName(payload) {
+async function replaceIdWithName(payload, key, value, collection, status) {
     try {
-        let payloadMod = { ...payload };
-        let branchItem = false;
-        if (payload.Branch) {
-            branchItem = await directusUtil.readRecord('branches', payload.Branch);
-            payloadMod.Branch = branchItem.name;
-        }
-        return { payloadMod, branchItem };
+        let payloadMod = { ...payload }; 
+        item = await directusUtil.readRecord(collection, value, false, status);
+        payloadMod[key] = item.name;
+        return { payloadMod };
     } catch (e) {
-        console.error("payload.newPlusName",e);
+        console.error("payload.replaceIdWithName", e);
     }
-};
+}
 
 exports.clean = clean;
 exports.format = format;
-exports.newPlusName = newPlusName;
+exports.replaceIdWithName = replaceIdWithName;

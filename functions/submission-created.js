@@ -2,23 +2,31 @@ const payloadUtil = require('./submission/payload');
 const directusUtil = require('./submission/directus');
 const emailUtil = require('./submission/email');
 
-const url = "https://sexpression.directus.app";
-
 exports.handler = async function (event, context, callback) {
     try {
         let { payload, form } = payloadUtil.clean(JSON.parse(event.body).payload.data);
 
         form = await directusUtil.readRecord("forms", form.id);
 
-        let { payloadMod, branchItem } = await payloadUtil.newPlusName(payload);
+        // create a new payload
+        let payloadMod;
 
-        let branchStatus = false;
-        if (branchItem) {
-            branchStatus = await emailUtil.send(payloadMod, branchItem.email, "Thank you to a branch", form.title);
-            branchStatus ? payload.branch_email_sent = true : payload.branch_email_sent = false;
+        // if payload has university or branches - replace id with name
+        if (payload.University) {
+            payloadMod = await payloadUtil.replaceIdWithName(payload, "University", payload.University, "universities", "archived");
+        } else if(payload.Branch) {
+            payloadMod = await payloadUtil.replaceIdWithName(payload, "Branch", payload.Branch, "branches");
         }
 
-        payload.sender_email_sent = await emailUtil.send(payloadMod, payload.Email, "Thank you to a person", form.title, form.response);
+
+        payload.branch_email_sent = false;
+        if (payloadMod.Branch) {
+            console.log("payloadMod", payloadMod);
+            payload.branch_email_sent = await emailUtil.send(payloadMod.payloadMod, payloadMod.payloadMod.Branch, "Thank you to a branch", form.title);
+        }
+
+        payload.sender_email_sent = false;
+        payload.sender_email_sent = await emailUtil.send(payloadMod.payloadMod, payloadMod.payloadMod.Email, "Thank you to a person", form.title, form.response);
 
         payload = payloadUtil.format(payload);
 
@@ -36,6 +44,6 @@ exports.handler = async function (event, context, callback) {
         }
 
     } catch (e) {
-        console.error("submission",e);
+        console.error("submission", e);
     }
 }
