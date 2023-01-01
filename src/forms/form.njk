@@ -17,9 +17,7 @@ permalink: "form/{{ form.template }}/"
         </div>
         <div class="column my-8">
             <form name="{{ form.title }}" method="POST" data-netlify-recaptcha="true" data-netlify="true">
-
                     {% include "forms/" + form.template + ".njk" %}
-
                     <div data-netlify-recaptcha="true"></div>
                     <div class="field">
                         <div class="control">

@@ -4,9 +4,9 @@
         <div class="select">
             <select name="Branch" required="required">
                 {% for branch in branches %}
-                    <option value="{{ branch.email }},{{ branch.name }}">{{ branch.name }}</option>
+                    <option value="{{ branch.name }}">{{ branch.name }}</option>
                 {% endfor %}
-                    <option value="">Other</option>
+                <option value="">Other</option>
             </select>
         </div>
     </div>
