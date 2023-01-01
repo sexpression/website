@@ -1,8 +1,5 @@
 [build]
-    command = "npm start"
-    environment = {SENDGRID_API_KEY = "", HOOK_REBUILD_TOKEN = "", DIRECTUS_TOKEN = ""}
-    functions = "functions"
-    publish = "dist"
-
-[functions]
-  included_files = ["submission/**"]
+command = "npm start"
+environment = { NODE_VERSION = "18.x", HOOK_REBUILD_TOKEN = "628e00b2f5095567a2f82fcb", DIRECTUS_TOKEN = "", NETLIFY_EMAILS_PROVIDER = "sendgrid", NETLIFY_EMAILS_PROVIDER_API_KEY = "" }
+functions = "functions"
+publish = "dist"

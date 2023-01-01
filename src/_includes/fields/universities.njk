@@ -4,8 +4,9 @@
         <div class="select">
             <select name="University" required="required">
                 {% for university in universities.archived %}
-                    <option value="{{ university.id }}">{{ university.name }}</option>
+                    <option value="{{ university.name }}">{{ university.name }}</option>
                 {% endfor %}
+                <option value="">Other</option>
             </select>
         </div>
     </div>
