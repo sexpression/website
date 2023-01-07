@@ -8,18 +8,18 @@
 
 # Installation and Setup
 ## Install
-- This project requires Node.js to be installed.
-- and the Netlify CLI - `npm install netlify-cli -g` and then `netlify login` to login to your Netlify account.
 
-First of all install the NPM dependencies. This will pull down everything you need.
-
+Install dependencies
 ```
 npm install
 ```
 
-## Form submission emails
-
-If you want to test emails, add a Sendgrid API key
+Login to Netlify
 ```
-SENDGRID_API_KEY=
+npx netlify login
+```
+
+Start up website using Netlify Dev
+```
+npm run dev
 ```
