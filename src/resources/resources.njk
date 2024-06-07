@@ -11,7 +11,7 @@ permalink: "resources/{{ tag.name | slug }}/"
 <h1 class="mb-6 has-text-centered">
     <i class="fas mr-2 fa-paperclip"></i> {{ title }}
 </h1>
-<!-- <div class="tabs">
+<div class="tabs">
     <ul class="m-0">
         {% for raggy in tags %}
         {# <p>{{ raggy.name }} - {{ tag.name }}</p> #}
@@ -21,7 +21,7 @@ permalink: "resources/{{ tag.name | slug }}/"
             {# <p>{{ tag.text }}</p> #}
         {% endfor %}
     </ul>
- </div> -->
+ </div>
 
 <div class="columns is-multiline is-mobile">
     {% for resource in resources %}
