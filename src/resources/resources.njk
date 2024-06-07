@@ -11,17 +11,17 @@ permalink: "resources/{{ tag.name | slug }}/"
 <h1 class="mb-6 has-text-centered">
     <i class="fas mr-2 fa-paperclip"></i> {{ title }}
 </h1>
-//<div class="tabs">
-   // <ul class="m-0">
-     //   {% for raggy in tags %}
-      //  {# <p>{{ raggy.name }} - {{ tag.name }}</p> #}
-         //   <li {% if raggy.name === tag.name %} class="is-active" {% endif %}>
-          //      <a href="/resources/{{ raggy.name | slug }}">{{ raggy.name }}</a>
-          //  </li>
-          //  {# <p>{{ tag.text }}</p> #}
-      //  {% endfor %}
- //   </ul>
-// </div>
+<!-- <div class="tabs">
+    <ul class="m-0">
+        {% for raggy in tags %}
+        {# <p>{{ raggy.name }} - {{ tag.name }}</p> #}
+            <li {% if raggy.name === tag.name %} class="is-active" {% endif %}>
+                <a href="/resources/{{ raggy.name | slug }}">{{ raggy.name }}</a>
+            </li>
+            {# <p>{{ tag.text }}</p> #}
+        {% endfor %}
+    </ul>
+ </div> -->
 
 <div class="columns is-multiline is-mobile">
     {% for resource in resources %}
