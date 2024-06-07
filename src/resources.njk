@@ -11,7 +11,7 @@ title: Resources
     <ul class="m-0">
         {% for tag in tags %}
             <li>
-                <a href="/resources/{{ tag.name | slug }}">{{ section.name }}</a>
+                <a href="/resources/{{ tag.name | slug }}">{{ section.title }}</a>
             </li>
             {# <p>{{ tag.text }}</p> #}
         {% endfor %}
